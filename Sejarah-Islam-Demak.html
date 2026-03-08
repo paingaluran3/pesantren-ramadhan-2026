@@ -1,0 +1,1003 @@
+<!doctype html>
+<html lang="id" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pesantren Ramadhan - Sejarah Islam Demak</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&amp;family=Poppins:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+  <style>
+    * { font-family: 'Poppins', sans-serif; }
+    .font-arabic { font-family: 'Amiri', serif; }
+    .gradient-islamic { background: linear-gradient(135deg, #1a472a 0%, #2d5a3d 50%, #1a472a 100%); }
+    .gradient-gold { background: linear-gradient(135deg, #d4af37 0%, #f4d03f 50%, #d4af37 100%); }
+    .pattern-islamic {
+      background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cstyle%3E.star%7Bfill:%23ffffff;fill-opacity:0.08%7D%3C/style%3E%3C/defs%3E%3Cg%3E%3Ccircle cx='40' cy='40' r='20' class='star'/%3E%3Cpath d='M40 20L44 32L57 32L47 40L51 52L40 44L29 52L33 40L23 32L36 32Z' class='star'/%3E%3Ccircle cx='40' cy='40' r='3' class='star'/%3E%3C/g%3E%3C/svg%3E");
+    }
+    .card-hover { transition: all 0.3s ease; }
+    .card-hover:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.2); }
+    .animate-fade-in { animation: fadeIn 0.5s ease-out; }
+    .animate-slide-up { animation: slideUp 0.6s ease-out; }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    .quiz-option { transition: all 0.2s ease; }
+    .quiz-option:hover { transform: scale(1.02); }
+    .quiz-option.correct { background: linear-gradient(135deg, #22c55e, #16a34a) !important; color: white; }
+    .quiz-option.incorrect { background: linear-gradient(135deg, #ef4444, #dc2626) !important; color: white; }
+    .timer-warning { animation: pulse 1s infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+    .scrollbar-thin::-webkit-scrollbar { width: 6px; }
+    .scrollbar-thin::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 3px; }
+    .scrollbar-thin::-webkit-scrollbar-thumb { background: #2d5a3d; border-radius: 3px; }
+  </style>
+  <style>body { box-sizing: border-box; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full" style="background: linear-gradient(135deg, #022c22 0%, #064e3b 25%, #065f46 50%, #064e3b 75%, #022c22 100%); background-attachment: fixed;">
+  <div id="app" class="h-full overflow-auto">
+   <div id="mainMenu" class="min-h-full gradient-islamic pattern-islamic">
+    <div class="container mx-auto px-4 py-8 max-w-6xl">
+     <header class="text-center mb-12 animate-fade-in">
+      <div class="inline-block mb-4">
+       <div class="w-24 h-24 mx-auto bg-gradient-to-br from-amber-400 to-amber-600 rounded-full flex items-center justify-center shadow-lg">
+        <svg class="w-14 h-14 text-white" viewbox="0 0 24 24" fill="currentColor">
+         <path d="M12 2L2 8l10 6 10-6-10-6zM2 15l10 6 10-6M12 8v8" />
+        </svg>
+       </div>
+      </div>
+      <h1 id="appTitle" class="text-4xl md:text-5xl font-bold text-white mb-3 drop-shadow-lg">Pesantren Ramadhan</h1>
+      <p id="schoolName" class="text-amber-300 text-lg mb-2">Pembelajaran Agama Islam</p>
+      <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur px-6 py-3 rounded-full">
+       <i data-lucide="clock" class="w-5 h-5 text-amber-300"></i> <span class="text-white">120 Menit | Kelas 4-6 SD</span>
+      </div>
+      <h2 class="text-2xl md:text-3xl font-semibold text-amber-200 mt-6">Sejarah Islam di Demak</h2>
+      <p class="text-emerald-200 mt-2">Masjid Agung Demak</p>
+     </header><div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+      <div class="card-hover cursor-pointer bg-white rounded-2xl shadow-xl overflow-hidden animate-slide-up" onclick="showSection('modulAjar')">
+       <div class="h-3 gradient-gold"></div>
+       <div class="p-8 text-center">
+        <div class="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-emerald-500 to-emerald-700 rounded-2xl flex items-center justify-center shadow-lg">
+         <i data-lucide="book-open" class="w-10 h-10 text-white"></i>
+        </div>
+        <h3 class="text-2xl font-bold text-emerald-800 mb-3">Modul Ajar</h3>
+        <p class="text-gray-600 mb-4">Panduan lengkap pembelajaran untuk guru meliputi persiapan, pembukaan, kegiatan inti, dan penutup</p>
+        <div class="inline-flex items-center gap-2 text-emerald-600 font-medium">
+         <span>Buka Modul</span> <i data-lucide="arrow-right" class="w-5 h-5"></i>
+        </div>
+       </div>
+      </div><div class="card-hover cursor-pointer bg-white rounded-2xl shadow-xl overflow-hidden animate-slide-up" style="animation-delay: 0.1s" onclick="showSection('mediaPembelajaran')">
+       <div class="h-3 gradient-gold"></div>
+       <div class="p-8 text-center">
+        <div class="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-amber-500 to-amber-700 rounded-2xl flex items-center justify-center shadow-lg">
+         <i data-lucide="play-circle" class="w-10 h-10 text-white"></i>
+        </div>
+        <h3 class="text-2xl font-bold text-amber-800 mb-3">Media Pembelajaran Interaktif</h3>
+        <p class="text-gray-600 mb-4">Materi interaktif dengan video, virtual tour, dan kuis cerdas cermat untuk siswa</p>
+        <div class="inline-flex items-center gap-2 text-amber-600 font-medium">
+         <span>Mulai Belajar</span> <i data-lucide="arrow-right" class="w-5 h-5"></i>
+        </div>
+       </div>
+      </div>
+     </div><footer class="text-center mt-12 text-emerald-200 text-sm">
+      <p>© 2026 Pesantren Ramadhan | Pembelajaran Sejarah Islam</p>
+     </footer>
+    </div>
+   </div><div id="modulAjar" class="hidden min-h-full bg-gradient-to-br from-emerald-50 to-white">
+    <div class="container mx-auto px-4 py-6 max-w-5xl">
+     <div class="flex items-center gap-4 mb-6">
+      <button onclick="showSection('mainMenu')" class="p-2 bg-emerald-600 text-white rounded-xl hover:bg-emerald-700 transition"> <i data-lucide="arrow-left" class="w-6 h-6"></i> </button>
+      <h1 class="text-2xl md:text-3xl font-bold text-emerald-800">📚 Modul Ajar</h1>
+     </div><div class="bg-white rounded-2xl shadow-xl p-6 md:p-8 scrollbar-thin overflow-auto" style="max-height: calc(100% - 100px)">
+      <section class="mb-8 p-6 bg-gradient-to-r from-emerald-50 to-amber-50 rounded-xl border-l-4 border-emerald-600">
+       <h2 class="text-xl font-bold text-emerald-800 mb-4 flex items-center gap-2"><i data-lucide="info" class="w-6 h-6"></i> Identitas Modul</h2>
+       <div class="grid md:grid-cols-2 gap-4 text-gray-700">
+        <div><strong>Mata Pelajaran:</strong> Pembelajaran Pesantren Ramadhan
+        </div>
+        <div><strong>Kelas/Fase:</strong> 4-6 SD / Fase B-C
+        </div>
+        <div><strong>Materi:</strong> Sejarah Islam di Demak (Masjid Agung Demak)
+        </div>
+        <div><strong>Alokasi Waktu:</strong> 120 menit (4 x 30 menit)
+        </div>
+        <div><strong>Model Pembelajaran:</strong> Cerdas, Cermat, Cepat dan Tepat (C3T)
+        </div>
+        <div><strong>Metode:</strong> Ceramah, Diskusi, Kuis Interaktif
+        </div>
+       </div>
+      </section><section class="mb-8">
+       <h2 class="text-xl font-bold text-emerald-800 mb-4 flex items-center gap-2"><i data-lucide="target" class="w-6 h-6"></i> Tujuan Pembelajaran</h2>
+       <ul class="space-y-2 text-gray-700">
+        <li class="flex items-start gap-2"><span class="text-emerald-600">✓</span> Peserta didik dapat menjelaskan sejarah berdirinya Masjid Agung Demak</li>
+        <li class="flex items-start gap-2"><span class="text-emerald-600">✓</span> Peserta didik dapat menyebutkan tokoh-tokoh Wali Songo yang berperan dalam penyebaran Islam di Demak</li>
+        <li class="flex items-start gap-2"><span class="text-emerald-600">✓</span> Peserta didik dapat mengidentifikasi ciri khas arsitektur Masjid Agung Demak</li>
+        <li class="flex items-start gap-2"><span class="text-emerald-600">✓</span> Peserta didik dapat mengambil hikmah dari sejarah penyebaran Islam di tanah Jawa</li>
+       </ul>
+      </section><section class="mb-8 p-6 bg-blue-50 rounded-xl">
+       <h2 class="text-xl font-bold text-blue-800 mb-4 flex items-center gap-2"><i data-lucide="clipboard-list" class="w-6 h-6"></i> Langkah-Langkah Persiapan</h2>
+       <div class="grid md:grid-cols-2 gap-6">
+        <div>
+         <h3 class="font-semibold text-blue-700 mb-2">Kebutuhan Sarana:</h3>
+         <ul class="space-y-1 text-gray-700 text-sm">
+          <li>• Proyektor/LCD dan layar</li>
+          <li>• Laptop/komputer dengan koneksi internet</li>
+          <li>• Speaker/pengeras suara</li>
+          <li>• Papan skor untuk kuis</li>
+         </ul>
+        </div>
+        <div>
+         <h3 class="font-semibold text-blue-700 mb-2">Kebutuhan Bahan:</h3>
+         <ul class="space-y-1 text-gray-700 text-sm">
+          <li>• Video apersepsi Masjid Agung Demak</li>
+          <li>• Materi sejarah (dokumen digital)</li>
+          <li>• Video virtual tour</li>
+          <li>• Soal kuis cerdas cermat</li>
+         </ul>
+        </div>
+        <div>
+         <h3 class="font-semibold text-blue-700 mb-2">Persiapan Guru:</h3>
+         <ul class="space-y-1 text-gray-700 text-sm">
+          <li>• Mempelajari materi sejarah Masjid Agung Demak</li>
+          <li>• Menyiapkan pembagian kelompok siswa</li>
+          <li>• Mengecek semua media berfungsi dengan baik</li>
+          <li>• Menyiapkan hadiah/penghargaan untuk pemenang kuis</li>
+         </ul>
+        </div>
+        <div>
+         <h3 class="font-semibold text-blue-700 mb-2">Persiapan Siswa:</h3>
+         <ul class="space-y-1 text-gray-700 text-sm">
+          <li>• Duduk berkelompok (4-5 orang/kelompok)</li>
+          <li>• Menyiapkan alat tulis</li>
+          <li>• Siap mengikuti pembelajaran dengan tertib</li>
+         </ul>
+        </div>
+       </div>
+      </section><section class="mb-8 p-6 bg-amber-50 rounded-xl">
+       <h2 class="text-xl font-bold text-amber-800 mb-4 flex items-center gap-2"><i data-lucide="door-open" class="w-6 h-6"></i> Kegiatan Pembukaan (15 Menit)</h2>
+       <div class="space-y-4 text-gray-700">
+        <div class="p-4 bg-white rounded-lg shadow-sm">
+         <h3 class="font-semibold text-amber-700 mb-2">1. Salam &amp; Menanyakan Kabar (2 menit)</h3>
+         <p class="text-sm">Guru mengucapkan salam "Assalamu'alaikum Warahmatullahi Wabarakatuh" dan menanyakan kabar peserta didik dengan penuh semangat.</p>
+        </div>
+        <div class="p-4 bg-white rounded-lg shadow-sm">
+         <h3 class="font-semibold text-amber-700 mb-2">2. Doa Sebelum Belajar (3 menit)</h3>
+         <p class="text-sm font-arabic text-lg text-center my-2">"رَضِيتُ بِاللهِ رَبًّا وَبِالإِسْلاَمِ دِينًا وَبِمُحَمَّدٍ نَبِيًّا وَرَسُولاً، رَبِّ زِدْنِي عِلْمًا وَارْزُقْنِي فَهْمًا"</p>
+         <p class="text-sm italic">Rodhitu billahi robba, wabil islami dina, wabimuhammadin nabiyya warosula, robbi zidni ilma, warzuqni fahma</p>
+        </div>
+        <div class="p-4 bg-white rounded-lg shadow-sm">
+         <h3 class="font-semibold text-amber-700 mb-2">3. Apersepsi (7 menit)</h3>
+         <p class="text-sm">Menampilkan video Masjid Agung Demak, kemudian mengajukan pertanyaan pemantik:</p>
+         <ul class="text-sm mt-2 space-y-1 ml-4">
+          <li>• "Apakah ada yang tahu apa itu?"</li>
+          <li>• "Di mana lokasi bangunan tersebut?"</li>
+          <li>• "Apakah ada yang tahu sejarahnya?"</li>
+         </ul>
+        </div>
+        <div class="p-4 bg-white rounded-lg shadow-sm">
+         <h3 class="font-semibold text-amber-700 mb-2">4. Motivasi (3 menit)</h3>
+         <p class="text-sm">Menyampaikan pentingnya mempelajari sejarah Islam di Indonesia dan mengaitkan dengan kehidupan sehari-hari sebagai muslim yang mencintai sejarah bangsanya.</p>
+        </div>
+       </div>
+      </section><section class="mb-8 p-6 bg-emerald-50 rounded-xl">
+       <h2 class="text-xl font-bold text-emerald-800 mb-4 flex items-center gap-2"><i data-lucide="layers" class="w-6 h-6"></i> Kegiatan Inti (90 Menit) - Model C3T</h2>
+       <div class="space-y-4 text-gray-700">
+        <div class="p-4 bg-white rounded-lg shadow-sm">
+         <h3 class="font-semibold text-emerald-700 mb-2">1. Penyampaian Materi Sejarah (30 menit)</h3>
+         <ul class="text-sm space-y-1">
+          <li>• Guru menjelaskan sejarah berdirinya Kerajaan Demak</li>
+          <li>• Peran Wali Songo dalam penyebaran Islam</li>
+          <li>• Sejarah pembangunan Masjid Agung Demak</li>
+          <li>• Ciri khas dan keunikan arsitektur masjid</li>
+          <li>• Siswa mencatat poin-poin penting</li>
+         </ul>
+        </div>
+        <div class="p-4 bg-white rounded-lg shadow-sm">
+         <h3 class="font-semibold text-emerald-700 mb-2">2. Virtual Tour Masjid Agung Demak (6 menit)</h3>
+         <p class="text-sm">Menampilkan video virtual tour untuk memberikan pengalaman visual kepada siswa tentang keindahan dan kemegahan Masjid Agung Demak.</p>
+        </div>
+        <div class="p-4 bg-white rounded-lg shadow-sm">
+         <h3 class="font-semibold text-emerald-700 mb-2">3. Ice Breaking (9 menit)</h3>
+         <p class="text-sm">Permainan ringan untuk menyegarkan suasana sebelum kuis, bisa berupa tepuk semangat, yel-yel kelompok, atau games sederhana.</p>
+        </div>
+        <div class="p-4 bg-white rounded-lg shadow-sm">
+         <h3 class="font-semibold text-emerald-700 mb-2">4. Kuis Cerdas Cermat Kelompok (45 menit)</h3>
+         <ul class="text-sm space-y-1">
+          <li>• Siswa dibagi menjadi beberapa kelompok</li>
+          <li>• Setiap kelompok berkompetisi menjawab pertanyaan</li>
+          <li>• Penilaian berdasarkan kecepatan dan ketepatan</li>
+          <li>• Skor dicatat di papan skor</li>
+          <li>• Pengumuman pemenang di akhir kuis</li>
+         </ul>
+        </div>
+       </div>
+      </section><section class="mb-8 p-6 bg-purple-50 rounded-xl">
+       <h2 class="text-xl font-bold text-purple-800 mb-4 flex items-center gap-2"><i data-lucide="check-circle" class="w-6 h-6"></i> Kegiatan Penutup (15 Menit)</h2>
+       <div class="space-y-4 text-gray-700">
+        <div class="p-4 bg-white rounded-lg shadow-sm">
+         <h3 class="font-semibold text-purple-700 mb-2">1. Penyimpulan (5 menit)</h3>
+         <p class="text-sm">Guru bersama siswa menyimpulkan materi pembelajaran tentang sejarah Islam di Demak dan Masjid Agung Demak.</p>
+        </div>
+        <div class="p-4 bg-white rounded-lg shadow-sm">
+         <h3 class="font-semibold text-purple-700 mb-2">2. Refleksi Akhir Pembelajaran (5 menit)</h3>
+         <ul class="text-sm space-y-1">
+          <li>• "Apa yang kalian pelajari hari ini?"</li>
+          <li>• "Hikmah apa yang bisa diambil?"</li>
+          <li>• "Bagaimana kita bisa meneladani semangat Wali Songo?"</li>
+         </ul>
+        </div>
+        <div class="p-4 bg-white rounded-lg shadow-sm">
+         <h3 class="font-semibold text-purple-700 mb-2">3. Doa Sesudah Belajar (3 menit)</h3>
+         <p class="text-sm font-arabic text-lg text-center my-2">"اَللّٰهُمَّ أَرِنَا الْحَقَّ حَقًّا وَارْزُقْنَا اتِّبَاعَهُ وَأَرِنَا الْبَاطِلَ بَاطِلاً وَارْزُقْنَا اجْتِنَابَهُ"</p>
+         <p class="text-sm italic">Allahumma arinal haqqa haqqan warzuqnat tiba'ah, wa arinal bathila bathilan warzuqnaj tinabah</p>
+        </div>
+        <div class="p-4 bg-white rounded-lg shadow-sm">
+         <h3 class="font-semibold text-purple-700 mb-2">4. Salam Penutup (2 menit)</h3>
+         <p class="text-sm">Guru menutup pembelajaran dengan mengucapkan "Wassalamu'alaikum Warahmatullahi Wabarakatuh"</p>
+        </div>
+       </div>
+      </section><section class="p-6 bg-gray-50 rounded-xl">
+       <h2 class="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2"><i data-lucide="award" class="w-6 h-6"></i> Penilaian</h2>
+       <div class="grid md:grid-cols-3 gap-4">
+        <div class="p-4 bg-white rounded-lg shadow-sm">
+         <h3 class="font-semibold text-gray-700 mb-2">Sikap</h3>
+         <p class="text-sm text-gray-600">Observasi keaktifan, kerjasama, dan kedisiplinan selama pembelajaran</p>
+        </div>
+        <div class="p-4 bg-white rounded-lg shadow-sm">
+         <h3 class="font-semibold text-gray-700 mb-2">Pengetahuan</h3>
+         <p class="text-sm text-gray-600">Skor kuis cerdas cermat dan tanya jawab selama pembelajaran</p>
+        </div>
+        <div class="p-4 bg-white rounded-lg shadow-sm">
+         <h3 class="font-semibold text-gray-700 mb-2">Keterampilan</h3>
+         <p class="text-sm text-gray-600">Kemampuan menyampaikan pendapat dan menjawab pertanyaan</p>
+        </div>
+       </div>
+      </section>
+     </div>
+    </div>
+   </div><div id="mediaPembelajaran" class="hidden min-h-full bg-gradient-to-br from-amber-50 to-white">
+    <div class="container mx-auto px-4 py-6 max-w-5xl h-full">
+     <div class="flex items-center justify-between mb-4">
+      <div class="flex items-center gap-4">
+       <button onclick="showSection('mainMenu')" class="p-2 bg-amber-600 text-white rounded-xl hover:bg-amber-700 transition"> <i data-lucide="arrow-left" class="w-6 h-6"></i> </button>
+       <h1 class="text-xl md:text-2xl font-bold text-amber-800">🎓 Media Pembelajaran Interaktif</h1>
+      </div>
+      <div id="progressIndicator" class="hidden md:flex items-center gap-2 bg-amber-100 px-4 py-2 rounded-full">
+       <span class="text-amber-700 font-medium text-sm">Tahap: </span> <span id="currentStage" class="text-amber-800 font-bold text-sm">Pembuka</span>
+      </div>
+     </div><div class="flex flex-wrap gap-2 mb-4">
+      <button onclick="showMediaTab('pembuka')" id="tabPembuka" class="media-tab px-4 py-2 rounded-xl font-medium transition text-sm bg-amber-600 text-white"> <i data-lucide="door-open" class="w-4 h-4 inline mr-1"></i> Pembuka </button> <button onclick="showMediaTab('inti')" id="tabInti" class="media-tab px-4 py-2 rounded-xl font-medium transition text-sm bg-gray-200 text-gray-700 hover:bg-gray-300"> <i data-lucide="layers" class="w-4 h-4 inline mr-1"></i> Kegiatan Inti </button> <button onclick="showMediaTab('penutup')" id="tabPenutup" class="media-tab px-4 py-2 rounded-xl font-medium transition text-sm bg-gray-200 text-gray-700 hover:bg-gray-300"> <i data-lucide="check-circle" class="w-4 h-4 inline mr-1"></i> Penutup </button>
+     </div><div id="mediaContent" class="bg-white rounded-2xl shadow-xl overflow-hidden" style="height: calc(100% - 140px);">
+      <div id="contentPembuka" class="media-content h-full overflow-auto p-6">
+       <div class="max-w-3xl mx-auto space-y-6">
+        <div class="p-6 bg-gradient-to-r from-emerald-500 to-teal-600 rounded-2xl text-white text-center animate-fade-in">
+         <h2 class="text-3xl font-bold mb-4">السَّلاَمُ عَلَيْكُمْ وَرَحْمَةُ اللهِ وَبَرَكَاتُهُ</h2>
+         <p class="text-xl">Assalamu'alaikum Warahmatullahi Wabarakatuh</p>
+         <div class="mt-4 p-4 bg-white/20 rounded-xl">
+          <p class="text-lg">Apa kabar anak-anak? Semoga dalam keadaan sehat dan semangat! 💪</p>
+         </div>
+        </div><div class="p-6 bg-gradient-to-r from-amber-100 to-orange-100 rounded-2xl border-2 border-amber-300">
+         <h3 class="text-xl font-bold text-amber-800 mb-4 text-center">🤲 Doa Sebelum Belajar</h3>
+         <div class="bg-white p-6 rounded-xl shadow-inner">
+          <p class="font-arabic text-2xl text-center text-gray-800 leading-relaxed mb-4">رَضِيتُ بِاللهِ رَبًّا وَبِالإِسْلاَمِ دِينًا وَبِمُحَمَّدٍ نَبِيًّا وَرَسُولاً</p>
+          <p class="font-arabic text-2xl text-center text-gray-800 leading-relaxed mb-4">رَبِّ زِدْنِي عِلْمًا وَارْزُقْنِي فَهْمًا</p>
+          <hr class="my-4">
+          <p class="text-center text-gray-600 italic">"Rodhitu billahi robba, wabil islami dina, wabimuhammadin nabiyya warosula, robbi zidni ilma, warzuqni fahma"</p>
+          <p class="text-center text-gray-500 text-sm mt-3">"Aku ridha Allah sebagai Tuhanku, Islam sebagai agamaku, dan Muhammad sebagai Nabi dan Rasul. Ya Allah, tambahkanlah ilmuku dan berikanlah aku pemahaman"</p>
+         </div><button onclick="playDoaAnimation()" class="mt-4 w-full py-3 bg-amber-500 text-white rounded-xl font-medium hover:bg-amber-600 transition flex items-center justify-center gap-2"> <i data-lucide="volume-2" class="w-5 h-5"></i> Baca Bersama-sama </button>
+        </div><div class="p-6 bg-gradient-to-r from-blue-100 to-indigo-100 rounded-2xl border-2 border-blue-300">
+         <h3 class="text-xl font-bold text-blue-800 mb-4 text-center">🎬 Apersepsi - Perhatikan Video Berikut!</h3>
+         
+         <div class="bg-gray-900 rounded-xl overflow-hidden aspect-video relative w-full">
+          <iframe src="https://drive.google.com/file/d/1bFsBpHm8E3dODZ01qSG0oaO1FocLFVwm/preview" class="absolute top-0 left-0 w-full h-full" allow="autoplay; fullscreen" allowfullscreen border="0" style="border: none;"></iframe>
+         </div>
+         
+         <div class="mt-4 p-4 bg-white rounded-xl">
+          <h4 class="font-semibold text-blue-800 mb-2">Pertanyaan Pemantik:</h4>
+          <ul class="space-y-2 text-gray-700">
+           <li class="flex items-center gap-2"><span class="text-2xl">🤔</span> Apakah ada yang tahu apa itu?</li>
+           <li class="flex items-center gap-2"><span class="text-2xl">📍</span> Di mana lokasi bangunan tersebut?</li>
+           <li class="flex items-center gap-2"><span class="text-2xl">📜</span> Apakah ada yang tahu sejarahnya?</li>
+          </ul>
+         </div>
+        </div><div class="p-6 bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl text-white">
+         <h3 class="text-xl font-bold mb-4 text-center">💫 Motivasi</h3>
+         <div class="bg-white/20 p-6 rounded-xl">
+          <p class="text-lg leading-relaxed text-center">"Mempelajari sejarah Islam adalah cara kita menghargai perjuangan para ulama dalam menyebarkan agama Allah. Masjid Agung Demak adalah saksi bisu kejayaan Islam di tanah Jawa. Mari kita pelajari bersama agar bisa meneladani semangat para Wali Songo!"</p>
+         </div>
+         <div class="mt-4 text-center">
+          <p class="text-xl font-semibold">🌟 Siap Belajar? 🌟</p>
+         </div>
+        </div><button onclick="showMediaTab('inti')" class="w-full py-4 bg-emerald-600 text-white rounded-xl font-bold text-lg hover:bg-emerald-700 transition flex items-center justify-center gap-2"> Lanjut ke Kegiatan Inti <i data-lucide="arrow-right" class="w-6 h-6"></i> </button>
+       </div>
+      </div><div id="contentInti" class="media-content hidden h-full overflow-auto p-6">
+       <div class="max-w-4xl mx-auto space-y-6">
+        <div class="flex flex-wrap gap-2 p-2 bg-gray-100 rounded-xl">
+         <button onclick="showIntiSection('materi')" id="btnMateri" class="inti-btn flex-1 py-2 px-4 rounded-lg font-medium transition text-sm bg-emerald-600 text-white">📖 Materi</button> <button onclick="showIntiSection('tour')" id="btnTour" class="inti-btn flex-1 py-2 px-4 rounded-lg font-medium transition text-sm bg-gray-200 text-gray-700">🎥 Virtual Tour</button> <button onclick="showIntiSection('ice')" id="btnIce" class="inti-btn flex-1 py-2 px-4 rounded-lg font-medium transition text-sm bg-gray-200 text-gray-700">🎮 Ice Breaking</button> <button onclick="showIntiSection('kuis')" id="btnKuis" class="inti-btn flex-1 py-2 px-4 rounded-lg font-medium transition text-sm bg-gray-200 text-gray-700">🏆 Kuis C3T</button>
+        </div><div id="sectionMateri" class="inti-section">
+         <div class="p-6 bg-gradient-to-r from-emerald-50 to-teal-50 rounded-2xl border-2 border-emerald-300">
+          <h3 class="text-2xl font-bold text-emerald-800 mb-4 text-center">📖 Sejarah Singkat Masjid Agung Demak</h3>
+          <div class="bg-white rounded-xl p-6 shadow-inner mb-4 overflow-auto" style="max-height: 600px;">
+           <div class="prose max-w-none text-gray-700 space-y-5"><div class="pb-4 border-b-2 border-gray-200">
+             <h4 class="text-lg font-bold text-emerald-700 mb-3">1️⃣ Apa itu Masjid Agung Demak?</h4>
+             <ul class="space-y-2">
+              <li class="flex items-start gap-2"><span class="text-emerald-600 font-bold">•</span> <span>Masjid Agung Demak adalah salah satu masjid tertua di Indonesia.</span></li>
+              <li class="flex items-start gap-2"><span class="text-emerald-600 font-bold">•</span> <span>Terletak di Kabupaten Demak, Jawa Tengah.</span></li>
+              <li class="flex items-start gap-2"><span class="text-emerald-600 font-bold">•</span> <span>Masjid ini sangat penting dalam sejarah penyebaran Islam di Pulau Jawa.</span></li>
+              <li class="flex items-start gap-2"><span class="text-emerald-600 font-bold">•</span> <span>Dahulu masjid ini menjadi tempat berkumpulnya para Wali Songo.</span></li>
+             </ul>
+            </div><div class="pb-4 border-b-2 border-gray-200">
+             <h4 class="text-lg font-bold text-emerald-700 mb-3">2️⃣ Siapa yang Membangun Masjid Agung Demak?</h4>
+             <ul class="space-y-2">
+              <li class="flex items-start gap-2"><span class="text-emerald-600 font-bold">•</span> <span>Masjid ini dibangun oleh Raden Fatah, raja pertama Kesultanan Demak.</span></li>
+              <li class="flex items-start gap-2"><span class="text-emerald-600 font-bold">•</span> <span>Pembangunannya dibantu oleh Wali Songo (sembilan wali penyebar Islam di Jawa).</span></li>
+              <li class="flex items-start gap-2"><span class="text-emerald-600 font-bold">•</span> <span>Awalnya masjid ini adalah Masjid Glagahwangi.</span></li>
+             </ul>
+            </div><div class="pb-4 border-b-2 border-gray-200">
+             <h4 class="text-lg font-bold text-emerald-700 mb-3">3️⃣ Tahapan Pembangunan Masjid</h4>
+             <p class="text-sm text-gray-600 mb-3">Masjid Agung Demak dibangun dalam tiga tahap:</p>
+             <div class="grid gap-3">
+              <div class="bg-gradient-to-r from-blue-100 to-blue-50 p-3 rounded-lg">
+               <p class="font-bold text-blue-800">📅 Tahun 1466</p>
+               <p class="text-sm text-gray-700">Dibangun pertama kali sebagai Masjid Glagahwangi.</p>
+              </div>
+              <div class="bg-gradient-to-r from-purple-100 to-purple-50 p-3 rounded-lg">
+               <p class="font-bold text-purple-800">📅 Tahun 1477</p>
+               <p class="text-sm text-gray-700">Dibangun kembali menjadi Masjid Kadipaten Demak.</p>
+              </div>
+              <div class="bg-gradient-to-r from-amber-100 to-amber-50 p-3 rounded-lg">
+               <p class="font-bold text-amber-800">📅 Tahun 1478–1479</p>
+               <p class="text-sm text-gray-700">Dijadikan Masjid Kesultanan Demak ketika Raden Fatah menjadi sultan.</p>
+              </div>
+             </div>
+            </div><div class="pb-4 border-b-2 border-gray-200">
+             <h4 class="text-lg font-bold text-emerald-700 mb-3">4️⃣ Ciri Khas Bangunan Masjid</h4>
+             <p class="text-sm text-gray-600 mb-3">Beberapa bagian unik masjid:</p>
+             <ul class="space-y-2">
+              <li class="flex items-start gap-2"><span class="text-emerald-600 font-bold">•</span> <span>Memiliki 4 tiang utama (Soko Guru) sebagai penyangga masjid.</span></li>
+              <li class="flex items-start gap-2"><span class="text-emerald-600 font-bold">•</span> <span>Salah satu tiangnya disebut Soko Tatal, dibuat dari potongan kayu oleh Sunan Kalijaga.</span></li>
+              <li class="flex items-start gap-2"><span class="text-emerald-600 font-bold">•</span> <span>Atap masjid bertumpuk tiga.</span></li>
+              <li class="flex items-start gap-2"><span class="text-emerald-600 font-bold">•</span> <span>Atap ini melambangkan: <strong>Iman, Islam, Ihsan</strong></span></li>
+             </ul>
+            </div><div class="pb-4 border-b-2 border-gray-200">
+             <h4 class="text-lg font-bold text-emerald-700 mb-3">5️⃣ Keunikan Arsitektur Masjid</h4>
+             <ul class="space-y-2">
+              <li class="flex items-start gap-2"><span class="text-emerald-600 font-bold">•</span> <span>Bentuk masjid tidak menggunakan kubah seperti masjid Timur Tengah.</span></li>
+              <li class="flex items-start gap-2"><span class="text-emerald-600 font-bold">•</span> <span>Atapnya mirip bangunan tradisional Jawa dan Majapahit.</span></li>
+              <li class="flex items-start gap-2"><span class="text-emerald-600 font-bold">•</span> <span>Ini menunjukkan perpaduan budaya Islam dan budaya Jawa.</span></li>
+             </ul>
+            </div><div class="pb-4 border-b-2 border-gray-200">
+             <h4 class="text-lg font-bold text-emerald-700 mb-3">6️⃣ Benda-Benda Bersejarah di Masjid</h4>
+             <p class="text-sm text-gray-600 mb-3">Beberapa peninggalan penting di Masjid Agung Demak:</p>
+             <div class="grid grid-cols-2 gap-2">
+              <div class="bg-amber-50 p-2 rounded border-l-4 border-amber-500">
+               <p class="font-semibold text-sm text-amber-800">🚪 Pintu Bledeg</p>
+               <p class="text-xs text-gray-700">Pintu utama berukir</p>
+              </div>
+              <div class="bg-amber-50 p-2 rounded border-l-4 border-amber-500">
+               <p class="font-semibold text-sm text-amber-800">🥁 Bedug &amp; Kentongan</p>
+               <p class="text-xs text-gray-700">Alat pemanggil adzan</p>
+              </div>
+              <div class="bg-amber-50 p-2 rounded border-l-4 border-amber-500">
+               <p class="font-semibold text-sm text-amber-800">💧 Kolam Wudhu Kuno</p>
+               <p class="text-xs text-gray-700">Tempat berwudhu</p>
+              </div>
+              <div class="bg-amber-50 p-2 rounded border-l-4 border-amber-500">
+               <p class="font-semibold text-sm text-amber-800">🏛️ Soko Majapahit</p>
+               <p class="text-xs text-gray-700">Tiang bersejarah</p>
+              </div>
+              <div class="bg-amber-50 p-2 rounded border-l-4 border-amber-500">
+               <p class="font-semibold text-sm text-amber-800">👑 Mimbar Dampar Kencana</p>
+               <p class="text-xs text-gray-700">Tempat khotib</p>
+              </div>
+              <div class="bg-amber-50 p-2 rounded border-l-4 border-amber-500">
+               <p class="font-semibold text-sm text-amber-800">🍽️ Piring Keramik Campa</p>
+               <p class="text-xs text-gray-700">Peninggalan perdagangan</p>
+              </div>
+             </div>
+            </div><div class="pb-4">
+             <h4 class="text-lg font-bold text-emerald-700 mb-3">7️⃣ Nilai Penting Masjid Agung Demak</h4>
+             <ul class="space-y-2">
+              <li class="flex items-start gap-2"><span class="text-emerald-600 font-bold">•</span> <span>Menjadi bukti sejarah penyebaran Islam di Indonesia.</span></li>
+              <li class="flex items-start gap-2"><span class="text-emerald-600 font-bold">•</span> <span>Tempat musyawarah para Wali Songo.</span></li>
+              <li class="flex items-start gap-2"><span class="text-emerald-600 font-bold">•</span> <span>Menjadi cagar budaya nasional yang harus dijaga.</span></li>
+             </ul>
+            </div><div class="mt-4 p-4 bg-gradient-to-r from-emerald-100 to-teal-100 rounded-lg border-l-4 border-emerald-600">
+             <p class="font-bold text-emerald-800 mb-2">✅ Kesimpulan untuk Siswa:</p>
+             <p class="text-sm text-gray-700">Masjid Agung Demak adalah masjid tua yang dibangun oleh Raden Fatah bersama Wali Songo. Masjid ini sangat penting karena menjadi pusat penyebaran Islam di Jawa dan memiliki bangunan yang unik dengan empat tiang utama dan atap bertingkat tiga.</p>
+            </div>
+           </div>
+          </div>
+         </div>
+        </div><div id="sectionTour" class="inti-section hidden">
+         <div class="p-6 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl border-2 border-blue-300">
+          <h3 class="text-2xl font-bold text-blue-800 mb-4 text-center">🎥 Virtual Tour Masjid Agung Demak</h3>
+          <p class="text-center text-gray-600 mb-4">Durasi: 6 menit</p>
+          
+          <div class="bg-gray-900 rounded-xl overflow-hidden aspect-video relative w-full">
+           <iframe src="https://drive.google.com/file/d/1HE4mzB3W9iv25exMZZ0xx3cMl74d1XGF/preview" class="absolute top-0 left-0 w-full h-full" allow="autoplay; fullscreen" allowfullscreen border="0" style="border: none;"></iframe>
+          </div>
+          
+          <div class="mt-4 p-4 bg-blue-100 rounded-xl">
+           <h4 class="font-semibold text-blue-800 mb-2">🔍 Yang Perlu Diperhatikan:</h4>
+           <ul class="text-gray-700 space-y-1 text-sm">
+            <li>• Bentuk atap tumpang tiga tingkat</li>
+            <li>• Empat tiang utama (Soko Guru)</li>
+            <li>• Pintu Bledeg di sisi barat</li>
+            <li>• Mimbar dan mihrab bersejarah</li>
+           </ul>
+          </div>
+         </div>
+        </div><div id="sectionIce" class="inti-section hidden">
+         <div class="p-6 bg-gradient-to-r from-pink-50 to-rose-50 rounded-2xl border-2 border-pink-300">
+          <h3 class="text-2xl font-bold text-pink-800 mb-4 text-center">🎮 Ice Breaking - Tebak Kata!</h3>
+          <div id="iceBreakingGame" class="bg-white rounded-xl p-6 shadow-inner">
+           <div class="text-center mb-6">
+            <p class="text-gray-600 mb-2">Tebak kata yang berhubungan dengan Masjid Agung Demak!</p>
+            <div id="iceWord" class="text-4xl font-bold text-pink-600 tracking-widest my-4">
+             _ _ _ _ _
+            </div>
+            <p id="iceHint" class="text-gray-500 italic">"Klik mulai untuk bermain"</p>
+           </div>
+           <div id="iceLetters" class="flex flex-wrap justify-center gap-2 mb-4 hidden">
+            </div>
+           <div class="flex gap-2 justify-center">
+            <button onclick="startIceBreaking()" id="iceStartBtn" class="px-6 py-3 bg-pink-500 text-white rounded-xl font-medium hover:bg-pink-600 transition"> <i data-lucide="play" class="w-5 h-5 inline mr-1"></i> Mulai </button> <button onclick="nextIceWord()" id="iceNextBtn" class="hidden px-6 py-3 bg-purple-500 text-white rounded-xl font-medium hover:bg-purple-600 transition"> <i data-lucide="skip-forward" class="w-5 h-5 inline mr-1"></i> Kata Berikutnya </button>
+           </div>
+          </div>
+          <div class="mt-4 p-4 bg-pink-100 rounded-xl">
+           <h4 class="font-semibold text-pink-800 mb-2">🎯 Ice Breaking Alternatif:</h4>
+           <ul class="text-gray-700 space-y-2">
+            <li>• <strong>Tepuk Wali Songo:</strong> Tepuk tangan sambil menyebut nama Wali</li>
+            <li>• <strong>Yel-yel Kelompok:</strong> Setiap kelompok membuat yel-yel semangat</li>
+            <li>• <strong>Senam Ringan:</strong> Gerakan peregangan untuk menyegarkan tubuh</li>
+           </ul>
+          </div>
+         </div>
+        </div><div id="sectionKuis" class="inti-section hidden">
+         <div class="p-6 bg-gradient-to-r from-amber-50 to-yellow-50 rounded-2xl border-2 border-amber-300">
+          <h3 class="text-2xl font-bold text-amber-800 mb-2 text-center">🏆 Kuis Cerdas Cermat Kelompok</h3>
+          <p class="text-center text-gray-600 mb-4">Model C3T - Cerdas, Cermat, Cepat, Tepat</p><div id="quizSetup" class="p-6 bg-white rounded-xl shadow-inner mb-4">
+           <h4 class="text-xl font-bold text-amber-800 mb-4 text-center">🏆 Kuis C3T - Cerdas, Cermat, Cepat, Tepat</h4>
+           <div class="space-y-4 mb-4 text-gray-700 text-sm">
+            <div class="p-4 bg-blue-50 rounded-lg">
+             <p class="font-semibold text-blue-800 mb-2">📋 Sistem Penilaian:</p>
+             <table class="w-full text-sm">
+              <tbody>
+               <tr class="border-b">
+                <td class="py-1"><strong>Soal Wajib</strong></td>
+                <td class="text-right">+10 poin | 0 jika salah</td>
+               </tr>
+               <tr class="border-b">
+                <td class="py-1"><strong>Soal Lemparan</strong></td>
+                <td class="text-right">+15 poin | 0 jika salah</td>
+               </tr>
+               <tr>
+                <td class="py-1"><strong>Soal Rebutan</strong></td>
+                <td class="text-right">+20 poin | -10 jika salah</td>
+               </tr>
+              </tbody>
+             </table>
+            </div>
+            <div class="p-4 bg-purple-50 rounded-lg">
+             <p class="font-semibold text-purple-800 mb-2">⏱️ Waktu Menjawab:</p>
+             <ul class="space-y-1">
+              <li>• Soal Wajib: 15 detik</li>
+              <li>• Soal Lemparan: 10 detik</li>
+              <li>• Soal Rebutan: 10 detik</li>
+             </ul>
+            </div>
+            <div class="p-4 bg-amber-50 rounded-lg">
+             <p class="font-semibold text-amber-800 mb-2">🎁 Bonus: 3 jawaban benar berturut-turut +10 poin</p>
+            </div>
+           </div><button onclick="startQuiz()" class="w-full py-3 bg-amber-500 text-white rounded-xl font-bold text-lg hover:bg-amber-600 transition flex items-center justify-center gap-2"> <i data-lucide="play" class="w-6 h-6"></i> Mulai Kuis C3T </button> <a href="https://docs.google.com/document/d/12-OISZmEXeAqgJVM6RkXzaA66TPyj5x6/edit?usp=drive_link" target="_blank" rel="noopener noreferrer" class="mt-3 flex items-center justify-center gap-2 w-full py-2 bg-gray-200 text-gray-700 rounded-xl font-medium hover:bg-gray-300 transition text-sm"> <i data-lucide="file-text" class="w-4 h-4"></i> Lihat Dokumen Soal Lengkap </a>
+          </div><div id="quizGame" class="hidden">
+           <input type="hidden" id="timeLimit" value="20">
+           <div id="scoreboard" class="bg-gradient-to-r from-emerald-600 to-teal-600 rounded-xl p-4 mb-4">
+            <h4 class="text-white font-bold text-center mb-3">📊 PAPAN SKOR</h4>
+            <div id="teamScores" class="grid grid-cols-2 md:grid-cols-4 gap-2">
+             </div>
+           </div><div class="flex justify-between items-center mb-4">
+            <div class="bg-white px-4 py-2 rounded-xl shadow">
+             <span class="text-gray-600">Soal:</span> <span id="questionNumber" class="font-bold text-amber-600">1/15</span>
+            </div>
+            <div id="timerDisplay" class="bg-red-500 text-white px-6 py-2 rounded-xl font-bold text-xl">
+             <i data-lucide="clock" class="w-5 h-5 inline mr-1"></i> <span id="timerValue">20</span>
+            </div>
+           </div><div id="questionArea" class="bg-white rounded-xl p-6 shadow-inner mb-4">
+            <p id="questionText" class="text-xl font-medium text-gray-800 text-center mb-6">Pertanyaan akan muncul di sini...</p>
+            <div id="optionsArea" class="grid grid-cols-1 md:grid-cols-2 gap-3">
+             </div>
+           </div><div class="flex gap-2">
+            <button onclick="showAnswer()" id="showAnswerBtn" class="flex-1 py-3 bg-blue-500 text-white rounded-xl font-medium hover:bg-blue-600 transition"> <i data-lucide="eye" class="w-5 h-5 inline mr-1"></i> Tampilkan Jawaban </button> <button onclick="nextQuestion()" id="nextQuestionBtn" class="flex-1 py-3 bg-emerald-500 text-white rounded-xl font-medium hover:bg-emerald-600 transition"> Soal Berikutnya <i data-lucide="arrow-right" class="w-5 h-5 inline ml-1"></i> </button>
+           </div><div id="teamAnswerSection" class="mt-4 p-4 bg-gray-100 rounded-xl">
+            <p class="text-center text-gray-600 mb-3">Beri Nilai Kepada Kelompok:</p>
+            <div id="teamAnswerButtons" class="flex flex-wrap justify-center gap-4">
+             </div>
+           </div>
+          </div><div id="quizResult" class="hidden bg-white rounded-xl p-6 shadow-inner">
+           <h3 class="text-2xl font-bold text-center text-amber-800 mb-4">🎉 KUIS SELESAI! 🎉</h3>
+           <div id="finalScores" class="space-y-3 mb-6">
+            </div><button onclick="resetQuiz()" class="w-full py-3 bg-amber-500 text-white rounded-xl font-bold hover:bg-amber-600 transition"> <i data-lucide="refresh-cw" class="w-5 h-5 inline mr-1"></i> Main Lagi </button>
+          </div>
+         </div>
+        </div><button onclick="showMediaTab('penutup')" class="w-full py-4 bg-purple-600 text-white rounded-xl font-bold text-lg hover:bg-purple-700 transition flex items-center justify-center gap-2"> Lanjut ke Penutup <i data-lucide="arrow-right" class="w-6 h-6"></i> </button>
+       </div>
+      </div><div id="contentPenutup" class="media-content hidden h-full overflow-auto p-6">
+       <div class="max-w-3xl mx-auto space-y-6">
+        <div class="p-6 bg-gradient-to-r from-emerald-100 to-teal-100 rounded-2xl border-2 border-emerald-300 animate-fade-in">
+         <h3 class="text-xl font-bold text-emerald-800 mb-4 text-center">📝 Penyimpulan</h3>
+         <div class="bg-white p-6 rounded-xl shadow-inner">
+          <h4 class="font-semibold text-emerald-700 mb-3">Hari ini kita telah belajar tentang:</h4>
+          <ul class="space-y-2 text-gray-700">
+           <li class="flex items-start gap-2"><span class="text-emerald-600">✓</span> Sejarah berdirinya Masjid Agung Demak sebagai masjid tertua di Jawa</li>
+           <li class="flex items-start gap-2"><span class="text-emerald-600">✓</span> Peran Wali Songo dalam menyebarkan Islam dan membangun masjid</li>
+           <li class="flex items-start gap-2"><span class="text-emerald-600">✓</span> Keunikan arsitektur masjid dengan atap tumpang dan 4 tiang utama</li>
+           <li class="flex items-start gap-2"><span class="text-emerald-600">✓</span> Pentingnya menghargai sejarah perjuangan dakwah Islam di Indonesia</li>
+          </ul>
+         </div>
+        </div><div class="p-6 bg-gradient-to-r from-blue-100 to-indigo-100 rounded-2xl border-2 border-blue-300">
+         <h3 class="text-xl font-bold text-blue-800 mb-4 text-center">🪞 Refleksi Akhir Pembelajaran</h3>
+         <div class="space-y-4">
+          <div class="bg-white p-4 rounded-xl shadow-sm">
+           <p class="font-medium text-blue-700 mb-2">💭 Apa yang kalian pelajari hari ini?</p>
+           <p class="text-gray-600 text-sm italic">(Biarkan siswa menyampaikan pendapatnya)</p>
+          </div>
+          <div class="bg-white p-4 rounded-xl shadow-sm">
+           <p class="font-medium text-blue-700 mb-2">✨ Hikmah apa yang bisa diambil dari sejarah Masjid Agung Demak?</p>
+           <p class="text-gray-600 text-sm italic">(Kerjasama, keikhlasan, dakwah dengan hikmah)</p>
+          </div>
+          <div class="bg-white p-4 rounded-xl shadow-sm">
+           <p class="font-medium text-blue-700 mb-2">🌟 Bagaimana kita bisa meneladani semangat Wali Songo?</p>
+           <p class="text-gray-600 text-sm italic">(Rajin beribadah, menyebarkan kebaikan, berakhlak mulia)</p>
+          </div>
+         </div>
+        </div><div class="p-6 bg-gradient-to-r from-purple-100 to-pink-100 rounded-2xl border-2 border-purple-300">
+         <h3 class="text-xl font-bold text-purple-800 mb-4 text-center">🤲 Doa Sesudah Belajar</h3>
+         <div class="bg-white p-6 rounded-xl shadow-inner">
+          <p class="font-arabic text-2xl text-center text-gray-800 leading-relaxed mb-4">اَللّٰهُمَّ أَرِنَا الْحَقَّ حَقًّا وَارْزُقْنَا اتِّبَاعَهُ</p>
+          <p class="font-arabic text-2xl text-center text-gray-800 leading-relaxed mb-4">وَأَرِنَا الْبَاطِلَ بَاطِلاً وَارْزُقْنَا اجْتِنَابَهُ</p>
+          <hr class="my-4">
+          <p class="text-center text-gray-600 italic">"Allahumma arinal haqqa haqqan warzuqnat tiba'ah, wa arinal bathila bathilan warzuqnaj tinabah"</p>
+          <p class="text-center text-gray-500 text-sm mt-3">"Ya Allah, tunjukkanlah kepada kami kebenaran itu sebagai kebenaran dan berilah kami kemampuan untuk mengikutinya. Dan tunjukkanlah kepada kami kebatilan itu sebagai kebatilan dan berilah kami kemampuan untuk menjauhinya"</p>
+         </div><button onclick="playDoaAnimation()" class="mt-4 w-full py-3 bg-purple-500 text-white rounded-xl font-medium hover:bg-purple-600 transition flex items-center justify-center gap-2"> <i data-lucide="volume-2" class="w-5 h-5"></i> Baca Bersama-sama </button>
+        </div><div class="p-8 bg-gradient-to-r from-emerald-500 to-teal-600 rounded-2xl text-white text-center">
+         <h2 class="text-3xl font-bold mb-4">وَالسَّلاَمُ عَلَيْكُمْ وَرَحْمَةُ اللهِ وَبَرَكَاتُهُ</h2>
+         <p class="text-xl mb-4">Wassalamu'alaikum Warahmatullahi Wabarakatuh</p>
+         <div class="mt-4 p-4 bg-white/20 rounded-xl">
+          <p class="text-lg">Terima kasih atas partisipasi dan semangatnya! 🌟</p>
+          <p class="text-amber-200 mt-2">Sampai jumpa di pembelajaran berikutnya!</p>
+         </div>
+        </div><button onclick="showSection('mainMenu')" class="w-full py-4 bg-gray-700 text-white rounded-xl font-bold text-lg hover:bg-gray-800 transition flex items-center justify-center gap-2"> <i data-lucide="home" class="w-6 h-6"></i> Kembali ke Menu Utama </button>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </div>
+  <script>
+    // Default configuration
+    const defaultConfig = {
+      app_title: 'Pesantren Ramadhan',
+      school_name: 'Pembelajaran Agama Islam',
+      primary_color: '#1a472a',
+      secondary_color: '#d4af37',
+      text_color: '#1f2937'
+    };
+
+    // Quiz C3T - Sejarah Masjid Agung Demak
+    const quizRounds = {
+      wajib: [
+        // Putaran 1 (Kelompok 1, 2, 3, 4 berurutan)
+        { group: 1, q: "Masjid Agung Demak terletak di kabupaten apa?", answer: "Demak", points: 10, category: "Soal Wajib" },
+        { group: 2, q: "Para ulama yang menyebarkan Islam di Jawa disebut apa?", answer: "Wali Songo", points: 10, category: "Soal Wajib" },
+        { group: 3, q: "Masjid Agung Demak memiliki berapa tiang utama?", answer: "Empat", points: 10, category: "Soal Wajib" },
+        { group: 4, q: "Atap Masjid Agung Demak bertumpuk berapa?", answer: "Tiga", points: 10, category: "Soal Wajib" },
+        // Putaran 2
+        { group: 1, q: "Masjid Agung Demak merupakan salah satu masjid tertua di negara apa?", answer: "Indonesia", points: 10, category: "Soal Wajib" },
+        { group: 2, q: "Nama awal Masjid Agung Demak adalah apa?", answer: "Masjid Glagahwangi", points: 10, category: "Soal Wajib" },
+        { group: 3, q: "Tiang yang dibuat dari potongan kayu disebut apa?", answer: "Soko Tatal", points: 10, category: "Soal Wajib" },
+        { group: 4, q: "Tiga atap tersebut melambangkan apa saja?", answer: "Iman, Islam, Ihsan", points: 10, category: "Soal Wajib" },
+        // Putaran 3
+        { group: 1, q: "Siapa raja pertama Kesultanan Demak yang membangun masjid ini?", answer: "Raden Fatah", points: 10, category: "Soal Wajib" },
+        { group: 2, q: "Pada tahun berapa masjid ini pertama kali dibangun?", answer: "1466", points: 10, category: "Soal Wajib" },
+        { group: 3, q: "Siapa wali yang membuat Soko Tatal?", answer: "Sunan Kalijaga", points: 10, category: "Soal Wajib" },
+        { group: 4, q: "Masjid ini menjadi pusat penyebaran agama apa?", answer: "Islam", points: 10, category: "Soal Wajib" }
+      ],
+      lemparan: [
+        { q: "Pada tahun berapa Masjid Glagahwangi dibangun kembali menjadi Masjid Kadipaten Demak?", answer: "1477", points: 15, category: "Soal Lemparan" },
+        { q: "Masjid Agung Demak menjadi Masjid Kesultanan Demak sekitar tahun berapa?", answer: "1478–1479", points: 15, category: "Soal Lemparan" },
+        { q: "Apa nama pintu utama berukir di Masjid Agung Demak?", answer: "Pintu Bledeg", points: 15, category: "Soal Lemparan" },
+        { q: "Bentuk atap Masjid Agung Demak menyerupai bangunan budaya apa?", answer: "Budaya Jawa", points: 15, category: "Soal Lemparan" },
+        { q: "Alat yang digunakan untuk menandai waktu salat selain adzan adalah apa?", answer: "Bedug", points: 15, category: "Soal Lemparan" },
+        { q: "Sebutkan salah satu benda bersejarah di Masjid Agung Demak!", answer: "Bedug/Kentongan/Kolam Wudhu Kuno", points: 15, category: "Soal Lemparan" },
+        { q: "Apa nama mimbar tempat khotbah yang terkenal di Masjid Agung Demak?", answer: "Dampar Kencana", points: 15, category: "Soal Lemparan" },
+        { q: "Angka tahun yang dilambangkan oleh gambar kura-kura tersebut adalah tahun berapa?", answer: "1401 Saka (1479 M)", points: 15, category: "Soal Lemparan" },
+        { q: "Empat tiang utama masjid disebut apa dalam arsitektur Jawa?", answer: "Soko Guru", points: 15, category: "Soal Lemparan" },
+        { q: "Bagian depan masjid yang digunakan untuk kegiatan masyarakat disebut apa?", answer: "Serambi Masjid", points: 15, category: "Soal Lemparan" }
+      ],
+      rebutan: [
+        { q: "Sebutkan tiga tahap pembangunan Masjid Agung Demak!", answer: "1466 Masjid Glagahwangi / 1477 Masjid Kadipaten Demak / 1478–1479 Masjid Kesultanan Demak", points: 20, penalty: -10, category: "Soal Rebutan" },
+        { q: "Mengapa Masjid Agung Demak tidak menggunakan kubah seperti masjid Timur Tengah?", answer: "Karena menggunakan arsitektur tradisional Jawa", points: 20, penalty: -10, category: "Soal Rebutan" },
+        { q: "Mengapa Masjid Agung Demak sangat penting dalam sejarah Indonesia?", answer: "Menjadi pusat penyebaran Islam di Jawa", points: 20, penalty: -10, category: "Soal Rebutan" },
+        { q: "Mengapa Masjid Agung Demak harus dijaga hingga sekarang?", answer: "Merupakan cagar budaya dan peninggalan sejarah", points: 20, penalty: -10, category: "Soal Rebutan" },
+        { q: "Selain sebagai tempat ibadah, masjid ini dahulu digunakan untuk apa oleh para wali?", answer: "Tempat musyawarah", points: 20, penalty: -10, category: "Soal Rebutan" },
+        { q: "Apa fungsi serambi Masjid Agung Demak pada masa lalu?", answer: "Tempat pengajian dan pertemuan masyarakat", points: 20, penalty: -10, category: "Soal Rebutan" },
+        { q: "Apa makna filosofis dari tiga tingkat atap Masjid Demak?", answer: "Islam, Iman, Ihsan / Tahapan Keimanan", points: 20, penalty: -10, category: "Soal Rebutan" },
+        { q: "Masjid Agung Demak menjadi pusat pemerintahan kerajaan apa pada masa lalu?", answer: "Kesultanan Demak", points: 20, penalty: -10, category: "Soal Rebutan" }
+      ]
+    };
+
+    let quizState = {
+      round: 'wajib', // wajib, lemparan, rebutan
+      currentQuestion: 0,
+      teamScores: [0, 0, 0, 0],
+      consecutiveCorrect: [0, 0, 0, 0],
+      currentGroup: 1
+    };
+
+    // Ice breaking words
+    const iceWords = [
+      { word: "DEMAK", hint: "Nama kerajaan Islam pertama di Jawa" },
+      { word: "WALI", hint: "Sebutan untuk penyebar agama Islam di Jawa" },
+      { word: "MASJID", hint: "Tempat ibadah umat Islam" },
+      { word: "SONGO", hint: "Angka sembilan dalam bahasa Jawa" },
+      { word: "AMPEL", hint: "Nama Sunan perancang masjid" },
+      { word: "TUMPANG", hint: "Jenis atap bertingkat" },
+      { word: "BLEDEG", hint: "Nama pintu karya Sunan Kalijaga" }
+    ];
+
+    let currentIceWordIndex = 0;
+    let guessedLetters = [];
+    let timerInterval = null;
+    let timeLeft = 20;
+
+    // Element SDK initialization
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange: async (config) => {
+          document.getElementById('appTitle').textContent = config.app_title || defaultConfig.app_title;
+          document.getElementById('schoolName').textContent = config.school_name || defaultConfig.school_name;
+        },
+        mapToCapabilities: (config) => ({
+          recolorables: [
+            {
+              get: () => config.primary_color || defaultConfig.primary_color,
+              set: (value) => window.elementSdk.setConfig({ primary_color: value })
+            },
+            {
+              get: () => config.secondary_color || defaultConfig.secondary_color,
+              set: (value) => window.elementSdk.setConfig({ secondary_color: value })
+            }
+          ],
+          borderables: [],
+          fontEditable: undefined,
+          fontSizeable: undefined
+        }),
+        mapToEditPanelValues: (config) => new Map([
+          ['app_title', config.app_title || defaultConfig.app_title],
+          ['school_name', config.school_name || defaultConfig.school_name]
+        ])
+      });
+    }
+
+    // Navigation functions
+    function showSection(sectionId) {
+      document.querySelectorAll('#mainMenu, #modulAjar, #mediaPembelajaran').forEach(el => {
+        el.classList.add('hidden');
+      });
+      document.getElementById(sectionId).classList.remove('hidden');
+      if (sectionId === 'mediaPembelajaran') {
+        document.getElementById('progressIndicator').classList.remove('hidden');
+      }
+      lucide.createIcons();
+    }
+
+    function showMediaTab(tab) {
+      document.querySelectorAll('.media-tab').forEach(btn => {
+        btn.classList.remove('bg-amber-600', 'text-white');
+        btn.classList.add('bg-gray-200', 'text-gray-700');
+      });
+      document.getElementById('tab' + tab.charAt(0).toUpperCase() + tab.slice(1)).classList.remove('bg-gray-200', 'text-gray-700');
+      document.getElementById('tab' + tab.charAt(0).toUpperCase() + tab.slice(1)).classList.add('bg-amber-600', 'text-white');
+
+      document.querySelectorAll('.media-content').forEach(content => content.classList.add('hidden'));
+      document.getElementById('content' + tab.charAt(0).toUpperCase() + tab.slice(1)).classList.remove('hidden');
+
+      const stageNames = { pembuka: 'Pembuka', inti: 'Kegiatan Inti', penutup: 'Penutup' };
+      document.getElementById('currentStage').textContent = stageNames[tab];
+      lucide.createIcons();
+    }
+
+    function showIntiSection(section) {
+      document.querySelectorAll('.inti-btn').forEach(btn => {
+        btn.classList.remove('bg-emerald-600', 'text-white');
+        btn.classList.add('bg-gray-200', 'text-gray-700');
+      });
+      document.getElementById('btn' + section.charAt(0).toUpperCase() + section.slice(1)).classList.remove('bg-gray-200', 'text-gray-700');
+      document.getElementById('btn' + section.charAt(0).toUpperCase() + section.slice(1)).classList.add('bg-emerald-600', 'text-white');
+
+      document.querySelectorAll('.inti-section').forEach(s => s.classList.add('hidden'));
+      document.getElementById('section' + section.charAt(0).toUpperCase() + section.slice(1)).classList.remove('hidden');
+      lucide.createIcons();
+    }
+
+    // Ice Breaking Game
+    function startIceBreaking() {
+      currentIceWordIndex = 0;
+      loadIceWord();
+      document.getElementById('iceStartBtn').classList.add('hidden');
+      document.getElementById('iceNextBtn').classList.remove('hidden');
+      document.getElementById('iceLetters').classList.remove('hidden');
+    }
+
+    function loadIceWord() {
+      const wordData = iceWords[currentIceWordIndex];
+      guessedLetters = [];
+      document.getElementById('iceWord').textContent = '_'.repeat(wordData.word.length).split('').join(' ');
+      document.getElementById('iceHint').textContent = 'Petunjuk: "' + wordData.hint + '"';
+      
+      const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+      const lettersContainer = document.getElementById('iceLetters');
+      lettersContainer.innerHTML = letters.map(letter => 
+        `<button onclick="guessLetter('${letter}')" class="w-10 h-10 bg-pink-500 text-white rounded-lg font-bold hover:bg-pink-600 transition letter-btn">${letter}</button>`
+      ).join('');
+    }
+
+    function guessLetter(letter) {
+      const wordData = iceWords[currentIceWordIndex];
+      guessedLetters.push(letter);
+      
+      let displayWord = '';
+      for (let char of wordData.word) {
+        displayWord += guessedLetters.includes(char) ? char + ' ' : '_ ';
+      }
+      document.getElementById('iceWord').textContent = displayWord.trim();
+
+      document.querySelectorAll('.letter-btn').forEach(btn => {
+        if (btn.textContent === letter) {
+          if (wordData.word.includes(letter)) {
+            btn.classList.remove('bg-pink-500', 'hover:bg-pink-600');
+            btn.classList.add('bg-green-500');
+          } else {
+            btn.classList.remove('bg-pink-500', 'hover:bg-pink-600');
+            btn.classList.add('bg-red-500');
+          }
+          btn.disabled = true;
+        }
+      });
+
+      if (!displayWord.includes('_')) {
+        document.getElementById('iceHint').textContent = '🎉 Benar! Kata: ' + wordData.word;
+      }
+    }
+
+    function nextIceWord() {
+      currentIceWordIndex = (currentIceWordIndex + 1) % iceWords.length;
+      loadIceWord();
+    }
+
+    // Quiz C3T Functions
+    function startQuiz() {
+      quizState = {
+        round: 'wajib',
+        currentQuestion: 0,
+        teamScores: [0, 0, 0, 0],
+        consecutiveCorrect: [0, 0, 0, 0],
+        currentGroup: 1
+      };
+
+      document.getElementById('quizSetup').classList.add('hidden');
+      document.getElementById('quizGame').classList.remove('hidden');
+      document.getElementById('quizResult').classList.add('hidden');
+
+      renderScoreboard();
+      loadC3TQuestion();
+    }
+
+    function renderScoreboard() {
+      const container = document.getElementById('teamScores');
+      container.innerHTML = quizState.teamScores.map((score, i) => 
+        `<div class="bg-white/20 p-3 rounded-lg text-center">
+          <div class="text-white font-medium">Kelompok ${i + 1}</div>
+          <div class="text-2xl font-bold text-amber-300" id="score${i}">${score}</div>
+        </div>`
+      ).join('');
+    }
+
+    function loadC3TQuestion() {
+      let roundQuestions = [];
+      let timerDuration = 20;
+
+      if (quizState.round === 'wajib') {
+        roundQuestions = quizRounds.wajib;
+        timerDuration = 15;
+        
+        const currentQ = roundQuestions[quizState.currentQuestion];
+        if (currentQ) {
+          quizState.currentGroup = currentQ.group;
+          document.getElementById('questionNumber').textContent = `WAJIB - Kel. ${quizState.currentGroup}: Putaran ${Math.floor(quizState.currentQuestion / 4) + 1}`;
+        }
+      } else if (quizState.round === 'lemparan') {
+        roundQuestions = quizRounds.lemparan;
+        timerDuration = 10;
+        document.getElementById('questionNumber').textContent = `LEMPARAN: ${quizState.currentQuestion + 1}/${quizRounds.lemparan.length}`;
+      } else if (quizState.round === 'rebutan') {
+        roundQuestions = quizRounds.rebutan;
+        timerDuration = 10;
+        document.getElementById('questionNumber').textContent = `REBUTAN: ${quizState.currentQuestion + 1}/${quizRounds.rebutan.length}`;
+      }
+
+      if (quizState.currentQuestion >= roundQuestions.length) {
+        advanceRound();
+        return;
+      }
+
+      const q = roundQuestions[quizState.currentQuestion];
+      document.getElementById('questionText').textContent = q.q;
+      document.getElementById('optionsArea').innerHTML = '';
+
+      document.getElementById('timeLimit').value = timerDuration;
+      
+      // Update team answer buttons setup
+      const teamButtonsContainer = document.getElementById('teamAnswerButtons');
+      teamButtonsContainer.innerHTML = quizState.teamScores.map((_, i) => `
+        <div class="flex flex-col gap-1 items-center">
+          <span class="text-xs font-bold text-gray-500">Kel. ${i + 1}</span>
+          <div class="flex gap-1">
+            <button onclick="addScore(${i}, true)" class="px-3 py-1 bg-emerald-500 text-white rounded hover:bg-emerald-600 transition font-bold text-sm">✓</button>
+            <button onclick="addScore(${i}, false)" class="px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600 transition font-bold text-sm">✗</button>
+          </div>
+        </div>
+      `).join('');
+
+      startTimer();
+    }
+
+    function startTimer() {
+      clearInterval(timerInterval);
+      timeLeft = parseInt(document.getElementById('timeLimit').value);
+      updateTimerDisplay();
+
+      timerInterval = setInterval(() => {
+        timeLeft--;
+        updateTimerDisplay();
+        if (timeLeft <= 0) {
+          clearInterval(timerInterval);
+          // Jawaban tidak langsung ditampilkan agar bisa dilempar
+        }
+      }, 1000);
+    }
+
+    function updateTimerDisplay() {
+      const timerEl = document.getElementById('timerValue');
+      timerEl.textContent = timeLeft;
+      const timerDisplay = document.getElementById('timerDisplay');
+      if (timeLeft <= 5 && timeLeft > 0) {
+        timerDisplay.classList.add('timer-warning', 'bg-red-600');
+      } else {
+        timerDisplay.classList.remove('timer-warning');
+        timerDisplay.classList.add('bg-red-500');
+      }
+    }
+
+    function showAnswer() {
+      clearInterval(timerInterval);
+      let roundQuestions = [];
+      if (quizState.round === 'wajib') {
+        roundQuestions = quizRounds.wajib;
+      } else if (quizState.round === 'lemparan') {
+        roundQuestions = quizRounds.lemparan;
+      } else {
+        roundQuestions = quizRounds.rebutan;
+      }
+      
+      const q = roundQuestions[quizState.currentQuestion];
+      document.getElementById('optionsArea').innerHTML = `
+        <div class="col-span-full p-4 bg-green-100 border-2 border-green-500 rounded-xl text-center animate-fade-in">
+          <p class="text-green-800 font-bold text-sm">Jawaban Benar:</p>
+          <p class="text-green-900 text-xl font-bold">${q.answer}</p>
+        </div>
+      `;
+    }
+
+    function nextQuestion() {
+      quizState.currentQuestion++;
+      loadC3TQuestion();
+    }
+
+    function addScore(teamIndex, correct) {
+      clearInterval(timerInterval);
+      
+      let roundQuestions = [];
+      if (quizState.round === 'wajib') {
+        roundQuestions = quizRounds.wajib;
+      } else if (quizState.round === 'lemparan') {
+        roundQuestions = quizRounds.lemparan;
+      } else {
+        roundQuestions = quizRounds.rebutan;
+      }
+
+      const q = roundQuestions[quizState.currentQuestion];
+      const points = correct ? q.points : (q.penalty || 0);
+
+      quizState.teamScores[teamIndex] += points;
+      
+      if (correct) {
+        quizState.consecutiveCorrect[teamIndex]++;
+        if (quizState.consecutiveCorrect[teamIndex] === 3 && quizState.round !== 'rebutan') {
+          quizState.teamScores[teamIndex] += 10; // Bonus
+        }
+        // Munculkan jawaban hanya jika ada yang berhasil menjawab benar
+        showAnswer();
+      } else {
+        quizState.consecutiveCorrect[teamIndex] = 0;
+        // Jika salah, tetap sembunyikan jawaban supaya host bisa persilahkan kelompok lain menjawab (lempar)
+      }
+
+      document.getElementById(`score${teamIndex}`).textContent = quizState.teamScores[teamIndex];
+    }
+
+    function advanceRound() {
+      if (quizState.round === 'wajib') {
+        quizState.round = 'lemparan';
+        quizState.currentQuestion = 0;
+      } else if (quizState.round === 'lemparan') {
+        quizState.round = 'rebutan';
+        quizState.currentQuestion = 0;
+      } else {
+        endQuiz();
+        return;
+      }
+      loadC3TQuestion();
+    }
+
+    function endQuiz() {
+      clearInterval(timerInterval);
+      document.getElementById('quizGame').classList.add('hidden');
+      document.getElementById('quizResult').classList.remove('hidden');
+
+      const sortedTeams = quizState.teamScores.map((score, i) => ({ team: i + 1, score }))
+        .sort((a, b) => b.score - a.score);
+
+      const medals = ['🥇', '🥈', '🥉', '🏅'];
+      const finalHtml = sortedTeams.map((t, i) => 
+        `<div class="flex items-center justify-between p-4 ${i === 0 ? 'bg-amber-100 border-2 border-amber-400' : 'bg-gray-50'} rounded-xl">
+          <div class="flex items-center gap-3">
+            <span class="text-2xl">${medals[i] || '🏅'}</span>
+            <span class="font-bold text-lg">Kelompok ${t.team}</span>
+          </div>
+          <span class="text-2xl font-bold text-amber-600">${t.score} poin</span>
+        </div>`
+      ).join('');
+      document.getElementById('finalScores').innerHTML = finalHtml;
+    }
+
+    function resetQuiz() {
+      document.getElementById('quizSetup').classList.remove('hidden');
+      document.getElementById('quizGame').classList.add('hidden');
+      document.getElementById('quizResult').classList.add('hidden');
+    }
+
+    function playDoaAnimation() {
+      const btn = event.target.closest('button');
+      const originalText = btn.innerHTML;
+      btn.innerHTML = '<i data-lucide="check" class="w-5 h-5 inline mr-1"></i> Membaca...';
+      btn.disabled = true;
+      lucide.createIcons();
+      
+      setTimeout(() => {
+        btn.innerHTML = originalText;
+        btn.disabled = false;
+        lucide.createIcons();
+      }, 3000);
+    }
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', () => {
+      lucide.createIcons();
+    });
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9d90cf7b5521fde6',t:'MTc3Mjk2MjExNC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

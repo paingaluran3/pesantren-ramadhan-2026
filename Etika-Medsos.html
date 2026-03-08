@@ -1,0 +1,1184 @@
+<!doctype html>
+<html lang="id" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modul Etika Bermedia Sosial - Pesantren Ramadhan</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&amp;family=Nunito:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
+  <style>
+    * { font-family: 'Nunito', sans-serif; }
+    .font-arabic { font-family: 'Amiri', serif; }
+    /* Warna gradien diubah menjadi hijau gelap */
+    .gradient-islamic { background: linear-gradient(135deg, #064e3b 0%, #047857 50%, #064e3b 100%); }
+    .gradient-gold { background: linear-gradient(135deg, #d4af37 0%, #f4d03f 50%, #d4af37 100%); }
+    .pattern-islamic {
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M30 0l30 30-30 30L0 30z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .gradient-islamic.pattern-islamic {
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M30 0l30 30-30 30L0 30z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"), linear-gradient(135deg, #064e3b 0%, #047857 50%, #064e3b 100%);
+    }
+    .card-hover { transition: all 0.3s ease; }
+    .card-hover:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.15); }
+    .animate-fade-in { animation: fadeIn 0.5s ease-out; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    
+    /* Perbaikan CSS Print Area */
+    @media print {
+      body, html { height: auto !important; background: white !important; }
+      .no-print { display: none !important; }
+      #main-menu { display: none !important; }
+      
+      /* Hanya tampilkan section yang sedang diprint */
+      #app > div:not(.print-section) { display: none !important; }
+      .print-section { display: block !important; }
+      
+      /* Hanya tampilkan area konten spesifik yang ingin dicetak */
+      .print-area:not(.active-print) { display: none !important; }
+      .print-area.active-print { display: block !important; visibility: visible !important; }
+      
+      .bg-white { background-color: white !important; box-shadow: none !important; }
+    }
+
+    .quiz-option { transition: all 0.2s ease; }
+    .quiz-option:hover { transform: scale(1.02); }
+    .quiz-option.selected { border-color: #047857; background: #e8f5f1; }
+    .quiz-option.correct { border-color: #22c55e; background: #dcfce7; }
+    .quiz-option.wrong { border-color: #ef4444; background: #fee2e2; }
+  </style>
+  <style>body { box-sizing: border-box; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full bg-gray-900">
+  <div id="app" class="h-full overflow-auto">
+   <div id="main-menu" class="min-h-full gradient-islamic pattern-islamic">
+    <div class="container mx-auto px-4 py-8">
+     <div class="text-center mb-10 animate-fade-in">
+      <div class="inline-block bg-yellow-400 p-1 rounded-full mb-4">
+       <div class="bg-emerald-900 rounded-full p-4">
+        <span class="text-5xl">🕌</span>
+       </div>
+      </div>
+      <h1 id="main-title" class="text-3xl md:text-4xl font-bold text-white mb-2">Pesantren Ramadhan</h1>
+      <p class="text-yellow-200 text-lg font-arabic text-xl mb-2">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</p>
+      <div class="bg-white/15 backdrop-blur rounded-xl p-4 max-w-2xl mx-auto mt-4">
+       <h2 class="text-xl md:text-2xl font-bold text-yellow-300 mb-1">Etika Bermedia Sosial</h2>
+       <p class="text-yellow-100 text-sm">Sopan Santun di WhatsApp, TikTok &amp; Instagram</p>
+       <div class="flex flex-wrap justify-center gap-3 mt-3 text-xs">
+        <span class="bg-emerald-700/50 px-3 py-1 rounded-full text-white">📚 Kelas 4-6 SD</span> <span class="bg-emerald-700/50 px-3 py-1 rounded-full text-white">⏱️ 120 Menit</span> <span class="bg-emerald-700/50 px-3 py-1 rounded-full text-white">📖 4 x 30 Menit</span>
+       </div>
+      </div>
+     </div><div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+      <div onclick="showSection('modul-ajar')" class="card-hover cursor-pointer bg-white rounded-2xl p-6 shadow-xl animate-fade-in" style="animation-delay: 0.1s">
+       <div class="flex items-center gap-4 mb-4">
+        <div class="w-16 h-16 gradient-islamic rounded-xl flex items-center justify-center">
+         <i data-lucide="book-open" class="w-8 h-8 text-white"></i>
+        </div>
+        <div>
+         <h3 class="text-xl font-bold text-emerald-800">Modul Ajar</h3>
+         <p class="text-emerald-700 text-sm">Panduan Lengkap Pembelajaran</p>
+        </div>
+       </div>
+       <ul class="text-sm text-gray-800 space-y-2">
+        <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-emerald-500"></i> Langkah Persiapan</li>
+        <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-emerald-500"></i> Kegiatan Pembukaan</li>
+        <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-emerald-500"></i> Kegiatan Inti (PBL)</li>
+        <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-emerald-500"></i> Kegiatan Penutup</li>
+       </ul>
+       <div class="mt-4 pt-4 border-t border-emerald-100">
+        <span class="text-emerald-700 font-semibold flex items-center gap-2"> Buka Modul <i data-lucide="arrow-right" class="w-4 h-4"></i> </span>
+       </div>
+      </div><div onclick="showSection('media-interaktif')" class="card-hover cursor-pointer bg-white rounded-2xl p-6 shadow-xl animate-fade-in" style="animation-delay: 0.2s">
+       <div class="flex items-center gap-4 mb-4">
+        <div class="w-16 h-16 gradient-gold rounded-xl flex items-center justify-center">
+         <i data-lucide="play-circle" class="w-8 h-8 text-emerald-800"></i>
+        </div>
+        <div>
+         <h3 class="text-xl font-bold text-emerald-800">Media Interaktif</h3>
+         <p class="text-emerald-700 text-sm">Pembelajaran Digital</p>
+        </div>
+       </div>
+       <ul class="text-sm text-gray-800 space-y-2">
+        <li class="flex items-center gap-2"><i data-lucide="star" class="w-4 h-4 text-yellow-500"></i> Kegiatan Pembuka</li>
+        <li class="flex items-center gap-2"><i data-lucide="star" class="w-4 h-4 text-yellow-500"></i> Materi &amp; LKPD</li>
+        <li class="flex items-center gap-2"><i data-lucide="star" class="w-4 h-4 text-yellow-500"></i> Ice Breaking &amp; Kuis</li>
+        <li class="flex items-center gap-2"><i data-lucide="star" class="w-4 h-4 text-yellow-500"></i> Refleksi &amp; Penutup</li>
+       </ul>
+       <div class="mt-4 pt-4 border-t border-yellow-100">
+        <span class="text-yellow-700 font-semibold flex items-center gap-2"> Mulai Belajar <i data-lucide="arrow-right" class="w-4 h-4"></i> </span>
+       </div>
+      </div>
+     </div><div class="text-center mt-10 bg-slate-800 p-4 rounded-xl text-emerald-200 text-sm shadow-lg max-w-lg mx-auto">
+      <p id="teacher-info">Dibuat dengan ❤️ untuk Pesantren Ramadhan</p>
+     </div>
+    </div>
+   </div><div id="modul-ajar" class="hidden min-h-full bg-gray-900">
+    <div class="gradient-islamic pattern-islamic py-6 sticky top-0 z-10 no-print shadow-md">
+     <div class="container mx-auto px-4">
+      <div class="flex items-center justify-between">
+       <button onclick="showSection('main-menu')" class="flex items-center gap-2 text-white hover:text-yellow-300 transition"> <i data-lucide="arrow-left" class="w-5 h-5"></i> <span>Kembali</span> </button>
+       <h1 class="text-xl font-bold text-white">📚 Modul Ajar</h1><button onclick="printModul()" class="flex items-center gap-2 bg-yellow-500 text-emerald-900 px-4 py-2 rounded-lg font-semibold hover:bg-yellow-400 transition shadow-sm"> <i data-lucide="printer" class="w-4 h-4"></i> <span class="hidden sm:inline">Cetak</span> </button>
+      </div>
+     </div>
+    </div>
+    <div class="container mx-auto px-4 py-8 print-area" id="modul-content">
+     <div class="bg-white p-6 md:p-10 rounded-2xl shadow-2xl max-w-5xl mx-auto">
+      <div class="text-center mb-8 border-b-4 border-emerald-600 pb-6">
+       <h1 class="text-2xl md:text-3xl font-bold text-emerald-800 mb-2">MODUL AJAR</h1>
+       <h2 class="text-xl text-emerald-700 mb-4">Etika Bermedia Sosial untuk Anak Muslim</h2>
+       <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm max-w-3xl mx-auto">
+        <div class="bg-emerald-50 p-3 rounded-lg border border-emerald-100">
+         <p class="text-emerald-700 font-semibold">Mata Pelajaran</p>
+         <p class="text-emerald-900 font-bold">Pesantren Ramadhan</p>
+        </div>
+        <div class="bg-emerald-50 p-3 rounded-lg border border-emerald-100">
+         <p class="text-emerald-700 font-semibold">Kelas</p>
+         <p class="text-emerald-900 font-bold">4 - 6 SD</p>
+        </div>
+        <div class="bg-emerald-50 p-3 rounded-lg border border-emerald-100">
+         <p class="text-emerald-700 font-semibold">Alokasi Waktu</p>
+         <p class="text-emerald-900 font-bold">120 Menit (4x30)</p>
+        </div>
+        <div class="bg-emerald-50 p-3 rounded-lg border border-emerald-100">
+         <p class="text-emerald-700 font-semibold">Model</p>
+         <p class="text-emerald-900 font-bold">Problem Based Learning</p>
+        </div>
+       </div>
+      </div><div class="mb-8">
+       <h3 class="text-lg font-bold text-white bg-emerald-700 px-4 py-2 rounded-t-lg flex items-center gap-2"><span>🎯</span> Capaian Pembelajaran</h3>
+       <div class="bg-emerald-50 p-4 rounded-b-lg border-2 border-emerald-200">
+        <p class="text-gray-800 mb-3">Peserta didik mampu memahami dan menerapkan etika bermedia sosial sesuai nilai-nilai Islam dalam kehidupan sehari-hari.</p>
+        <div class="grid md:grid-cols-2 gap-4">
+         <div>
+          <h4 class="font-bold text-emerald-800 mb-2">Tujuan Pembelajaran:</h4>
+          <ul class="text-sm text-gray-800 space-y-1">
+           <li>• Memahami pengertian media sosial dan dampaknya</li>
+           <li>• Mengidentifikasi perilaku positif dan negatif di medsos</li>
+           <li>• Menerapkan adab Islami dalam bermedia sosial</li>
+           <li>• Menyikapi bullying dengan bijak sesuai ajaran Islam</li>
+          </ul>
+         </div>
+         <div>
+          <h4 class="font-bold text-emerald-800 mb-2">Profil Pelajar Pancasila:</h4>
+          <ul class="text-sm text-gray-800 space-y-1">
+           <li>✓ Beriman dan Bertakwa kepada Tuhan YME</li>
+           <li>✓ Bernalar Kritis</li>
+           <li>✓ Berkebinekaan Global</li>
+           <li>✓ Berakhlak Mulia</li>
+          </ul>
+         </div>
+        </div>
+       </div>
+      </div><div class="mb-8">
+       <h3 class="text-lg font-bold text-white bg-blue-600 px-4 py-2 rounded-t-lg flex items-center gap-2"><span>📋</span> A. Langkah-langkah Persiapan</h3>
+       <div class="bg-blue-50 p-4 rounded-b-lg border-2 border-blue-200">
+        <div class="grid md:grid-cols-2 gap-6">
+         <div>
+          <h4 class="font-bold text-blue-800 mb-3">🔧 Kebutuhan Pembelajaran:</h4>
+          <ul class="text-sm text-gray-800 space-y-2">
+           <li class="flex items-start gap-2"><span class="bg-blue-200 text-blue-900 px-2 py-0.5 rounded text-xs font-bold">Alat</span> Laptop/komputer, proyektor, speaker</li>
+           <li class="flex items-start gap-2"><span class="bg-blue-200 text-blue-900 px-2 py-0.5 rounded text-xs font-bold">Media</span> Slide presentasi, video contoh, LKPD</li>
+           <li class="flex items-start gap-2"><span class="bg-blue-200 text-blue-900 px-2 py-0.5 rounded text-xs font-bold">Bahan</span> Kartu skenario, kertas plano, spidol</li>
+           <li class="flex items-start gap-2"><span class="bg-blue-200 text-blue-900 px-2 py-0.5 rounded text-xs font-bold">Ruang</span> Ruang kelas dengan meja kelompok</li>
+          </ul>
+         </div>
+         <div>
+          <h4 class="font-bold text-blue-800 mb-3">📝 Persiapan Guru:</h4>
+          <ol class="text-sm text-gray-800 space-y-2 list-decimal list-inside">
+           <li>Menyiapkan media pembelajaran interaktif</li>
+           <li>Mencetak LKPD dan kartu skenario</li>
+           <li>Mengatur setting ruangan untuk diskusi</li>
+           <li>Menyiapkan reward untuk peserta aktif</li>
+           <li>Mengecek koneksi internet dan perangkat</li>
+          </ol>
+         </div>
+        </div>
+       </div>
+      </div><div class="mb-8">
+       <h3 class="text-lg font-bold text-white bg-yellow-500 px-4 py-2 rounded-t-lg flex items-center gap-2 text-emerald-900"><span>🌅</span> B. Kegiatan Pembukaan (15 Menit)</h3>
+       <div class="bg-yellow-50 p-4 rounded-b-lg border-2 border-yellow-200">
+        <table class="w-full text-sm">
+         <thead>
+          <tr class="bg-yellow-200 text-yellow-900">
+           <th class="p-2 text-left w-16">Waktu</th>
+           <th class="p-2 text-left">Aktivitas</th>
+           <th class="p-2 text-left w-24">Metode</th>
+          </tr>
+         </thead>
+         <tbody class="text-gray-800">
+          <tr class="border-b border-yellow-200">
+           <td class="p-2 text-yellow-800 font-bold">3'</td>
+           <td class="p-2"><strong>Salam &amp; Kabar:</strong> Mengucapkan salam dan menanyakan kabar peserta didik dengan hangat</td>
+           <td class="p-2">Tanya jawab</td>
+          </tr>
+          <tr class="border-b border-yellow-200">
+           <td class="p-2 text-yellow-800 font-bold">4'</td>
+           <td class="p-2"><strong>Doa Belajar:</strong> Memimpin doa bersama<br><em class="font-arabic text-base text-gray-900">"رَضِيتُ بِاللَّهِ رَبًّا وَبِالإِسْلاَمِ دِينًا وَبِمُحَمَّدٍ نَبِيًّا وَرَسُولاً رَبِّ زِدْنِي عِلْمًا وَارْزُقْنِي فَهْمًا"</em></td>
+           <td class="p-2">Pembiasaan</td>
+          </tr>
+          <tr class="border-b border-yellow-200">
+           <td class="p-2 text-yellow-800 font-bold">5'</td>
+           <td class="p-2"><strong>Apersepsi:</strong> "Siapa yang punya HP? Aplikasi apa yang paling sering dibuka?" Menghubungkan pengalaman siswa dengan materi</td>
+           <td class="p-2">Tanya jawab</td>
+          </tr>
+          <tr>
+           <td class="p-2 text-yellow-800 font-bold">3'</td>
+           <td class="p-2"><strong>Motivasi:</strong> Menyampaikan pentingnya menjadi muslim yang bijak di dunia digital dan tujuan pembelajaran hari ini</td>
+           <td class="p-2">Ceramah</td>
+          </tr>
+         </tbody>
+        </table>
+       </div>
+      </div><div class="mb-8">
+       <h3 class="text-lg font-bold text-white bg-emerald-600 px-4 py-2 rounded-t-lg flex items-center gap-2"><span>📖</span> C. Kegiatan Inti - Problem Based Learning (90 Menit)</h3>
+       <div class="bg-emerald-50 p-4 rounded-b-lg border-2 border-emerald-200 space-y-4">
+        <div class="bg-white p-4 rounded-lg shadow-sm">
+         <div class="flex items-center gap-3 mb-3">
+          <span class="bg-emerald-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold">1</span>
+          <div>
+           <h4 class="font-bold text-emerald-800">Orientasi Siswa pada Masalah</h4><span class="text-xs text-emerald-700 font-semibold">⏱️ 15 menit</span>
+          </div>
+         </div>
+         <p class="text-sm text-gray-800 mb-2"><strong>Masalah Kontekstual:</strong> "Bullying di Medsos dan Bagaimana Anak Muslim Menyikapinya"</p>
+         <ul class="text-sm text-gray-800 space-y-1 ml-4">
+          <li>• Guru menampilkan contoh kasus bullying di media sosial (tanpa menyebut nama asli)</li>
+          <li>• Siswa mengamati dan mencermati permasalahan yang ditampilkan</li>
+          <li>• Guru memancing rasa ingin tahu: "Apa yang kalian rasakan melihat ini?"</li>
+         </ul>
+        </div><div class="bg-white p-4 rounded-lg shadow-sm">
+         <div class="flex items-center gap-3 mb-3">
+          <span class="bg-emerald-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold">2</span>
+          <div>
+           <h4 class="font-bold text-emerald-800">Mengorganisasi Siswa untuk Belajar</h4><span class="text-xs text-emerald-700 font-semibold">⏱️ 20 menit</span>
+          </div>
+         </div>
+         <ul class="text-sm text-gray-800 space-y-1 ml-4">
+          <li>• Guru menyampaikan materi tentang etika bermedia sosial dalam Islam</li>
+          <li>• Membahas dalil-dalil tentang menjaga lisan dan tulisan</li>
+          <li>• Siswa dibagi menjadi kelompok (4-5 orang per kelompok)</li>
+          <li>• Setiap kelompok mendapat Kartu Skenario yang berbeda</li>
+         </ul>
+        </div><div class="bg-white p-4 rounded-lg shadow-sm">
+         <div class="flex items-center gap-3 mb-3">
+          <span class="bg-emerald-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold">3</span>
+          <div>
+           <h4 class="font-bold text-emerald-800">Membimbing Penyelidikan Kelompok</h4><span class="text-xs text-emerald-700 font-semibold">⏱️ 20 menit</span>
+          </div>
+         </div>
+         <ul class="text-sm text-gray-800 space-y-1 ml-4">
+          <li>• Kelompok mendiskusikan Kartu Skenario menggunakan LKPD</li>
+          <li>• Guru berkeliling membimbing dan memfasilitasi diskusi</li>
+          <li>• Siswa mencari solusi berdasarkan nilai-nilai Islam</li>
+         </ul>
+        </div><div class="bg-white p-4 rounded-lg shadow-sm">
+         <div class="flex items-center gap-3 mb-3">
+          <span class="bg-emerald-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold">4</span>
+          <div>
+           <h4 class="font-bold text-emerald-800">Mengembangkan dan Menyajikan Hasil</h4><span class="text-xs text-emerald-700 font-semibold">⏱️ 15 menit</span>
+          </div>
+         </div>
+         <ul class="text-sm text-gray-800 space-y-1 ml-4">
+          <li>• Perwakilan kelompok mempresentasikan hasil diskusi</li>
+          <li>• Kelompok lain memberikan tanggapan atau pertanyaan</li>
+          <li>• Guru memberikan apresiasi dan penguatan</li>
+         </ul>
+        </div><div class="bg-white p-4 rounded-lg shadow-sm">
+         <div class="flex items-center gap-3 mb-3">
+          <span class="bg-emerald-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold">5</span>
+          <div>
+           <h4 class="font-bold text-emerald-800">Menganalisis dan Mengevaluasi</h4><span class="text-xs text-emerald-700 font-semibold">⏱️ 10 menit</span>
+          </div>
+         </div>
+         <ul class="text-sm text-gray-800 space-y-1 ml-4">
+          <li>• Guru bersama siswa menyimpulkan pembelajaran</li>
+          <li>• Refleksi: "Apa yang kalian pelajari hari ini?"</li>
+          <li>• Penguatan nilai-nilai Islam dalam bermedia sosial</li>
+         </ul>
+        </div><div class="bg-white p-4 rounded-lg shadow-sm">
+         <div class="flex items-center gap-3 mb-3">
+          <span class="bg-yellow-500 text-emerald-900 w-8 h-8 rounded-full flex items-center justify-center font-bold">🎮</span>
+          <div>
+           <h4 class="font-bold text-emerald-800">Ice Breaking &amp; Kuis</h4><span class="text-xs text-emerald-700 font-semibold">⏱️ 10 menit</span>
+          </div>
+         </div>
+         <ul class="text-sm text-gray-800 space-y-1 ml-4">
+          <li>• Ice breaking: Permainan "Tepuk Medsos" untuk menyegarkan suasana</li>
+          <li>• Kuis interaktif untuk mengukur pemahaman siswa</li>
+         </ul>
+        </div>
+       </div>
+      </div><div class="mb-8">
+       <h3 class="text-lg font-bold text-white bg-purple-600 px-4 py-2 rounded-t-lg flex items-center gap-2"><span>🌙</span> D. Kegiatan Penutup (15 Menit)</h3>
+       <div class="bg-purple-50 p-4 rounded-b-lg border-2 border-purple-200">
+        <table class="w-full text-sm">
+         <thead>
+          <tr class="bg-purple-200 text-purple-900">
+           <th class="p-2 text-left w-16">Waktu</th>
+           <th class="p-2 text-left">Aktivitas</th>
+          </tr>
+         </thead>
+         <tbody class="text-gray-800">
+          <tr class="border-b border-purple-200">
+           <td class="p-2 text-purple-800 font-bold">4'</td>
+           <td class="p-2"><strong>Penyimpulan:</strong> Guru dan siswa menyimpulkan poin-poin penting pembelajaran</td>
+          </tr>
+          <tr class="border-b border-purple-200">
+           <td class="p-2 text-purple-800 font-bold">4'</td>
+           <td class="p-2"><strong>Refleksi:</strong> Siswa menyampaikan kesan dan komitmen untuk bermedia sosial dengan baik</td>
+          </tr>
+          <tr class="border-b border-purple-200">
+           <td class="p-2 text-purple-800 font-bold">5'</td>
+           <td class="p-2"><strong>Doa Penutup:</strong><br><em class="font-arabic text-base text-gray-900">"اَللَّهُمَّ أَرِنَا الْحَقَّ حَقًّا وَارْزُقْنَا اتِّبَاعَهُ وَأَرِنَا الْبَاطِلَ بَاطِلاً وَارْزُقْنَا اجْتِنَابَهُ"</em></td>
+          </tr>
+          <tr>
+           <td class="p-2 text-purple-800 font-bold">2'</td>
+           <td class="p-2"><strong>Salam:</strong> Mengakhiri pembelajaran dengan salam</td>
+          </tr>
+         </tbody>
+        </table>
+       </div>
+      </div><div class="mb-8">
+       <h3 class="text-lg font-bold text-white bg-red-500 px-4 py-2 rounded-t-lg flex items-center gap-2"><span>📊</span> E. Penilaian</h3>
+       <div class="bg-red-50 p-4 rounded-b-lg border-2 border-red-200">
+        <div class="grid md:grid-cols-3 gap-4 text-sm">
+         <div class="bg-white p-3 rounded-lg border border-red-100 shadow-sm">
+          <h4 class="font-bold text-red-800 mb-2">Sikap (Observasi)</h4>
+          <ul class="text-gray-800 space-y-1">
+           <li>• Partisipasi dalam diskusi</li>
+           <li>• Sikap menghargai pendapat</li>
+           <li>• Kedisiplinan dan tanggung jawab</li>
+          </ul>
+         </div>
+         <div class="bg-white p-3 rounded-lg border border-red-100 shadow-sm">
+          <h4 class="font-bold text-red-800 mb-2">Pengetahuan (Kuis)</h4>
+          <ul class="text-gray-800 space-y-1">
+           <li>• Kuis interaktif 10 soal</li>
+           <li>• Tanya jawab lisan</li>
+           <li>• Hasil diskusi LKPD</li>
+          </ul>
+         </div>
+         <div class="bg-white p-3 rounded-lg border border-red-100 shadow-sm">
+          <h4 class="font-bold text-red-800 mb-2">Keterampilan (Praktik)</h4>
+          <ul class="text-gray-800 space-y-1">
+           <li>• Presentasi kelompok</li>
+           <li>• Kemampuan problem solving</li>
+           <li>• Komunikasi dan kolaborasi</li>
+          </ul>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div><div id="media-interaktif" class="hidden min-h-full bg-gray-900">
+    <div class="gradient-islamic pattern-islamic py-4 sticky top-0 z-20 no-print shadow-md">
+     <div class="container mx-auto px-4">
+      <div class="flex items-center justify-between">
+       <button onclick="showSection('main-menu')" class="flex items-center gap-2 text-white hover:text-yellow-300 transition"> <i data-lucide="arrow-left" class="w-5 h-5"></i> <span class="hidden sm:inline">Menu</span> </button>
+       <h1 class="text-lg font-bold text-white">🎮 Media Interaktif</h1>
+       <div class="text-white text-sm font-bold">
+        <span id="step-indicator">1/8</span>
+       </div>
+      </div>
+     </div>
+    </div><div class="bg-emerald-800 h-2 no-print">
+     <div id="progress-bar" class="bg-yellow-400 h-2 transition-all duration-500 shadow-sm" style="width: 12.5%"></div>
+    </div><div class="container mx-auto px-4 py-6">
+     <div id="step-1" class="step-content animate-fade-in">
+      <div class="max-w-2xl mx-auto bg-white rounded-2xl shadow-2xl overflow-hidden border border-gray-100">
+       <div class="gradient-gold p-6 text-center">
+        <span class="text-6xl mb-4 block">🌙</span>
+        <h2 class="text-2xl font-bold text-emerald-900">Assalamu'alaikum!</h2>
+        <p class="text-emerald-900 font-semibold mt-2">Selamat datang di Pesantren Ramadhan</p>
+       </div>
+       <div class="p-6">
+        <div class="bg-emerald-50 rounded-xl p-4 mb-6 border border-emerald-100">
+         <h3 class="font-bold text-emerald-900 mb-3 flex items-center gap-2"><i data-lucide="heart" class="w-5 h-5 text-red-500"></i> Apa Kabar Hari Ini?</h3>
+         <div class="grid grid-cols-3 gap-3">
+          <button onclick="selectMood('senang', event)" class="mood-btn p-4 bg-white rounded-xl border-2 border-gray-200 hover:border-emerald-400 transition text-center shadow-sm"> <span class="text-4xl block mb-2">😊</span> <span class="text-sm font-bold text-gray-800">Senang</span> </button> <button onclick="selectMood('biasa', event)" class="mood-btn p-4 bg-white rounded-xl border-2 border-gray-200 hover:border-emerald-400 transition text-center shadow-sm"> <span class="text-4xl block mb-2">😐</span> <span class="text-sm font-bold text-gray-800">Biasa</span> </button> <button onclick="selectMood('semangat', event)" class="mood-btn p-4 bg-white rounded-xl border-2 border-gray-200 hover:border-emerald-400 transition text-center shadow-sm"> <span class="text-4xl block mb-2">🔥</span> <span class="text-sm font-bold text-gray-800">Semangat!</span> </button>
+         </div>
+        </div><button onclick="goToStep(2)" class="w-full gradient-islamic text-white py-3 rounded-xl font-bold hover:opacity-90 transition flex items-center justify-center gap-2 shadow-md"> Lanjut ke Doa <i data-lucide="arrow-right" class="w-5 h-5"></i> </button>
+       </div>
+      </div>
+     </div><div id="step-2" class="step-content hidden animate-fade-in">
+      <div class="max-w-2xl mx-auto bg-white rounded-2xl shadow-2xl overflow-hidden border border-gray-100">
+       <div class="gradient-islamic pattern-islamic p-6 text-center">
+        <span class="text-6xl mb-4 block">🤲</span>
+        <h2 class="text-2xl font-bold text-white">Doa Sebelum Belajar</h2>
+       </div>
+       <div class="p-6">
+        <div class="bg-emerald-50 rounded-xl p-6 mb-6 text-center border border-emerald-100">
+         <p class="font-arabic font-bold text-2xl leading-loose text-emerald-900 mb-4">رَضِيتُ بِاللَّهِ رَبًّا وَبِالإِسْلاَمِ دِينًا وَبِمُحَمَّدٍ نَبِيًّا وَرَسُولاً</p>
+         <p class="font-arabic font-bold text-2xl leading-loose text-emerald-900 mb-4">رَبِّ زِدْنِي عِلْمًا وَارْزُقْنِي فَهْمًا</p>
+         <hr class="my-4 border-emerald-300">
+         <p class="text-gray-800 font-semibold italic text-sm">"Aku ridha Allah sebagai Tuhanku, Islam sebagai agamaku, dan Muhammad sebagai Nabi dan Rasulku. Ya Allah, tambahkanlah ilmu kepadaku dan berikanlah aku pemahaman."</p>
+        </div>
+        <p class="text-center text-emerald-800 mb-4 font-bold">Mari kita baca bersama-sama! 🤲</p>
+        <div class="flex gap-3">
+         <button onclick="goToStep(1)" class="flex-1 bg-gray-200 text-gray-800 py-3 rounded-xl font-bold hover:bg-gray-300 transition shadow-sm"> Kembali </button> <button onclick="goToStep(3)" class="flex-1 gradient-islamic text-white py-3 rounded-xl font-bold hover:opacity-90 transition flex items-center justify-center gap-2 shadow-sm"> Lanjut <i data-lucide="arrow-right" class="w-5 h-5"></i> </button>
+        </div>
+       </div>
+      </div>
+     </div><div id="step-3" class="step-content hidden animate-fade-in">
+      <div class="max-w-2xl mx-auto bg-white rounded-2xl shadow-2xl overflow-hidden border border-gray-100">
+       <div class="bg-gradient-to-r from-blue-600 to-purple-700 p-6 text-center">
+        <span class="text-6xl mb-4 block">📱</span>
+        <h2 class="text-2xl font-bold text-white">Yuk Kenalan dengan Media Sosial!</h2>
+       </div>
+       <div class="p-6">
+        <div class="mb-6">
+         <h3 class="font-bold text-gray-900 mb-3">Aplikasi apa yang paling sering kamu buka?</h3>
+         <div class="grid grid-cols-3 gap-3">
+          <button onclick="selectApp('wa', event)" class="app-btn p-4 bg-green-50 rounded-xl border-2 border-gray-200 hover:border-green-400 transition text-center shadow-sm"> <span class="text-4xl block mb-2">💬</span> <span class="text-sm font-bold text-gray-800">WhatsApp</span> </button> <button onclick="selectApp('tiktok', event)" class="app-btn p-4 bg-pink-50 rounded-xl border-2 border-gray-200 hover:border-pink-400 transition text-center shadow-sm"> <span class="text-4xl block mb-2">🎵</span> <span class="text-sm font-bold text-gray-800">TikTok</span> </button> <button onclick="selectApp('ig', event)" class="app-btn p-4 bg-purple-50 rounded-xl border-2 border-gray-200 hover:border-purple-400 transition text-center shadow-sm"> <span class="text-4xl block mb-2">📸</span> <span class="text-sm font-bold text-gray-800">Instagram</span> </button>
+         </div>
+        </div>
+        <div class="bg-yellow-50 rounded-xl p-4 mb-6 border border-yellow-200">
+         <h3 class="font-bold text-yellow-900 mb-2 flex items-center gap-2"><i data-lucide="lightbulb" class="w-5 h-5"></i> Tahukah Kamu?</h3>
+         <p class="text-gray-800 text-sm">Media sosial bisa jadi teman yang baik kalau kita gunakan dengan bijak. Tapi kalau tidak hati-hati, bisa juga jadi sumber masalah. Hari ini kita akan belajar cara menjadi <strong class="text-yellow-900">Muslim Digital yang Cerdas!</strong> 🌟</p>
+        </div>
+        <div class="flex gap-3">
+         <button onclick="goToStep(2)" class="flex-1 bg-gray-200 text-gray-800 py-3 rounded-xl font-bold hover:bg-gray-300 transition shadow-sm"> Kembali </button> <button onclick="goToStep(4)" class="flex-1 gradient-islamic text-white py-3 rounded-xl font-bold hover:opacity-90 transition flex items-center justify-center gap-2 shadow-sm"> Mulai Materi <i data-lucide="arrow-right" class="w-5 h-5"></i> </button>
+        </div>
+       </div>
+      </div>
+     </div><div id="step-4" class="step-content hidden animate-fade-in">
+      <div class="max-w-3xl mx-auto">
+       <div class="bg-white rounded-2xl shadow-2xl overflow-hidden mb-6 border border-gray-100">
+        <div class="gradient-islamic p-6 text-center">
+         <h2 class="text-2xl font-bold text-white">📖 Etika Bermedia Sosial dalam Islam</h2>
+         <p class="text-emerald-200 font-semibold mt-1">Masalah: Bullying di Medsos</p>
+        </div>
+        <div class="p-6 space-y-6"><div class="bg-red-50 rounded-xl p-4 border border-red-200">
+          <h3 class="font-bold text-red-900 mb-3 text-lg flex items-center gap-2"><i data-lucide="alert-triangle" class="w-5 h-5"></i> Apa itu Cyberbullying?</h3>
+          <p class="text-gray-900 mb-3 text-sm">Cyberbullying adalah bentuk pengganguan, intimidasi, atau penyerangan terhadap seseorang melalui media digital yang dilakukan secara berulang-ulang dengan tujuan untuk menyakiti, memalukan, atau menakut-nakuti korban.</p>
+          <div class="bg-white p-3 rounded-lg text-sm text-gray-800 shadow-sm border border-gray-200"><strong>Karakteristik:</strong> Berulang-ulang • Disengaja • Tidak seimbang • Melalui media digital
+          </div>
+         </div><div>
+          <h3 class="font-bold text-blue-900 mb-3 text-lg bg-blue-100 p-3 rounded-lg">📱 Jenis-jenis Cyberbullying</h3>
+          <div class="grid gap-2">
+           <div class="bg-blue-50 p-3 rounded-lg border-l-4 border-blue-600 text-sm">
+            <p class="font-bold text-blue-900">Harassment:</p>
+            <p class="text-gray-800">Mengirim pesan negatif berulang kali atau mengancam</p>
+           </div>
+           <div class="bg-cyan-50 p-3 rounded-lg border-l-4 border-cyan-600 text-sm">
+            <p class="font-bold text-cyan-900">Doxing:</p>
+            <p class="text-gray-800">Menyebarkan info pribadi tanpa izin (alamat, nomor HP)</p>
+           </div>
+           <div class="bg-indigo-50 p-3 rounded-lg border-l-4 border-indigo-600 text-sm">
+            <p class="font-bold text-indigo-900">Trolling:</p>
+            <p class="text-gray-800">Mengirim komentar provokatif untuk membuat keributan</p>
+           </div>
+           <div class="bg-purple-50 p-3 rounded-lg border-l-4 border-purple-600 text-sm">
+            <p class="font-bold text-purple-900">Cyberstalking:</p>
+            <p class="text-gray-800">Mengikuti aktivitas online seseorang secara obsesif</p>
+           </div>
+           <div class="bg-pink-50 p-3 rounded-lg border-l-4 border-pink-600 text-sm">
+            <p class="font-bold text-pink-900">Outing &amp; Trickery:</p>
+            <p class="text-gray-800">Membocorkan rahasia atau foto pribadi</p>
+           </div>
+           <div class="bg-red-50 p-3 rounded-lg border-l-4 border-red-600 text-sm">
+            <p class="font-bold text-red-900">Exclusion:</p>
+            <p class="text-gray-800">Mengeluarkan dari grup atau mengasingkan</p>
+           </div>
+          </div>
+         </div><div>
+          <h3 class="font-bold text-amber-900 mb-3 text-lg bg-amber-100 p-3 rounded-lg">⚠️ Dampak Cyberbullying</h3>
+          <div class="grid md:grid-cols-3 gap-3 text-sm">
+           <div class="bg-red-50 p-3 rounded-lg border border-red-100">
+            <p class="font-bold text-red-900 mb-2">Psikologis</p>
+            <ul class="text-gray-800 space-y-1 text-xs">
+             <li>😢 Depresi &amp; cemas</li>
+             <li>😢 Malu &amp; rendah diri</li>
+             <li>😢 Trauma</li>
+            </ul>
+           </div>
+           <div class="bg-orange-50 p-3 rounded-lg border border-orange-100">
+            <p class="font-bold text-orange-900 mb-2">Fisik</p>
+            <ul class="text-gray-800 space-y-1 text-xs">
+             <li>😔 Susah tidur</li>
+             <li>😔 Hilang nafsu makan</li>
+             <li>😔 Sakit kepala/perut</li>
+            </ul>
+           </div>
+           <div class="bg-yellow-50 p-3 rounded-lg border border-yellow-100">
+            <p class="font-bold text-yellow-900 mb-2">Akademik</p>
+            <ul class="text-gray-800 space-y-1 text-xs">
+             <li>📉 Nilai menurun</li>
+             <li>📉 Tidak fokus belajar</li>
+             <li>📉 Bolos sekolah</li>
+            </ul>
+           </div>
+          </div>
+         </div><div class="bg-emerald-50 rounded-xl p-4 border-2 border-emerald-300">
+          <h3 class="font-bold text-emerald-900 mb-3 text-lg">🌟 Dalil-dalil Islam</h3>
+          <div class="space-y-3">
+           <div class="bg-white p-3 rounded-lg text-sm border-l-4 border-emerald-500 shadow-sm">
+            <p class="font-arabic font-bold text-base text-center mb-1 text-gray-900">وَقُولُوا لِلنَّاسِ حُسْنًا</p>
+            <p class="text-xs text-gray-800 font-semibold text-center italic mb-1">"Berkatalah yang baik kepada manusia" QS. Al-Baqarah: 83</p>
+            <p class="text-gray-900 text-center">Islam mengajarkan berkata baik kepada setiap orang</p>
+           </div>
+           <div class="bg-white p-3 rounded-lg text-sm border-l-4 border-blue-500 shadow-sm">
+            <p class="text-xs text-gray-800 font-semibold text-center italic mb-1">Sabda Rasulullah ﷺ:</p>
+            <p class="text-gray-900 text-center font-semibold mb-1">"Seorang Muslim adalah orang yang muslim lainnya selamat dari gangguan lisan dan tangannya" (HR. Tirmidzi)</p>
+           </div>
+           <div class="bg-white p-3 rounded-lg text-sm border-l-4 border-red-500 shadow-sm">
+            <p class="font-arabic font-bold text-base text-center mb-1 text-gray-900">وَلَا يَغْتَب بَّعْضُكُم بَعْضًا</p>
+            <p class="text-xs text-gray-800 font-semibold text-center italic mb-1">"Janganlah menggunjing" QS. Al-Hujurat: 12</p>
+            <p class="text-gray-900 text-center">Gosip dan membocorkan aib adalah dosa besar</p>
+           </div>
+           <div class="bg-white p-3 rounded-lg text-sm border-l-4 border-yellow-500 shadow-sm">
+            <p class="font-arabic font-bold text-base text-center mb-1 text-gray-900">إِن جَاءَكُمْ فَاسِقٌ بِنَبَأٍ فَتَبَيَّنُوا</p>
+            <p class="text-xs text-gray-800 font-semibold text-center italic mb-1">"Periksa kebenaran berita" QS. Al-Hujurat: 6</p>
+            <p class="text-gray-900 text-center">Sebelum share, cek kebenaran informasi (tabayyun)</p>
+           </div>
+           <div class="bg-white p-3 rounded-lg text-sm border-l-4 border-purple-500 shadow-sm">
+            <p class="font-arabic font-bold text-base text-center mb-1 text-gray-900">وَلَا تَجَسَّسُوا</p>
+            <p class="text-xs text-gray-800 font-semibold text-center italic mb-1">"Janganlah mengintai" QS. Al-Hujurat: 12</p>
+            <p class="text-gray-900 text-center">Hormati privasi orang lain, jangan mencari-cari aib</p>
+           </div>
+          </div>
+         </div><div class="grid md:grid-cols-2 gap-4 mb-4">
+          <div class="bg-green-100 p-4 rounded-xl border border-green-200">
+           <h4 class="font-bold text-green-900 mb-2">✅ Yang Harus Dilakukan:</h4>
+           <ul class="text-sm text-gray-900 font-semibold space-y-1">
+            <li>✔️ Berkata baik &amp; sopan</li>
+            <li>✔️ Berpikir sebelum posting</li>
+            <li>✔️ Tabayyun cek kebenaran</li>
+            <li>✔️ Hormati privasi orang</li>
+            <li>✔️ Dukung &amp; beri semangat</li>
+           </ul>
+          </div>
+          <div class="bg-red-100 p-4 rounded-xl border border-red-200">
+           <h4 class="font-bold text-red-900 mb-2">❌ Yang Harus Dihindari:</h4>
+           <ul class="text-sm text-gray-900 font-semibold space-y-1">
+            <li>✘ Mengejek &amp; menghina</li>
+            <li>✘ Membocorkan aib/rahasia</li>
+            <li>✘ Mengedit foto untuk bully</li>
+            <li>✘ Menyebarkan hoax/gosip</li>
+            <li>✘ Ikut-ikutan membully</li>
+           </ul>
+          </div>
+         </div>
+         <div class="flex gap-3">
+          <button onclick="goToStep(3)" class="flex-1 bg-gray-200 text-gray-800 py-3 rounded-xl font-bold hover:bg-gray-300 transition shadow-sm"> Kembali </button> <button onclick="goToStep(5)" class="flex-1 gradient-islamic text-white py-3 rounded-xl font-bold hover:opacity-90 transition flex items-center justify-center gap-2 shadow-sm"> Diskusi Kelompok <i data-lucide="arrow-right" class="w-5 h-5"></i> </button>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div><div id="step-5" class="step-content hidden animate-fade-in">
+      <div class="max-w-4xl mx-auto">
+       <div class="bg-white rounded-2xl shadow-2xl overflow-hidden mb-6 border border-gray-100">
+        <div class="bg-gradient-to-r from-orange-600 to-red-600 p-6 text-center">
+         <h2 class="text-2xl font-bold text-white">📋 Diskusi Kelompok</h2>
+         <p class="text-orange-100 font-semibold">LKPD &amp; Kartu Skenario</p>
+        </div>
+        <div class="p-6">
+         <div class="flex flex-wrap gap-3 justify-center mb-6 no-print">
+          <button onclick="showLKPD()" id="btn-lkpd" class="px-6 py-2 bg-emerald-700 text-white rounded-lg font-bold hover:bg-emerald-800 transition shadow-sm"> 📝 LKPD </button> <button onclick="showKartu(1)" id="btn-kartu1" class="px-4 py-2 bg-gray-200 text-gray-800 rounded-lg font-bold hover:bg-gray-300 transition shadow-sm"> Kartu 1 </button> <button onclick="showKartu(2)" id="btn-kartu2" class="px-4 py-2 bg-gray-200 text-gray-800 rounded-lg font-bold hover:bg-gray-300 transition shadow-sm"> Kartu 2 </button> <button onclick="showKartu(3)" id="btn-kartu3" class="px-4 py-2 bg-gray-200 text-gray-800 rounded-lg font-bold hover:bg-gray-300 transition shadow-sm"> Kartu 3 </button> <button onclick="showKartu(4)" id="btn-kartu4" class="px-4 py-2 bg-gray-200 text-gray-800 rounded-lg font-bold hover:bg-gray-300 transition shadow-sm"> Kartu 4 </button> <button onclick="printLKPD()" class="px-4 py-2 bg-blue-600 text-white rounded-lg font-bold hover:bg-blue-700 transition flex items-center gap-2 shadow-sm"> <i data-lucide="printer" class="w-4 h-4"></i> Cetak </button>
+         </div><div id="lkpd-content" class="print-area">
+          <div class="border-4 border-emerald-700 rounded-xl p-6">
+           <div class="text-center mb-6 border-b-2 border-emerald-300 pb-4">
+            <h3 class="text-xl font-bold text-emerald-900">LEMBAR KERJA PESERTA DIDIK (LKPD)</h3>
+            <p class="text-emerald-800 font-semibold">Etika Bermedia Sosial untuk Anak Muslim</p>
+           </div>
+           <div class="grid md:grid-cols-2 gap-4 mb-6">
+            <div class="bg-emerald-50 p-3 rounded-lg border border-emerald-200">
+             <p class="text-sm font-bold text-gray-900"><strong>Nama Kelompok:</strong> _________________</p>
+             <p class="text-sm mt-2 font-bold text-gray-900"><strong>Anggota:</strong></p>
+             <p class="text-sm font-semibold text-gray-900">1. _________________ 2. _________________</p>
+             <p class="text-sm font-semibold text-gray-900">3. _________________ 4. _________________</p>
+            </div>
+            <div class="bg-emerald-50 p-3 rounded-lg border border-emerald-200">
+             <p class="text-sm font-bold text-gray-900"><strong>Kelas:</strong> _________________</p>
+             <p class="text-sm mt-2 font-bold text-gray-900"><strong>Tanggal:</strong> _________________</p>
+             <p class="text-sm mt-2 font-bold text-gray-900"><strong>Nomor Kartu Skenario:</strong> _______</p>
+            </div>
+           </div>
+           <div class="space-y-4">
+            <div class="bg-yellow-100 p-4 rounded-lg border border-yellow-200">
+             <h4 class="font-bold text-yellow-900 mb-2">📌 Petunjuk:</h4>
+             <ol class="text-sm text-gray-900 font-semibold list-decimal list-inside space-y-1">
+              <li>Baca Kartu Skenario yang diberikan guru dengan teliti</li>
+              <li>Diskusikan bersama anggota kelompok</li>
+              <li>Jawab pertanyaan-pertanyaan di bawah ini</li>
+              <li>Presentasikan hasil diskusi kelompokmu</li>
+             </ol>
+            </div>
+            <div class="border-2 border-gray-300 rounded-lg p-4 bg-gray-50">
+             <h4 class="font-bold text-gray-900 mb-3">1️⃣ Apa masalah yang terjadi dalam skenario?</h4>
+             <div class="border-b border-dotted border-gray-400 pb-8 mb-2"></div>
+             <div class="border-b border-dotted border-gray-400 pb-8"></div>
+            </div>
+            <div class="border-2 border-gray-300 rounded-lg p-4 bg-gray-50">
+             <h4 class="font-bold text-gray-900 mb-3">2️⃣ Menurut kalian, siapa yang salah dan mengapa?</h4>
+             <div class="border-b border-dotted border-gray-400 pb-8 mb-2"></div>
+             <div class="border-b border-dotted border-gray-400 pb-8"></div>
+            </div>
+            <div class="border-2 border-gray-300 rounded-lg p-4 bg-gray-50">
+             <h4 class="font-bold text-gray-900 mb-3">3️⃣ Bagaimana cara menyelesaikan masalah ini menurut ajaran Islam?</h4>
+             <div class="border-b border-dotted border-gray-400 pb-8 mb-2"></div>
+             <div class="border-b border-dotted border-gray-400 pb-8"></div>
+            </div>
+            <div class="border-2 border-gray-300 rounded-lg p-4 bg-gray-50">
+             <h4 class="font-bold text-gray-900 mb-3">4️⃣ Tulis dalil (ayat/hadits) yang mendukung jawaban kalian!</h4>
+             <div class="border-b border-dotted border-gray-400 pb-8 mb-2"></div>
+             <div class="border-b border-dotted border-gray-400 pb-8"></div>
+            </div>
+            <div class="border-2 border-gray-300 rounded-lg p-4 bg-gray-50">
+             <h4 class="font-bold text-gray-900 mb-3">5️⃣ Apa pelajaran yang bisa diambil dari kasus ini?</h4>
+             <div class="border-b border-dotted border-gray-400 pb-8 mb-2"></div>
+             <div class="border-b border-dotted border-gray-400 pb-8"></div>
+            </div>
+           </div>
+          </div>
+         </div><div id="kartu-1" class="hidden print-area">
+          <div class="border-4 border-blue-600 rounded-xl p-6 bg-blue-50">
+           <div class="text-center mb-4">
+            <span class="inline-block bg-blue-600 text-white px-4 py-1 rounded-full font-bold shadow-sm">KARTU SKENARIO 1</span>
+           </div>
+           <div class="bg-white rounded-lg p-4 shadow-sm">
+            <h4 class="font-bold text-blue-900 mb-3 text-lg">💬 Kasus di Grup WhatsApp</h4>
+            <div class="text-gray-900 space-y-3 font-medium">
+             <p>Ahmad adalah siswa baru di kelas 5. Dia pendiam dan sering sendirian. Di grup WhatsApp kelas, teman-temannya mulai mengirim pesan yang mengejek Ahmad:</p>
+             <div class="bg-gray-100 rounded-lg p-3 text-sm border border-gray-200">
+              <p><strong>Budi:</strong> "Si Ahmad mah kayak patung, diem mulu 😂"</p>
+              <p><strong>Cici:</strong> "Iya bener, aneh banget 🤣"</p>
+              <p><strong>Dani:</strong> "Jangan-jangan dia gak punya temen di sekolah lama"</p>
+             </div>
+             <p>Ahmad membaca semua pesan itu dan merasa sangat sedih. Dia jadi tidak mau sekolah keesokan harinya.</p>
+            </div>
+            <div class="mt-4 bg-yellow-100 rounded-lg p-3 border border-yellow-200">
+             <p class="text-sm font-bold text-yellow-900">🤔 Pertanyaan untuk Didiskusikan:</p>
+             <p class="text-sm text-gray-900 font-semibold">Bagaimana seharusnya sikap seorang Muslim melihat kejadian ini?</p>
+            </div>
+           </div>
+          </div>
+         </div><div id="kartu-2" class="hidden print-area">
+          <div class="border-4 border-pink-600 rounded-xl p-6 bg-pink-50">
+           <div class="text-center mb-4">
+            <span class="inline-block bg-pink-600 text-white px-4 py-1 rounded-full font-bold shadow-sm">KARTU SKENARIO 2</span>
+           </div>
+           <div class="bg-white rounded-lg p-4 shadow-sm">
+            <h4 class="font-bold text-pink-900 mb-3 text-lg">🎵 Kasus di TikTok</h4>
+            <div class="text-gray-900 space-y-3 font-medium">
+             <p>Siti menemukan video TikTok temannya, Rani, yang sedang menari. Tanpa izin, Siti mengambil video itu dan mengeditnya dengan cara yang mengejek. Dia menambahkan teks lucu yang mempermalukan Rani.</p>
+             <p>Video editan itu kemudian dibagikan Siti ke teman-temannya dan menjadi viral di sekolah. Banyak yang menertawakan Rani.</p>
+             <div class="bg-gray-100 rounded-lg p-3 text-sm border border-gray-200">
+              <p>Rani menangis dan tidak mau masuk sekolah selama 3 hari. Dia merasa malu dan marah pada Siti.</p>
+             </div>
+            </div>
+            <div class="mt-4 bg-yellow-100 rounded-lg p-3 border border-yellow-200">
+             <p class="text-sm font-bold text-yellow-900">🤔 Pertanyaan untuk Didiskusikan:</p>
+             <p class="text-sm text-gray-900 font-semibold">Apa yang salah dari perbuatan Siti? Bagaimana cara memperbaikinya?</p>
+            </div>
+           </div>
+          </div>
+         </div><div id="kartu-3" class="hidden print-area">
+          <div class="border-4 border-purple-600 rounded-xl p-6 bg-purple-50">
+           <div class="text-center mb-4">
+            <span class="inline-block bg-purple-600 text-white px-4 py-1 rounded-full font-bold shadow-sm">KARTU SKENARIO 3</span>
+           </div>
+           <div class="bg-white rounded-lg p-4 shadow-sm">
+            <h4 class="font-bold text-purple-900 mb-3 text-lg">📸 Kasus di Instagram</h4>
+            <div class="text-gray-900 space-y-3 font-medium">
+             <p>Farhan sering posting foto-foto keren di Instagram. Dia punya banyak followers. Suatu hari, ada teman sekelasnya bernama Galih yang fotonya kurang bagus.</p>
+             <p>Farhan dan teman-temannya menulis komentar jahat di foto Galih:</p>
+             <div class="bg-gray-100 rounded-lg p-3 text-sm border border-gray-200">
+              <p><strong>@farhan_cool:</strong> "Kamera HP lu rusak ya? 😂"</p>
+              <p><strong>@hani_cute:</strong> "Jelek banget foto lu 🤮"</p>
+              <p><strong>@iqbal_kece:</strong> "Delete aja deh, bikin IG jadi jelek 💀"</p>
+             </div>
+             <p>Galih sangat tersinggung dan langsung menghapus akun Instagram-nya.</p>
+            </div>
+            <div class="mt-4 bg-yellow-100 rounded-lg p-3 border border-yellow-200">
+             <p class="text-sm font-bold text-yellow-900">🤔 Pertanyaan untuk Didiskusikan:</p>
+             <p class="text-sm text-gray-900 font-semibold">Mengapa komentar seperti itu berbahaya? Apa dampaknya bagi korban?</p>
+            </div>
+           </div>
+          </div>
+         </div><div id="kartu-4" class="hidden print-area">
+          <div class="border-4 border-orange-600 rounded-xl p-6 bg-orange-50">
+           <div class="text-center mb-4">
+            <span class="inline-block bg-orange-600 text-white px-4 py-1 rounded-full font-bold shadow-sm">KARTU SKENARIO 4</span>
+           </div>
+           <div class="bg-white rounded-lg p-4 shadow-sm">
+            <h4 class="font-bold text-orange-900 mb-3 text-lg">🔄 Kasus Menyebarkan Hoax</h4>
+            <div class="text-gray-900 space-y-3 font-medium">
+             <p>Jasmine mendapat pesan broadcast di WhatsApp yang berisi berita bahwa temannya, Kayla, pernah mencuri di kantin sekolah. Padahal itu tidak benar.</p>
+             <p>Tanpa mengecek kebenarannya, Jasmine langsung meneruskan pesan itu ke grup-grup WA lainnya. Berita itu menyebar dengan cepat.</p>
+             <div class="bg-gray-100 rounded-lg p-3 text-sm border border-gray-200">
+              <p>Kayla yang tidak tahu apa-apa tiba-tiba dijauhi teman-temannya. Semua orang memandangnya dengan curiga. Kayla sangat bingung dan sedih.</p>
+             </div>
+            </div>
+            <div class="mt-4 bg-yellow-100 rounded-lg p-3 border border-yellow-200">
+             <p class="text-sm font-bold text-yellow-900">🤔 Pertanyaan untuk Didiskusikan:</p>
+             <p class="text-sm text-gray-900 font-semibold">Apa bahayanya menyebarkan berita tanpa mengecek kebenarannya (tabayyun)?</p>
+            </div>
+           </div>
+          </div>
+         </div>
+         <div class="flex gap-3 mt-6 no-print">
+          <button onclick="goToStep(4)" class="flex-1 bg-gray-200 text-gray-800 py-3 rounded-xl font-bold hover:bg-gray-300 transition shadow-sm"> Kembali </button> <button onclick="goToStep(6)" class="flex-1 gradient-islamic text-white py-3 rounded-xl font-bold hover:opacity-90 transition flex items-center justify-center gap-2 shadow-sm"> Ice Breaking <i data-lucide="arrow-right" class="w-5 h-5"></i> </button>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div><div id="step-6" class="step-content hidden animate-fade-in">
+      <div class="max-w-2xl mx-auto bg-white rounded-2xl shadow-2xl overflow-hidden border border-gray-100">
+       <div class="bg-gradient-to-r from-yellow-500 to-orange-600 p-6 text-center">
+        <span class="text-6xl mb-4 block">🎮</span>
+        <h2 class="text-2xl font-bold text-white">Ice Breaking!</h2>
+        <p class="text-yellow-100 font-semibold">Permainan "Tepuk Medsos"</p>
+       </div>
+       <div class="p-6">
+        <div class="bg-yellow-50 rounded-xl p-4 mb-6 border border-yellow-200">
+         <h3 class="font-bold text-yellow-900 mb-3">📜 Aturan Permainan:</h3>
+         <ul class="text-sm text-gray-900 font-semibold space-y-2">
+          <li><strong>1.</strong> Guru akan menyebutkan sebuah tindakan di media sosial</li>
+          <li><strong>2.</strong> Jika tindakan itu <span class="text-green-700 font-bold">BAIK</span> → Tepuk tangan 3x 👏👏👏</li>
+          <li><strong>3.</strong> Jika tindakan itu <span class="text-red-700 font-bold">BURUK</span> → Tutup telinga 🙉</li>
+          <li><strong>4.</strong> Yang salah → Berdiri di tempat!</li>
+         </ul>
+        </div>
+        <div class="space-y-3 mb-6">
+         <h4 class="font-bold text-gray-900">Contoh Pernyataan:</h4>
+         <div class="grid gap-2">
+          <div class="flex items-center gap-3 bg-green-100 p-3 rounded-lg border border-green-200 shadow-sm">
+           <span class="text-2xl">👏</span> <span class="text-sm font-bold text-green-900">"Membagikan konten positif dan bermanfaat"</span>
+          </div>
+          <div class="flex items-center gap-3 bg-red-100 p-3 rounded-lg border border-red-200 shadow-sm">
+           <span class="text-2xl">🙉</span> <span class="text-sm font-bold text-red-900">"Mengejek foto teman di komentar"</span>
+          </div>
+          <div class="flex items-center gap-3 bg-green-100 p-3 rounded-lg border border-green-200 shadow-sm">
+           <span class="text-2xl">👏</span> <span class="text-sm font-bold text-green-900">"Meminta izin sebelum posting foto orang lain"</span>
+          </div>
+          <div class="flex items-center gap-3 bg-red-100 p-3 rounded-lg border border-red-200 shadow-sm">
+           <span class="text-2xl">🙉</span> <span class="text-sm font-bold text-red-900">"Menyebarkan berita tanpa cek kebenarannya"</span>
+          </div>
+         </div>
+        </div>
+        <div class="bg-emerald-50 rounded-xl p-4 mb-6 text-center border border-emerald-200">
+         <p class="text-emerald-900 font-bold">🎉 Ayo mainkan bersama guru!</p>
+         <p class="text-sm text-gray-800 font-semibold">Siapa yang paling fokus dan tidak salah?</p>
+        </div>
+        <div class="flex gap-3">
+         <button onclick="goToStep(5)" class="flex-1 bg-gray-200 text-gray-800 py-3 rounded-xl font-bold hover:bg-gray-300 transition shadow-sm"> Kembali </button> <button onclick="goToStep(7)" class="flex-1 gradient-islamic text-white py-3 rounded-xl font-bold hover:opacity-90 transition flex items-center justify-center gap-2 shadow-sm"> Mulai Kuis <i data-lucide="arrow-right" class="w-5 h-5"></i> </button>
+        </div>
+       </div>
+      </div>
+     </div><div id="step-7" class="step-content hidden animate-fade-in">
+      <div class="max-w-2xl mx-auto bg-white rounded-2xl shadow-2xl overflow-hidden border border-gray-100">
+       <div class="bg-yellow-400 pattern-islamic p-6">
+        <div class="flex justify-between items-center text-gray-900">
+         <h2 class="text-xl font-bold">📝 Kuis Etika Medsos</h2>
+         <div class="bg-white/60 px-4 py-2 rounded-full shadow-sm">
+          <span id="quiz-progress" class="font-bold">Soal 1/5</span>
+         </div>
+        </div>
+        <div class="mt-4 bg-white/50 rounded-full h-3 shadow-inner">
+         <div id="quiz-bar" class="bg-emerald-600 h-3 rounded-full transition-all duration-300 shadow-sm" style="width: 20%"></div>
+        </div>
+       </div>
+       <div id="quiz-container" class="p-6">
+        </div>
+       <div id="quiz-result" class="hidden p-6 text-center">
+        <div id="result-icon" class="text-6xl mb-4">
+         🏆
+        </div>
+        <h3 id="result-title" class="text-2xl font-bold text-emerald-900 mb-2">Hasil Kuis</h3>
+        <p id="result-score" class="text-lg font-bold text-gray-800 mb-4"></p>
+        <div id="result-message" class="bg-emerald-50 rounded-xl p-4 mb-6 font-semibold text-gray-900 border border-emerald-200"></div>
+        <div class="flex gap-3">
+         <button onclick="resetQuiz()" class="flex-1 bg-gray-200 text-gray-800 py-3 rounded-xl font-bold hover:bg-gray-300 transition shadow-sm"> Ulangi Kuis </button> <button onclick="goToStep(8)" class="flex-1 gradient-islamic text-white py-3 rounded-xl font-bold hover:opacity-90 transition shadow-sm"> Lanjut ke Penutup </button>
+        </div>
+       </div>
+      </div>
+     </div><div id="step-8" class="step-content hidden animate-fade-in">
+      <div class="max-w-2xl mx-auto bg-white rounded-2xl shadow-2xl overflow-hidden border border-gray-100">
+       <div class="gradient-islamic pattern-islamic p-6 text-center">
+        <span class="text-6xl mb-4 block">🌙</span>
+        <h2 class="text-2xl font-bold text-white">Penutup</h2>
+       </div>
+       <div class="p-6">
+        <div class="bg-emerald-50 rounded-xl p-4 mb-6 border border-emerald-200">
+         <h3 class="font-bold text-emerald-900 mb-3 flex items-center gap-2"><i data-lucide="check-circle" class="w-5 h-5"></i> Kesimpulan Hari Ini:</h3>
+         <ul class="text-sm text-gray-900 font-semibold space-y-2">
+          <li>✅ Media sosial harus digunakan dengan bijak sesuai ajaran Islam</li>
+          <li>✅ Jangan menyakiti orang lain dengan kata-kata atau tindakan di medsos</li>
+          <li>✅ Selalu tabayyun (cek kebenaran) sebelum menyebarkan informasi</li>
+          <li>✅ Jadilah muslim yang menyebarkan kebaikan di dunia digital</li>
+         </ul>
+        </div><div class="bg-yellow-50 rounded-xl p-4 mb-6 border border-yellow-200">
+         <h3 class="font-bold text-yellow-900 mb-3 flex items-center gap-2"><i data-lucide="heart" class="w-5 h-5"></i> Refleksi:</h3>
+         <p class="text-sm font-semibold text-gray-900 mb-3">Setelah belajar hari ini, apa yang akan kamu lakukan berbeda saat menggunakan media sosial?</p><textarea id="refleksi-input" class="w-full p-3 border-2 border-yellow-300 rounded-lg text-sm font-semibold focus:border-yellow-500 focus:outline-none shadow-sm" rows="3" placeholder="Tulis refleksimu di sini..."></textarea>
+        </div><div class="bg-purple-50 rounded-xl p-6 mb-6 text-center border border-purple-200">
+         <h3 class="font-bold text-purple-900 mb-3">🤲 Doa Sesudah Belajar</h3>
+         <p class="font-arabic font-bold text-xl leading-loose text-purple-900 mb-4">اَللَّهُمَّ أَرِنَا الْحَقَّ حَقًّا وَارْزُقْنَا اتِّبَاعَهُ</p>
+         <p class="font-arabic font-bold text-xl leading-loose text-purple-900 mb-4">وَأَرِنَا الْبَاطِلَ بَاطِلاً وَارْزُقْنَا اجْتِنَابَهُ</p>
+         <hr class="my-4 border-purple-300">
+         <p class="text-gray-800 font-semibold italic text-sm">"Ya Allah, tunjukkanlah kepada kami kebenaran itu sebagai kebenaran dan berilah kami kemampuan untuk mengikutinya. Dan tunjukkanlah kepada kami kebatilan itu sebagai kebatilan dan berilah kami kemampuan untuk menjauhinya."</p>
+        </div><div class="text-center">
+         <div class="gradient-gold inline-block px-8 py-4 rounded-xl mb-4 shadow-md">
+          <p class="text-xl font-bold text-emerald-900">Wassalamu'alaikum Warahmatullahi Wabarakatuh</p>
+         </div>
+         <p class="text-gray-800 font-bold">Terima kasih sudah belajar bersama! 💚</p>
+        </div>
+        <div class="flex gap-3 mt-6">
+         <button onclick="goToStep(7)" class="flex-1 bg-gray-200 text-gray-800 py-3 rounded-xl font-bold hover:bg-gray-300 transition shadow-sm"> Kembali </button> <button onclick="showSection('main-menu')" class="flex-1 gradient-islamic text-white py-3 rounded-xl font-bold hover:opacity-90 transition flex items-center justify-center gap-2 shadow-sm"> <i data-lucide="home" class="w-5 h-5"></i> Kembali ke Menu </button>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </div>
+  <script>
+    // Default configuration
+    const defaultConfig = {
+      app_title: 'Pesantren Ramadhan',
+      teacher_name: 'Dibuat dengan ❤️ untuk Pesantren Ramadhan',
+      primary_color: '#064e3b',
+      secondary_color: '#d4af37',
+      text_color: '#1f2937',
+      surface_color: '#ffffff',
+      accent_color: '#047857'
+    };
+
+    // Current step for media interaktif
+    let currentStep = 1;
+    const totalSteps = 8;
+
+    // Quiz data
+    const quizData = [
+      {
+        question: "Apa yang harus dilakukan seorang Muslim sebelum menyebarkan berita di media sosial?",
+        options: [
+          "Langsung share supaya cepat viral",
+          "Tabayyun (mengecek kebenaran) terlebih dahulu",
+          "Menambahkan komentar sendiri",
+          "Mengabaikan saja"
+        ],
+        correct: 1
+      },
+      {
+        question: "Jika melihat teman dibully di grup WhatsApp, apa yang sebaiknya dilakukan?",
+        options: [
+          "Ikut mengomentari agar tidak dikucilkan",
+          "Diam saja dan tidak peduli",
+          "Membela dan mengingatkan yang membully dengan baik",
+          "Keluar dari grup"
+        ],
+        correct: 2
+      },
+      {
+        question: "Manakah yang termasuk etika bermedia sosial dalam Islam?",
+        options: [
+          "Berkomentar pedas agar terlihat kritis",
+          "Menyebarkan aib orang lain",
+          "Berkata baik dan sopan kepada semua orang",
+          "Memposting semua kegiatan pribadi"
+        ],
+        correct: 2
+      },
+      {
+        question: "Apa hukumnya menyebarkan hoax atau berita bohong menurut Islam?",
+        options: [
+          "Boleh saja kalau untuk hiburan",
+          "Haram karena termasuk dusta dan bisa menyakiti orang lain",
+          "Makruh tapi tidak apa-apa",
+          "Sunnah kalau untuk kebaikan"
+        ],
+        correct: 1
+      },
+      {
+        question: "Dalil yang memerintahkan kita untuk berkata baik adalah...",
+        options: [
+          "Fastabiqul khairat",
+          "Waqulu linnas husna (Berkatalah yang baik kepada manusia)",
+          "Innamal a'malu binniyat",
+          "La tahzan innallaha ma'ana"
+        ],
+        correct: 1
+      }
+    ];
+
+    let currentQuizIndex = 0;
+    let quizScore = 0;
+    let quizAnswered = false;
+
+    // Section navigation
+    function showSection(sectionId) {
+      document.querySelectorAll('#app > div').forEach(section => {
+        section.classList.add('hidden');
+      });
+      document.getElementById(sectionId).classList.remove('hidden');
+      
+      if (sectionId === 'media-interaktif') {
+        goToStep(1);
+      }
+      
+      window.scrollTo(0, 0);
+    }
+
+    // Step navigation for Media Interaktif
+    function goToStep(step) {
+      currentStep = step;
+      
+      document.querySelectorAll('.step-content').forEach(content => {
+        content.classList.add('hidden');
+      });
+      
+      const targetStep = document.getElementById(`step-${step}`);
+      if (targetStep) {
+        targetStep.classList.remove('hidden');
+      }
+      
+      // Update progress
+      document.getElementById('step-indicator').textContent = `${step}/${totalSteps}`;
+      document.getElementById('progress-bar').style.width = `${(step / totalSteps) * 100}%`;
+      
+      // Initialize quiz if step 7 and it's fresh or empty
+      if (step === 7) {
+        const quizContainer = document.getElementById('quiz-container');
+        if (quizContainer.innerHTML.trim() === '' || (!quizContainer.classList.contains('hidden') === false && document.getElementById('quiz-result').classList.contains('hidden'))) {
+          initQuiz();
+        }
+      }
+      
+      window.scrollTo(0, 0);
+    }
+
+    // Mood selection (Ditambahkan event binding)
+    function selectMood(mood, e) {
+      document.querySelectorAll('.mood-btn').forEach(btn => {
+        btn.classList.remove('border-emerald-400', 'bg-emerald-50');
+      });
+      e.currentTarget.classList.add('border-emerald-400', 'bg-emerald-50');
+    }
+
+    // App selection (Ditambahkan event binding)
+    function selectApp(app, e) {
+      document.querySelectorAll('.app-btn').forEach(btn => {
+        btn.classList.remove('border-green-400', 'border-pink-400', 'border-purple-400');
+      });
+      const btn = e.currentTarget;
+      if (app === 'wa') btn.classList.add('border-green-400');
+      else if (app === 'tiktok') btn.classList.add('border-pink-400');
+      else btn.classList.add('border-purple-400');
+    }
+
+    // LKPD & Kartu Skenario
+    function showLKPD() {
+      hideAllCards();
+      document.getElementById('lkpd-content').classList.remove('hidden');
+      updateCardButtons('btn-lkpd');
+    }
+
+    function showKartu(num) {
+      hideAllCards();
+      document.getElementById(`kartu-${num}`).classList.remove('hidden');
+      updateCardButtons(`btn-kartu${num}`);
+    }
+
+    function hideAllCards() {
+      document.getElementById('lkpd-content').classList.add('hidden');
+      for (let i = 1; i <= 4; i++) {
+        document.getElementById(`kartu-${i}`).classList.add('hidden');
+      }
+    }
+
+    function updateCardButtons(activeBtn) {
+      document.querySelectorAll('#step-5 button[id^="btn-"]').forEach(btn => {
+        btn.classList.remove('bg-emerald-700', 'text-white');
+        btn.classList.add('bg-gray-200', 'text-gray-800');
+      });
+      const active = document.getElementById(activeBtn);
+      if (active) {
+        active.classList.remove('bg-gray-200', 'text-gray-800');
+        active.classList.add('bg-emerald-700', 'text-white');
+      }
+    }
+
+    // Print functions (Memperbaiki fungsi cetak agar tidak overlap)
+    function printModul() {
+      document.getElementById('modul-ajar').classList.add('print-section');
+      document.getElementById('modul-content').classList.add('active-print');
+      window.print();
+      document.getElementById('modul-ajar').classList.remove('print-section');
+      document.getElementById('modul-content').classList.remove('active-print');
+    }
+
+    function printLKPD() {
+      document.getElementById('media-interaktif').classList.add('print-section');
+      
+      const lkpdContent = document.getElementById('lkpd-content');
+      const cards = [1, 2, 3, 4].map(i => document.getElementById(`kartu-${i}`));
+      
+      let activeElement = lkpdContent;
+      for (const card of cards) {
+        if (card && !card.classList.contains('hidden')) {
+          activeElement = card;
+          break;
+        }
+      }
+      
+      activeElement.classList.add('active-print');
+      window.print();
+      activeElement.classList.remove('active-print');
+      document.getElementById('media-interaktif').classList.remove('print-section');
+    }
+
+    // Quiz functions
+    function initQuiz() {
+      currentQuizIndex = 0;
+      quizScore = 0;
+      document.getElementById('quiz-container').classList.remove('hidden');
+      document.getElementById('quiz-result').classList.add('hidden');
+      renderQuizQuestion();
+    }
+
+    function renderQuizQuestion() {
+      const quiz = quizData[currentQuizIndex];
+      const container = document.getElementById('quiz-container');
+      quizAnswered = false;
+      
+      document.getElementById('quiz-progress').textContent = `Soal ${currentQuizIndex + 1}/${quizData.length}`;
+      document.getElementById('quiz-bar').style.width = `${((currentQuizIndex + 1) / quizData.length) * 100}%`;
+      
+      let html = `
+        <h3 class="text-lg font-bold text-gray-900 mb-6">${quiz.question}</h3>
+        <div class="space-y-3">
+      `;
+      
+      quiz.options.forEach((option, index) => {
+        html += `
+          <button onclick="selectQuizAnswer(${index})" id="quiz-option-${index}" class="quiz-option w-full text-left p-4 border-2 border-gray-300 rounded-xl hover:border-emerald-500 hover:bg-emerald-50 transition cursor-pointer flex items-center shadow-sm font-semibold">
+            <span class="inline-block w-8 h-8 bg-emerald-200 text-emerald-900 rounded-full text-center leading-8 mr-4 font-bold flex-shrink-0">${String.fromCharCode(65 + index)}</span>
+            <span class="text-gray-800">${option}</span>
+          </button>
+        `;
+      });
+      
+      html += `</div>`;
+      container.innerHTML = html;
+    }
+
+    function selectQuizAnswer(index) {
+      if (quizAnswered) return;
+      quizAnswered = true;
+      
+      const quiz = quizData[currentQuizIndex];
+      const isCorrect = index === quiz.correct;
+      
+      if (isCorrect) quizScore++;
+      
+      // Show correct/wrong
+      document.querySelectorAll('.quiz-option').forEach((btn, i) => {
+        btn.classList.remove('hover:border-emerald-500');
+        if (i === quiz.correct) {
+          btn.classList.add('correct');
+        } else if (i === index && !isCorrect) {
+          btn.classList.add('wrong');
+        }
+      });
+      
+      // Next question or show result
+      setTimeout(() => {
+        if (currentQuizIndex < quizData.length - 1) {
+          currentQuizIndex++;
+          renderQuizQuestion();
+        } else {
+          showQuizResult();
+        }
+      }, 1500);
+    }
+
+    function showQuizResult() {
+      document.getElementById('quiz-container').classList.add('hidden');
+      document.getElementById('quiz-result').classList.remove('hidden');
+      
+      const percentage = (quizScore / quizData.length) * 100;
+      
+      let icon, title, message;
+      if (percentage >= 80) {
+        icon = '🏆';
+        title = 'Luar Biasa!';
+        message = 'Kamu sudah sangat memahami etika bermedia sosial dalam Islam. Terus terapkan dalam kehidupan sehari-hari ya!';
+      } else if (percentage >= 60) {
+        icon = '⭐';
+        title = 'Bagus!';
+        message = 'Pemahaman kamu sudah baik. Terus belajar dan tingkatkan lagi ya!';
+      } else {
+        icon = '💪';
+        title = 'Tetap Semangat!';
+        message = 'Masih perlu belajar lebih lanjut. Jangan menyerah, coba pelajari lagi materinya ya!';
+      }
+      
+      document.getElementById('result-icon').textContent = icon;
+      document.getElementById('result-title').textContent = title;
+      document.getElementById('result-score').textContent = `Skor: ${quizScore}/${quizData.length} (${percentage}%)`;
+      document.getElementById('result-message').textContent = message;
+    }
+
+    function resetQuiz() {
+      initQuiz();
+    }
+
+    // Element SDK Integration
+    async function onConfigChange(config) {
+      const title = config.app_title || defaultConfig.app_title;
+      const teacherInfo = config.teacher_name || defaultConfig.teacher_name;
+      
+      const mainTitle = document.getElementById('main-title');
+      if (mainTitle) mainTitle.textContent = title;
+      
+      const teacherInfoEl = document.getElementById('teacher-info');
+      if (teacherInfoEl) teacherInfoEl.textContent = teacherInfo;
+    }
+
+    // Initialize
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange,
+        mapToCapabilities: (config) => ({
+          recolorables: [
+            {
+              get: () => config.primary_color || defaultConfig.primary_color,
+              set: (value) => window.elementSdk.setConfig({ primary_color: value })
+            },
+            {
+              get: () => config.surface_color || defaultConfig.surface_color,
+              set: (value) => window.elementSdk.setConfig({ surface_color: value })
+            },
+            {
+              get: () => config.text_color || defaultConfig.text_color,
+              set: (value) => window.elementSdk.setConfig({ text_color: value })
+            },
+            {
+              get: () => config.secondary_color || defaultConfig.secondary_color,
+              set: (value) => window.elementSdk.setConfig({ secondary_color: value })
+            },
+            {
+              get: () => config.accent_color || defaultConfig.accent_color,
+              set: (value) => window.elementSdk.setConfig({ accent_color: value })
+            }
+          ],
+          borderables: [],
+          fontEditable: undefined,
+          fontSizeable: undefined
+        }),
+        mapToEditPanelValues: (config) => new Map([
+          ['app_title', config.app_title || defaultConfig.app_title],
+          ['teacher_name', config.teacher_name || defaultConfig.teacher_name]
+        ])
+      });
+    }
+
+    // Initialize Lucide icons
+    lucide.createIcons();
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9d8b415003d2fd98',t:'MTc3MjkwMzg2Mi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

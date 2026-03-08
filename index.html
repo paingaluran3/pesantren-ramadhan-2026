@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard Pesantren Ramadhan - SDN Ngaluran 3</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { font-family: 'Nunito', sans-serif; }
+    .font-arabic { font-family: 'Amiri', serif; }
+    
+    .gradient-sidebar {
+      background: linear-gradient(180deg, #064e3b 0%, #047857 100%);
+    }
+
+    .pattern-bg {
+      background-color: #f0fdf4;
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2310b981' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+
+    /* Transisi untuk sidebar yang menyempit */
+    #sidebar { transition: width 0.3s ease; }
+    .sidebar-expanded { width: 16rem; } /* 256px */
+    .sidebar-collapsed { width: 5rem; } /* 80px */
+    
+    /* Menyembunyikan teks saat menyempit */
+    .sidebar-collapsed .menu-text { display: none; }
+    .sidebar-collapsed .logo-text { display: none; }
+    .sidebar-collapsed .menu-item { justify-content: center; padding-left: 0; padding-right: 0; }
+    
+    .menu-item { transition: all 0.2s; }
+    .menu-item.active {
+      background-color: rgba(255, 255, 255, 0.15);
+      border-left: 4px solid #fcd34d; /* Amber-300 */
+    }
+
+    /* Tampilan awal animasi */
+    .animate-fade-in { animation: fadeIn 0.8s ease-out forwards; }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body class="bg-gray-100 flex h-screen overflow-hidden text-gray-800">
+
+  <aside id="sidebar" class="sidebar-expanded gradient-sidebar text-white flex flex-col shadow-2xl z-20 flex-shrink-0">
+    
+    <div class="h-16 flex items-center px-4 border-b border-white/10 whitespace-nowrap overflow-hidden">
+      <div class="flex items-center gap-3 w-full justify-center md:justify-start">
+        <span class="text-3xl drop-shadow-md">🕌</span>
+        <div class="logo-text flex flex-col">
+          <span class="font-bold text-lg leading-tight tracking-wide text-amber-300">Pesantren</span>
+          <span class="text-xs text-emerald-100 tracking-wider uppercase">Ramadhan</span>
+        </div>
+      </div>
+    </div>
+
+    <nav class="flex-1 overflow-y-auto py-6 px-3 space-y-2 scrollbar-hide">
+      
+      <a href="#" data-target="home" class="menu-item active flex items-center gap-4 px-3 py-3 rounded-lg hover:bg-white/10 text-emerald-50">
+        <i data-lucide="layout-dashboard" class="w-6 h-6 flex-shrink-0 text-amber-300"></i>
+        <span class="menu-text font-semibold whitespace-nowrap">Beranda</span>
+      </a>
+
+      <div class="logo-text text-xs font-bold text-emerald-300/60 uppercase tracking-wider mt-6 mb-2 px-3">Daftar Modul</div>
+
+      <a href="birrulwalidain.html" data-target="module" class="menu-item flex items-center gap-4 px-3 py-3 rounded-lg hover:bg-white/10 text-emerald-50">
+        <i data-lucide="heart-handshake" class="w-6 h-6 flex-shrink-0 text-emerald-200"></i>
+        <span class="menu-text font-semibold whitespace-nowrap">Birrul Walidain</span>
+      </a>
+
+      <a href="Cinta-tanah-air.html" data-target="module" class="menu-item flex items-center gap-4 px-3 py-3 rounded-lg hover:bg-white/10 text-emerald-50">
+        <i data-lucide="flag" class="w-6 h-6 flex-shrink-0 text-blue-200"></i>
+        <span class="menu-text font-semibold whitespace-nowrap">Hubbul Wathan</span>
+      </a>
+
+      <a href="Etika-Medsos.html" data-target="module" class="menu-item flex items-center gap-4 px-3 py-3 rounded-lg hover:bg-white/10 text-emerald-50">
+        <i data-lucide="smartphone" class="w-6 h-6 flex-shrink-0 text-purple-200"></i>
+        <span class="menu-text font-semibold whitespace-nowrap">Etika Medsos</span>
+      </a>
+
+      <a href="Sejarah-Islam-Demak.html" data-target="module" class="menu-item flex items-center gap-4 px-3 py-3 rounded-lg hover:bg-white/10 text-emerald-50">
+        <i data-lucide="book-open" class="w-6 h-6 flex-shrink-0 text-amber-200"></i>
+        <span class="menu-text font-semibold whitespace-nowrap">Sejarah Islam</span>
+      </a>
+
+      <a href="Toleransi.html" data-target="module" class="menu-item flex items-center gap-4 px-3 py-3 rounded-lg hover:bg-white/10 text-emerald-50">
+        <i data-lucide="users" class="w-6 h-6 flex-shrink-0 text-teal-200"></i>
+        <span class="menu-text font-semibold whitespace-nowrap">Toleransi</span>
+      </a>
+
+    </nav>
+
+    <div class="p-4 border-t border-white/10">
+      <div class="flex items-center gap-3 logo-text">
+        <div class="w-8 h-8 rounded-full bg-amber-400 flex items-center justify-center text-emerald-900 font-bold">
+          SD
+        </div>
+        <div class="text-xs text-emerald-100">
+          <p class="font-bold">Ngaluran 3</p>
+          <p class="opacity-75">Tahun 2026</p>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <div class="flex-1 flex flex-col min-w-0 bg-white relative">
+    
+    <header class="h-16 bg-white border-b border-gray-200 flex items-center justify-between px-4 z-10 shadow-sm">
+      <div class="flex items-center gap-4">
+        <button id="toggleBtn" class="p-2 rounded-lg hover:bg-emerald-50 text-emerald-800 focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-colors">
+          <i data-lucide="menu" class="w-6 h-6"></i>
+        </button>
+        <h2 id="pageTitle" class="font-bold text-lg text-emerald-900 hidden sm:block">Dashboard Utama</h2>
+      </div>
+      
+      <div class="flex items-center gap-3 text-sm font-semibold text-emerald-700 bg-emerald-50 px-4 py-2 rounded-full border border-emerald-100">
+        <i data-lucide="calendar" class="w-4 h-4"></i>
+        <span id="currentDate">Ramadhan 1447 H</span>
+      </div>
+    </header>
+
+    <main class="flex-1 relative overflow-hidden bg-gray-50">
+      
+      <div id="welcomeScreen" class="absolute inset-0 pattern-bg flex flex-col items-center justify-center p-6 overflow-y-auto">
+        <div class="max-w-3xl text-center animate-fade-in">
+          <div class="inline-block bg-white p-5 rounded-3xl shadow-xl mb-8 border border-emerald-100">
+            <span class="text-7xl">✨🕌✨</span>
+          </div>
+          <h1 class="text-4xl md:text-5xl font-extrabold text-emerald-900 mb-4 tracking-tight">Ahlan Wa Sahlan</h1>
+          <h2 class="text-2xl font-bold text-emerald-700 mb-6">Di Aplikasi Pesantren Ramadhan Interaktif SDN Ngaluran 3</h2>
+          <p class="text-lg text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed">
+            Silakan pilih modul pembelajaran pada menu di sebelah kiri. Materi akan langsung terbuka di halaman ini agar lebih mudah dipelajari.
+          </p>
+          <p class="font-arabic text-3xl text-amber-600 font-bold">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</p>
+        </div>
+      </div>
+
+      <iframe id="contentFrame" class="absolute inset-0 w-full h-full border-none hidden bg-white"></iframe>
+
+    </main>
+  </div>
+
+  <script>
+    // Inisialisasi Ikon
+    lucide.createIcons();
+
+    // Elemen DOM
+    const sidebar = document.getElementById('sidebar');
+    const toggleBtn = document.getElementById('toggleBtn');
+    const menuItems = document.querySelectorAll('.menu-item');
+    const contentFrame = document.getElementById('contentFrame');
+    const welcomeScreen = document.getElementById('welcomeScreen');
+    const pageTitle = document.getElementById('pageTitle');
+
+    // 1. Logika Menyempit Otomatis (Auto-Collapse)
+    function handleResize() {
+      // Jika lebar layar kurang dari 1024px (Tablet/HP), otomatis menyempit
+      if (window.innerWidth < 1024) {
+        sidebar.classList.remove('sidebar-expanded');
+        sidebar.classList.add('sidebar-collapsed');
+      } else {
+        sidebar.classList.add('sidebar-expanded');
+        sidebar.classList.remove('sidebar-collapsed');
+      }
+    }
+    
+    // Jalankan saat pertama kali dibuka
+    handleResize();
+    // Jalankan setiap kali ukuran layar berubah
+    window.addEventListener('resize', handleResize);
+
+    // 2. Logika Tombol Toggle Manual
+    toggleBtn.addEventListener('click', () => {
+      if (sidebar.classList.contains('sidebar-expanded')) {
+        sidebar.classList.remove('sidebar-expanded');
+        sidebar.classList.add('sidebar-collapsed');
+      } else {
+        sidebar.classList.remove('sidebar-collapsed');
+        sidebar.classList.add('sidebar-expanded');
+      }
+    });
+
+    // 3. Logika Navigasi Menu (Klik Menu Kiri)
+    menuItems.forEach(item => {
+      item.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        // Hapus status 'active' dari semua menu
+        menuItems.forEach(m => m.classList.remove('active', 'border-l-4', 'border-amber-300'));
+        
+        // Tambahkan status 'active' ke menu yang diklik
+        this.classList.add('active', 'border-l-4', 'border-amber-300');
+        
+        // Ganti Judul Halaman di Navbar Atas
+        const titleText = this.querySelector('.menu-text').innerText;
+        pageTitle.innerText = titleText;
+
+        const target = this.getAttribute('data-target');
+        const href = this.getAttribute('href');
+
+        if (target === 'home') {
+          // Jika klik Beranda, sembunyikan iframe, tampilkan Welcome Screen
+          contentFrame.classList.add('hidden');
+          welcomeScreen.classList.remove('hidden');
+          contentFrame.src = "";
+        } else {
+          // Jika klik Modul, sembunyikan Welcome, tampilkan Iframe, load URL
+          welcomeScreen.classList.add('hidden');
+          contentFrame.classList.remove('hidden');
+          contentFrame.src = href;
+        }
+
+        // Jika di HP/Layar kecil, otomatis tutup menu setelah diklik agar lega
+        if (window.innerWidth < 1024) {
+          sidebar.classList.remove('sidebar-expanded');
+          sidebar.classList.add('sidebar-collapsed');
+        }
+      });
+    });
+
+    // Set Tanggal Dinamis (Opsional)
+    const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    document.getElementById('currentDate').innerText = new Date().toLocaleDateString('id-ID', dateOptions);
+  </script>
+</body>
+</html>

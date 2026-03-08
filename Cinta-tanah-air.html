@@ -1,0 +1,1261 @@
+<!doctype html>
+<html lang="id" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pesantren Ramadhan - Hubbul Wathan</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&amp;family=Nunito:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-primary: #0c4a6e;
+      --bg-secondary: #fef3c7;
+      --text-primary: #1e293b;
+      --accent-primary: #059669;
+      --accent-secondary: #dc2626;
+    }
+    * { box-sizing: border-box; }
+    .font-amiri { font-family: 'Amiri', serif; }
+    .font-nunito { font-family: 'Nunito', sans-serif; }
+    .islamic-pattern {
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.08'%3E%3Cpath d='M30 0l30 30-30 30L0 30 30 0zm0 10L10 30l20 20 20-20-20-20z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .gradient-islamic {
+      background: linear-gradient(135deg, #0c4a6e 0%, #065f46 50%, #0c4a6e 100%);
+    }
+    .card-hover {
+      transition: all 0.3s ease;
+    }
+    .card-hover:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    }
+    .slide-in {
+      animation: slideIn 0.5s ease-out;
+    }
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .fade-in {
+      animation: fadeIn 0.4s ease-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    .pulse-gentle {
+      animation: pulseGentle 2s infinite;
+    }
+    @keyframes pulseGentle {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.02); }
+    }
+    .progress-bar {
+      transition: width 0.5s ease;
+    }
+    .quiz-option {
+      transition: all 0.2s ease;
+    }
+    .quiz-option:hover:not(.selected):not(.disabled) {
+      background: #e0f2fe;
+      border-color: #0ea5e9;
+    }
+    .quiz-option.correct {
+      background: #dcfce7 !important;
+      border-color: #22c55e !important;
+    }
+    .quiz-option.incorrect {
+      background: #fee2e2 !important;
+      border-color: #ef4444 !important;
+    }
+    .star-decoration {
+      position: absolute;
+      color: #fbbf24;
+      opacity: 0.6;
+    }
+    .mosque-silhouette {
+      background: linear-gradient(to top, rgba(12,74,110,0.3) 0%, transparent 100%);
+    }
+  </style>
+  <style>body { box-sizing: border-box; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full font-nunito">
+  <div id="app" class="h-full overflow-auto"><div id="home-screen" class="min-h-full gradient-islamic islamic-pattern relative"><div class="absolute top-10 left-10 star-decoration text-4xl">
+     ✦
+    </div>
+    <div class="absolute top-20 right-16 star-decoration text-2xl">
+     ✧
+    </div>
+    <div class="absolute bottom-32 left-20 star-decoration text-3xl">
+     ✦
+    </div>
+    <div class="absolute bottom-20 right-10 star-decoration text-2xl">
+     ✧
+    </div>
+    <div class="min-h-full flex flex-col items-center justify-center p-6 relative z-10"><div class="text-center mb-8 slide-in">
+      <div class="inline-flex items-center gap-2 bg-white/20 backdrop-blur px-4 py-2 rounded-full mb-4"><span class="text-amber-300">🌙</span> <span class="text-white/90 text-sm font-semibold">Pesantren Ramadhan</span>
+      </div>
+      <h1 id="main-title" class="text-3xl md:text-5xl font-bold text-white mb-3 font-amiri">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</h1>
+      <p class="text-amber-200 text-lg md:text-xl font-semibold" id="materi-subtitle">Hubbul Wathan minal Iman</p>
+      <p class="text-white/80 mt-2">Cinta Tanah Air Sebagian dari Iman</p>
+     </div><div class="bg-white/10 backdrop-blur-md rounded-2xl p-5 mb-8 max-w-md w-full border border-white/20 slide-in" style="animation-delay: 0.1s">
+      <div class="grid grid-cols-2 gap-4 text-center">
+       <div class="bg-white/10 rounded-xl p-3"><i data-lucide="users" class="w-6 h-6 mx-auto text-amber-300 mb-1"></i>
+        <p class="text-white/70 text-xs">Kelas</p>
+        <p class="text-white font-bold">4 - 6 SD</p>
+       </div>
+       <div class="bg-white/10 rounded-xl p-3"><i data-lucide="clock" class="w-6 h-6 mx-auto text-amber-300 mb-1"></i>
+        <p class="text-white/70 text-xs">Waktu</p>
+        <p class="text-white font-bold">120 Menit</p>
+       </div>
+      </div>
+     </div><div class="grid md:grid-cols-2 gap-6 max-w-2xl w-full px-4"><button onclick="showScreen('modul')" class="bg-white rounded-2xl p-6 card-hover text-left group slide-in" style="animation-delay: 0.2s">
+       <div class="w-14 h-14 bg-emerald-100 rounded-xl flex items-center justify-center mb-4 group-hover:bg-emerald-200 transition-colors"><i data-lucide="book-open" class="w-7 h-7 text-emerald-600"></i>
+       </div><h3 class="text-xl font-bold text-slate-800 mb-2">Modul Ajar</h3><p class="text-slate-500 text-sm mb-4">Panduan lengkap pembelajaran untuk guru</p>
+       <div class="flex items-center text-emerald-600 font-semibold text-sm"><span>Buka Modul</span> <i data-lucide="arrow-right" class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform"></i>
+       </div></button> <button onclick="showScreen('media')" class="bg-white rounded-2xl p-6 card-hover text-left group slide-in" style="animation-delay: 0.3s">
+       <div class="w-14 h-14 bg-sky-100 rounded-xl flex items-center justify-center mb-4 group-hover:bg-sky-200 transition-colors"><i data-lucide="presentation" class="w-7 h-7 text-sky-600"></i>
+       </div><h3 class="text-xl font-bold text-slate-800 mb-2">Media Interaktif</h3><p class="text-slate-500 text-sm mb-4">Pembelajaran interaktif untuk siswa</p>
+       <div class="flex items-center text-sky-600 font-semibold text-sm"><span>Mulai Belajar</span> <i data-lucide="arrow-right" class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform"></i>
+       </div></button>
+     </div><p class="text-white/50 text-sm mt-8 text-center"><img src="https://flagcdn.com/id.svg" class="inline-block" style="height: 1em; width: auto; vertical-align: -0.125em; border-radius: 0.1em; box-shadow: 0 1px 2px rgba(0,0,0,0.1);" alt="Bendera Indonesia"> Islam Rahmatan Lil-Alamin <img src="https://flagcdn.com/id.svg" class="inline-block" style="height: 1em; width: auto; vertical-align: -0.125em; border-radius: 0.1em; box-shadow: 0 1px 2px rgba(0,0,0,0.1);" alt="Bendera Indonesia"></p>
+    </div>
+   </div><div id="modul-screen" class="min-h-full bg-amber-50 hidden"><div class="gradient-islamic text-white p-4 sticky top-0 z-20">
+     <div class="max-w-4xl mx-auto flex items-center gap-4"><button onclick="showScreen('home')" class="p-2 hover:bg-white/20 rounded-lg transition-colors"> <i data-lucide="arrow-left" class="w-6 h-6"></i> </button>
+      <div>
+       <h1 class="text-xl font-bold">📚 Modul Ajar</h1>
+       <p class="text-white/80 text-sm">Hubbul Wathan minal Iman</p>
+      </div>
+     </div>
+    </div><div class="max-w-4xl mx-auto p-4 pb-8"><div class="bg-white rounded-2xl p-6 shadow-lg mb-6 slide-in">
+      <h2 class="text-xl font-bold text-emerald-700 mb-4 flex items-center gap-2"><i data-lucide="info" class="w-5 h-5"></i> Informasi Umum</h2>
+      <div class="grid md:grid-cols-2 gap-4">
+       <div class="space-y-3">
+        <div class="flex items-start gap-3">
+         <div class="w-8 h-8 bg-emerald-100 rounded-lg flex items-center justify-center flex-shrink-0"><i data-lucide="book-text" class="w-4 h-4 text-emerald-600"></i>
+         </div>
+         <div>
+          <p class="text-slate-500 text-xs">Mata Pelajaran</p>
+          <p class="font-semibold text-slate-800">Pesantren Ramadhan</p>
+         </div>
+        </div>
+        <div class="flex items-start gap-3">
+         <div class="w-8 h-8 bg-sky-100 rounded-lg flex items-center justify-center flex-shrink-0"><i data-lucide="target" class="w-4 h-4 text-sky-600"></i>
+         </div>
+         <div>
+          <p class="text-slate-500 text-xs">Materi</p>
+          <p class="font-semibold text-slate-800">Hubbul Wathan minal Iman</p>
+          <p class="text-slate-600 text-sm">(Cinta Tanah Air Sebagian dari Iman)</p>
+         </div>
+        </div>
+       </div>
+       <div class="space-y-3">
+        <div class="flex items-start gap-3">
+         <div class="w-8 h-8 bg-amber-100 rounded-lg flex items-center justify-center flex-shrink-0"><i data-lucide="users" class="w-4 h-4 text-amber-600"></i>
+         </div>
+         <div>
+          <p class="text-slate-500 text-xs">Sasaran</p>
+          <p class="font-semibold text-slate-800">Kelas 4 - 6 SD</p>
+         </div>
+        </div>
+        <div class="flex items-start gap-3">
+         <div class="w-8 h-8 bg-rose-100 rounded-lg flex items-center justify-center flex-shrink-0"><i data-lucide="clock" class="w-4 h-4 text-rose-600"></i>
+         </div>
+         <div>
+          <p class="text-slate-500 text-xs">Alokasi Waktu</p>
+          <p class="font-semibold text-slate-800">120 Menit (4 x 30 menit)</p>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div><div class="bg-white rounded-2xl p-6 shadow-lg mb-6 slide-in" style="animation-delay: 0.1s">
+      <h2 class="text-xl font-bold text-emerald-700 mb-4 flex items-center gap-2"><i data-lucide="flag" class="w-5 h-5"></i> Tujuan Pembelajaran</h2>
+      <ul class="space-y-2">
+       <li class="flex items-start gap-3"><span class="w-6 h-6 bg-emerald-500 text-white rounded-full flex items-center justify-center flex-shrink-0 text-sm font-bold">1</span> <p class="text-slate-700">Siswa dapat memahami makna Hubbul Wathan minal Iman</p></li>
+       <li class="flex items-start gap-3"><span class="w-6 h-6 bg-emerald-500 text-white rounded-full flex items-center justify-center flex-shrink-0 text-sm font-bold">2</span> <p class="text-slate-700">Siswa dapat menjelaskan bentuk-bentuk cinta tanah air dalam Islam</p></li>
+       <li class="flex items-start gap-3"><span class="w-6 h-6 bg-emerald-500 text-white rounded-full flex items-center justify-center flex-shrink-0 text-sm font-bold">3</span> <p class="text-slate-700">Siswa dapat membuat poster sederhana tentang cinta tanah air</p></li>
+       <li class="flex items-start gap-3"><span class="w-6 h-6 bg-emerald-500 text-white rounded-full flex items-center justify-center flex-shrink-0 text-sm font-bold">4</span> <p class="text-slate-700">Siswa dapat menyanyikan lagu Yalal Wathan dengan penuh semangat</p></li>
+      </ul>
+     </div><div class="bg-white rounded-2xl p-6 shadow-lg mb-6 slide-in" style="animation-delay: 0.15s">
+      <h2 class="text-xl font-bold text-sky-700 mb-4 flex items-center gap-2"><i data-lucide="clipboard-list" class="w-5 h-5"></i> Langkah Persiapan (Kebutuhan Pembelajaran)</h2>
+      <div class="grid md:grid-cols-2 gap-4">
+       <div>
+        <h3 class="font-semibold text-slate-800 mb-3 flex items-center gap-2"><i data-lucide="package" class="w-4 h-4 text-sky-600"></i> Alat &amp; Bahan</h3>
+        <ul class="space-y-2 text-slate-700 text-sm">
+         <li class="flex items-center gap-2"><span class="text-sky-500">✓</span> Kertas gambar/karton A4</li>
+         <li class="flex items-center gap-2"><span class="text-sky-500">✓</span> Pensil warna/spidol/crayon</li>
+         <li class="flex items-center gap-2"><span class="text-sky-500">✓</span> Penggaris dan penghapus</li>
+         <li class="flex items-center gap-2"><span class="text-sky-500">✓</span> Laptop/proyektor untuk video</li>
+         <li class="flex items-center gap-2"><span class="text-sky-500">✓</span> Speaker/pengeras suara</li>
+        </ul>
+       </div>
+       <div>
+        <h3 class="font-semibold text-slate-800 mb-3 flex items-center gap-2"><i data-lucide="settings" class="w-4 h-4 text-sky-600"></i> Persiapan Guru</h3>
+        <ul class="space-y-2 text-slate-700 text-sm">
+         <li class="flex items-center gap-2"><span class="text-sky-500">✓</span> Siapkan materi tentang nasionalisme Islami</li>
+         <li class="flex items-center gap-2"><span class="text-sky-500">✓</span> Siapkan contoh poster cinta tanah air</li>
+         <li class="flex items-center gap-2"><span class="text-sky-500">✓</span> Cek koneksi internet untuk video</li>
+         <li class="flex items-center gap-2"><span class="text-sky-500">✓</span> Siapkan lembar penilaian proyek</li>
+         <li class="flex items-center gap-2"><span class="text-sky-500">✓</span> Hafal lirik lagu Yalal Wathan</li>
+        </ul>
+       </div>
+      </div>
+     </div><div class="bg-gradient-to-br from-emerald-500 to-teal-600 rounded-2xl p-6 shadow-lg mb-6 text-white slide-in" style="animation-delay: 0.2s">
+      <h2 class="text-xl font-bold mb-4 flex items-center gap-2"><i data-lucide="play-circle" class="w-5 h-5"></i> Kegiatan Pembukaan (15 Menit)</h2>
+      <div class="space-y-4">
+       <div class="bg-white/20 backdrop-blur rounded-xl p-4">
+        <h3 class="font-bold mb-2 flex items-center gap-2"><span class="w-6 h-6 bg-white/30 rounded-full flex items-center justify-center text-sm">1</span> Salam &amp; Menanyakan Kabar (2 menit)</h3>
+        <p class="text-white/90 text-sm ml-8">"Assalamu'alaikum Wr. Wb. Bagaimana kabar anak-anak sholih dan sholihah hari ini? Alhamdulillah..."</p>
+       </div>
+       <div class="bg-white/20 backdrop-blur rounded-xl p-4">
+        <h3 class="font-bold mb-2 flex items-center gap-2"><span class="w-6 h-6 bg-white/30 rounded-full flex items-center justify-center text-sm">2</span> Doa Sebelum Belajar (3 menit)</h3>
+        <p class="text-white/90 text-sm ml-8 font-amiri text-lg">رَضِيْتُ بِاللهِ رَبًّا وَبِالْإِسْلَامِ دِيْنًا وَبِمُحَمَّدٍ نَبِيًّا وَرَسُوْلًا رَبِّ زِدْنِيْ عِلْمًا وَارْزُقْنِيْ فَهْمًا</p>
+       </div>
+       <div class="bg-white/20 backdrop-blur rounded-xl p-4">
+        <h3 class="font-bold mb-2 flex items-center gap-2"><span class="w-6 h-6 bg-white/30 rounded-full flex items-center justify-center text-sm">3</span> Apersepsi (5 menit)</h3>
+        <p class="text-white/90 text-sm ml-8">"Siapa yang tahu negara kita tercinta ini namanya apa? Siapa yang pernah upacara bendera? Mengapa kita harus mencintai Indonesia?"</p>
+       </div>
+       <div class="bg-white/20 backdrop-blur rounded-xl p-4">
+        <h3 class="font-bold mb-2 flex items-center gap-2"><span class="w-6 h-6 bg-white/30 rounded-full flex items-center justify-center text-sm">4</span> Motivasi (5 menit)</h3>
+        <p class="text-white/90 text-sm ml-8">"Tahukah kalian bahwa mencintai tanah air adalah bagian dari iman? Mari kita pelajari bersama bagaimana Islam mengajarkan kita untuk mencintai negeri kita!"</p>
+       </div>
+      </div>
+     </div><div class="bg-white rounded-2xl p-6 shadow-lg mb-6 slide-in" style="animation-delay: 0.25s">
+      <h2 class="text-xl font-bold text-sky-700 mb-4 flex items-center gap-2"><i data-lucide="layers" class="w-5 h-5"></i> Kegiatan Inti - PjBL (90 Menit)</h2>
+      <p class="text-slate-600 text-sm mb-4 bg-sky-50 p-3 rounded-lg"><strong>Model Pembelajaran:</strong> Project Based Learning (PjBL)</p>
+      <div class="space-y-4">
+       <div class="border-l-4 border-sky-500 pl-4 py-2">
+        <h3 class="font-bold text-slate-800 flex items-center gap-2"><span class="bg-sky-500 text-white text-xs px-2 py-1 rounded">10'</span> Menentukan Pertanyaan Dasar</h3>
+        <ul class="text-slate-600 text-sm mt-2 space-y-1">
+         <li>• "Apa arti Hubbul Wathan minal Iman?"</li>
+         <li>• "Bagaimana cara muslim mencintai tanah airnya?"</li>
+         <li>• "Apa hubungan Islam dengan cinta tanah air?"</li>
+        </ul>
+       </div>
+       <div class="border-l-4 border-emerald-500 pl-4 py-2">
+        <h3 class="font-bold text-slate-800 flex items-center gap-2"><span class="bg-emerald-500 text-white text-xs px-2 py-1 rounded">15'</span> Membuat Desain Proyek</h3>
+        <div class="text-slate-600 text-sm mt-2 bg-emerald-50 p-3 rounded-lg">
+         <p class="font-semibold text-emerald-700">📝 Proyek Individu: Poster Sederhana</p>
+         <p class="mt-1">Tema pilihan:</p>
+         <ul class="mt-1 space-y-1">
+          <li>✏️ "Aku Islam, Aku Cinta Indonesia"</li>
+          <li>✏️ "Islam Rahmatan Lil-Alamin"</li>
+         </ul>
+        </div>
+       </div>
+       <div class="border-l-4 border-amber-500 pl-4 py-2">
+        <h3 class="font-bold text-slate-800 flex items-center gap-2"><span class="bg-amber-500 text-white text-xs px-2 py-1 rounded">5'</span> Menyusun Penjadwalan</h3>
+        <p class="text-slate-600 text-sm mt-2">Siswa menyusun langkah pengerjaan poster: sketsa → pewarnaan → finishing</p>
+       </div>
+       <div class="border-l-4 border-purple-500 pl-4 py-2">
+        <h3 class="font-bold text-slate-800 flex items-center gap-2"><span class="bg-purple-500 text-white text-xs px-2 py-1 rounded">30'</span> Memonitor Kemajuan Proyek</h3>
+        <p class="text-slate-600 text-sm mt-2">Guru berkeliling memantau dan membimbing siswa dalam pengerjaan poster</p>
+       </div>
+       <div class="border-l-4 border-rose-500 pl-4 py-2">
+        <h3 class="font-bold text-slate-800 flex items-center gap-2"><span class="bg-rose-500 text-white text-xs px-2 py-1 rounded">10'</span> Penilaian Hasil</h3>
+        <p class="text-slate-600 text-sm mt-2">Beberapa siswa mempresentasikan posternya di depan kelas</p>
+       </div>
+       <div class="border-l-4 border-indigo-500 pl-4 py-2">
+        <h3 class="font-bold text-slate-800 flex items-center gap-2"><span class="bg-indigo-500 text-white text-xs px-2 py-1 rounded">5'</span> Evaluasi Pengalaman</h3>
+        <p class="text-slate-600 text-sm mt-2">Refleksi singkat tentang proses pembuatan poster dan pembelajaran hari ini</p>
+       </div>
+       <div class="border-l-4 border-teal-500 pl-4 py-2 bg-teal-50 rounded-r-lg">
+        <h3 class="font-bold text-slate-800 flex items-center gap-2"><span class="bg-teal-500 text-white text-xs px-2 py-1 rounded">10'</span> 🎵 Ice Breaking: Lagu Yalal Wathan</h3>
+        <p class="text-slate-600 text-sm mt-2">Menyanyikan bersama lagu Yalal Wathan dengan penuh semangat</p>
+       </div>
+       <div class="border-l-4 border-orange-500 pl-4 py-2">
+        <h3 class="font-bold text-slate-800 flex items-center gap-2"><span class="bg-orange-500 text-white text-xs px-2 py-1 rounded">5'</span> 📝 Kuis</h3>
+        <p class="text-slate-600 text-sm mt-2">Kuis singkat untuk mengukur pemahaman siswa tentang materi</p>
+       </div>
+      </div>
+     </div><div class="bg-gradient-to-br from-rose-500 to-pink-600 rounded-2xl p-6 shadow-lg text-white slide-in" style="animation-delay: 0.3s">
+      <h2 class="text-xl font-bold mb-4 flex items-center gap-2"><i data-lucide="flag-triangle-right" class="w-5 h-5"></i> Kegiatan Penutup (15 Menit)</h2>
+      <div class="space-y-4">
+       <div class="bg-white/20 backdrop-blur rounded-xl p-4">
+        <h3 class="font-bold mb-2">1. Penyimpulan (5 menit)</h3>
+        <p class="text-white/90 text-sm">Guru dan siswa bersama-sama menyimpulkan pembelajaran tentang Hubbul Wathan minal Iman</p>
+       </div>
+       <div class="bg-white/20 backdrop-blur rounded-xl p-4">
+        <h3 class="font-bold mb-2">2. Refleksi Akhir (3 menit)</h3>
+        <p class="text-white/90 text-sm">"Apa yang sudah kalian pelajari hari ini? Bagaimana cara kalian menunjukkan cinta tanah air?"</p>
+       </div>
+       <div class="bg-white/20 backdrop-blur rounded-xl p-4">
+        <h3 class="font-bold mb-2">3. Doa Sesudah Belajar (5 menit)</h3>
+        <p class="text-white/90 text-sm font-amiri text-lg">اَللّٰهُمَّ أَرِنَا الْحَقَّ حَقًّا وَارْزُقْنَا اتِّبَاعَهُ وَأَرِنَا الْبَاطِلَ بَاطِلًا وَارْزُقْنَا اجْتِنَابَهُ</p>
+       </div>
+       <div class="bg-white/20 backdrop-blur rounded-xl p-4">
+        <h3 class="font-bold mb-2">4. Salam (2 menit)</h3>
+        <p class="text-white/90 text-sm">"Wassalamu'alaikum Warahmatullahi Wabarakatuh"</p>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div><div id="media-screen" class="min-h-full bg-slate-100 hidden"><div class="gradient-islamic text-white p-4 sticky top-0 z-20">
+     <div class="max-w-4xl mx-auto">
+      <div class="flex items-center gap-4 mb-3"><button onclick="showScreen('home')" class="p-2 hover:bg-white/20 rounded-lg transition-colors"> <i data-lucide="arrow-left" class="w-6 h-6"></i> </button>
+       <div class="flex-1">
+        <h1 class="text-lg font-bold">📖 Media Pembelajaran Interaktif</h1>
+        <p class="text-white/80 text-sm" id="current-activity">Kegiatan Pembuka</p>
+       </div>
+       <div class="text-right">
+        <p class="text-amber-300 text-sm font-bold" id="step-indicator">1/13</p>
+       </div>
+      </div>
+      <div class="w-full bg-white/20 rounded-full h-2">
+       <div id="progress-bar" class="bg-amber-400 h-2 rounded-full progress-bar" style="width: 7.69%"></div>
+      </div>
+     </div>
+    </div><div id="media-content" class="max-w-4xl mx-auto p-4 pb-8"></div><div class="fixed bottom-0 left-0 right-0 bg-white border-t shadow-lg p-4">
+     <div class="max-w-4xl mx-auto flex items-center justify-between gap-4"><button id="prev-btn" onclick="prevStep()" class="flex items-center gap-2 px-4 py-2 bg-slate-200 hover:bg-slate-300 rounded-xl font-semibold text-slate-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"> <i data-lucide="chevron-left" class="w-5 h-5"></i> <span class="hidden sm:inline">Sebelumnya</span> </button>
+      <div class="flex gap-2 overflow-x-auto"><button onclick="goToStep(0)" class="step-dot w-3 h-3 rounded-full bg-emerald-500"></button> <button onclick="goToStep(1)" class="step-dot w-3 h-3 rounded-full bg-slate-300"></button> <button onclick="goToStep(2)" class="step-dot w-3 h-3 rounded-full bg-slate-300"></button> <button onclick="goToStep(3)" class="step-dot w-3 h-3 rounded-full bg-slate-300"></button> <button onclick="goToStep(4)" class="step-dot w-3 h-3 rounded-full bg-slate-300"></button> <button onclick="goToStep(5)" class="step-dot w-3 h-3 rounded-full bg-slate-300"></button> <button onclick="goToStep(6)" class="step-dot w-3 h-3 rounded-full bg-slate-300"></button> <button onclick="goToStep(7)" class="step-dot w-3 h-3 rounded-full bg-slate-300"></button> <button onclick="goToStep(8)" class="step-dot w-3 h-3 rounded-full bg-slate-300"></button> <button onclick="goToStep(9)" class="step-dot w-3 h-3 rounded-full bg-slate-300"></button> <button onclick="goToStep(10)" class="step-dot w-3 h-3 rounded-full bg-slate-300"></button> <button onclick="goToStep(11)" class="step-dot w-3 h-3 rounded-full bg-slate-300"></button> <button onclick="goToStep(12)" class="step-dot w-3 h-3 rounded-full bg-slate-300"></button>
+      </div><button id="next-btn" onclick="nextStep()" class="flex items-center gap-2 px-4 py-2 bg-emerald-500 hover:bg-emerald-600 rounded-xl font-semibold text-white transition-colors"> <span class="hidden sm:inline">Selanjutnya</span> <i data-lucide="chevron-right" class="w-5 h-5"></i> </button>
+     </div>
+    </div>
+   </div>
+  </div>
+  <script>
+    // Config
+    const defaultConfig = {
+      app_title: 'Pesantren Ramadhan',
+      materi_title: 'Hubbul Wathan minal Iman',
+      primary_color: '#0c4a6e',
+      secondary_color: '#fef3c7',
+      text_color: '#1e293b',
+      accent_color: '#059669',
+      font_family: 'Nunito',
+      font_size: 16
+    };
+    
+    let config = { ...defaultConfig };
+    let currentStep = 0;
+    const totalSteps = 13;
+    let quizAnswered = false;
+    let quizScore = 0;
+    const totalSteps_old = 13;
+    
+    // Learning content for each step
+    const learningContent = [
+      // Step 0: Salam & Kabar
+      {
+        title: 'Salam & Menanyakan Kabar',
+        category: 'Kegiatan Pembuka',
+        time: '2 menit',
+        content: `
+          <div class="bg-white rounded-2xl p-6 shadow-lg slide-in">
+            <div class="text-center mb-6">
+              <div class="text-6xl mb-4">🌙</div>
+              <h2 class="text-3xl font-bold text-emerald-700 font-amiri mb-2">
+                اَلسَّلَامُ عَلَيْكُمْ وَرَحْمَةُ اللهِ وَبَرَكَاتُهُ
+              </h2>
+              <p class="text-xl text-slate-600">Assalamu'alaikum Warahmatullahi Wabarakatuh</p>
+            </div>
+            <div class="bg-emerald-50 rounded-xl p-5 text-center">
+              <p class="text-lg text-emerald-800 mb-3">Selamat datang anak-anak sholih dan sholihah! 👋</p>
+              <p class="text-slate-600">Bagaimana kabarnya hari ini?</p>
+              <div class="flex justify-center gap-4 mt-4 flex-wrap">
+                <button onclick="this.classList.add('ring-4', 'ring-emerald-300')" class="px-6 py-3 bg-emerald-500 text-white rounded-xl font-semibold hover:bg-emerald-600 transition-all">
+                  😊 Alhamdulillah Baik!
+                </button>
+                <button onclick="this.classList.add('ring-4', 'ring-amber-300')" class="px-6 py-3 bg-amber-500 text-white rounded-xl font-semibold hover:bg-amber-600 transition-all">
+                  🤲 Alhamdulillah Sehat!
+                </button>
+              </div>
+            </div>
+          </div>
+        `
+      },
+      // Step 1: Doa Sebelum Belajar
+      {
+        title: 'Doa Sebelum Belajar',
+        category: 'Kegiatan Pembuka',
+        time: '3 menit',
+        content: `
+          <div class="bg-white rounded-2xl p-6 shadow-lg slide-in">
+            <div class="text-center mb-6">
+              <div class="text-5xl mb-3">🤲</div>
+              <h2 class="text-xl font-bold text-emerald-700">Mari Berdoa Bersama</h2>
+            </div>
+            <div class="bg-gradient-to-br from-emerald-500 to-teal-600 rounded-xl p-6 text-white text-center mb-4">
+              <p class="text-2xl font-amiri leading-loose mb-4">
+                رَضِيْتُ بِاللهِ رَبًّا وَبِالْإِسْلَامِ دِيْنًا وَبِمُحَمَّدٍ نَبِيًّا وَرَسُوْلًا
+              </p>
+              <p class="text-xl font-amiri leading-loose">
+                رَبِّ زِدْنِيْ عِلْمًا وَارْزُقْنِيْ فَهْمًا
+              </p>
+            </div>
+            <div class="bg-amber-50 rounded-xl p-4">
+              <p class="text-slate-700 font-semibold mb-2">Artinya:</p>
+              <p class="text-slate-600 text-sm italic">
+                "Aku ridha Allah sebagai Tuhanku, Islam sebagai agamaku, dan Muhammad sebagai Nabi dan Rasul-ku. Ya Tuhanku, tambahkanlah ilmuku dan berilah aku pemahaman."
+              </p>
+            </div>
+            <div class="mt-4 text-center">
+              <p class="text-emerald-600 font-semibold">آمِيْن يَا رَبَّ الْعَالَمِيْن</p>
+              <p class="text-slate-500 text-sm">Aamiin Ya Rabbal 'Alamiin</p>
+            </div>
+          </div>
+        `
+      },
+      // Step 2: Apersepsi
+      {
+        title: 'Apersepsi',
+        category: 'Kegiatan Pembuka',
+        time: '5 menit',
+        content: `
+          <div class="bg-white rounded-2xl p-6 shadow-lg slide-in">
+            <div class="text-center mb-6">
+              <div class="text-5xl mb-3"><img src="https://flagcdn.com/id.svg" class="inline-block" style="height: 1em; width: auto; vertical-align: -0.125em; border-radius: 0.1em; box-shadow: 0 1px 2px rgba(0,0,0,0.1);" alt="Bendera Indonesia"></div>
+              <h2 class="text-xl font-bold text-sky-700">Mari Kita Berpikir...</h2>
+            </div>
+            <div class="space-y-4">
+              <div class="bg-sky-50 rounded-xl p-4 border-l-4 border-sky-500">
+                <p class="text-sky-800 font-semibold flex items-center gap-2">
+                  <span class="text-2xl">❓</span> Siapa yang tahu negara kita tercinta ini namanya apa?
+                </p>
+              </div>
+              <div class="bg-emerald-50 rounded-xl p-4 border-l-4 border-emerald-500">
+                <p class="text-emerald-800 font-semibold flex items-center gap-2">
+                  <span class="text-2xl">🏴</span> Siapa yang pernah mengikuti upacara bendera?
+                </p>
+              </div>
+              <div class="bg-amber-50 rounded-xl p-4 border-l-4 border-amber-500">
+                <p class="text-amber-800 font-semibold flex items-center gap-2">
+                  <span class="text-2xl">💖</span> Mengapa kita harus mencintai Indonesia?
+                </p>
+              </div>
+            </div>
+            <div class="mt-6 bg-gradient-to-r from-red-500 to-red-600 rounded-xl p-4 text-white text-center">
+              <p class="font-bold text-lg"><img src="https://flagcdn.com/id.svg" class="inline-block" style="height: 1em; width: auto; vertical-align: -0.125em; border-radius: 0.1em; box-shadow: 0 1px 2px rgba(0,0,0,0.1);" alt="Bendera Indonesia"> INDONESIA <img src="https://flagcdn.com/id.svg" class="inline-block" style="height: 1em; width: auto; vertical-align: -0.125em; border-radius: 0.1em; box-shadow: 0 1px 2px rgba(0,0,0,0.1);" alt="Bendera Indonesia"></p>
+              <p class="text-white/90 text-sm">Negeri tercinta tempat kita dilahirkan</p>
+            </div>
+          </div>
+        `
+      },
+      // Step 3: Motivasi
+      {
+        title: 'Motivasi',
+        category: 'Kegiatan Pembuka',
+        time: '5 menit',
+        content: `
+          <div class="bg-white rounded-2xl p-6 shadow-lg slide-in">
+            <div class="text-center mb-6">
+              <div class="text-5xl mb-3">✨</div>
+              <h2 class="text-xl font-bold text-purple-700">Tahukah Kalian?</h2>
+            </div>
+            <div class="bg-gradient-to-br from-purple-500 to-indigo-600 rounded-xl p-6 text-white text-center mb-4">
+              <p class="text-2xl font-amiri mb-3">حُبُّ الْوَطَنِ مِنَ الْإِيْمَانِ</p>
+              <p class="text-xl font-bold">Hubbul Wathan Minal Iman</p>
+              <p class="text-white/90 mt-2">"Cinta Tanah Air Sebagian dari Iman"</p>
+            </div>
+            <div class="bg-purple-50 rounded-xl p-4">
+              <p class="text-purple-800 text-center">
+                <span class="text-3xl">💝</span>
+              </p>
+              <p class="text-slate-700 mt-2 text-center">
+                Islam mengajarkan kita untuk <strong>mencintai tanah air</strong> tempat kita dilahirkan. Seorang muslim yang baik adalah yang juga menjadi <strong>warga negara yang baik!</strong>
+              </p>
+            </div>
+            <div class="mt-4 grid grid-cols-3 gap-3 text-center">
+              <div class="bg-emerald-100 rounded-xl p-3">
+                <p class="text-2xl">🕌</p>
+                <p class="text-xs text-emerald-700 font-semibold">Muslim</p>
+              </div>
+              <div class="bg-red-100 rounded-xl p-3">
+                <p class="text-2xl"><img src="https://flagcdn.com/id.svg" class="inline-block" style="height: 1em; width: auto; vertical-align: -0.125em; border-radius: 0.1em; box-shadow: 0 1px 2px rgba(0,0,0,0.1);" alt="Bendera Indonesia"></p>
+                <p class="text-xs text-red-700 font-semibold">Indonesia</p>
+              </div>
+              <div class="bg-amber-100 rounded-xl p-3">
+                <p class="text-2xl">💖</p>
+                <p class="text-xs text-amber-700 font-semibold">Cinta</p>
+              </div>
+            </div>
+          </div>
+        `
+      },
+      // Step 4: Pertanyaan Dasar (PjBL)
+      {
+        title: 'Menentukan Pertanyaan Dasar',
+        category: 'Kegiatan Inti - PjBL',
+        time: '10 menit',
+        content: `
+          <div class="bg-white rounded-2xl p-6 shadow-lg slide-in">
+            <div class="text-center mb-6">
+              <div class="inline-flex items-center gap-2 bg-sky-100 px-4 py-2 rounded-full mb-3">
+                <i data-lucide="help-circle" class="w-5 h-5 text-sky-600"></i>
+                <span class="text-sky-700 font-semibold">Project Based Learning</span>
+              </div>
+              <h2 class="text-xl font-bold text-sky-700">Mari Kita Temukan Jawabannya!</h2>
+            </div>
+            
+            <div class="bg-gradient-to-br from-emerald-500 to-teal-600 rounded-xl p-5 text-white mb-5">
+              <div class="flex items-start gap-3 mb-3">
+                <span class="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center font-bold text-sm">1</span>
+                <h3 class="text-lg font-bold">Apa arti Hubbul Wathan minal Iman?</h3>
+              </div>
+              <div class="bg-white/10 backdrop-blur rounded-lg p-4 ml-11">
+                <p class="text-white/95 mb-3">
+                  <strong>Hubbul Wathan minal Iman</strong> berarti "cinta tanah air adalah sebagian dari iman."
+                </p>
+                <p class="text-white/90 text-sm leading-relaxed">
+                  Ungkapan ini mengajarkan bahwa seorang muslim sebaiknya mencintai dan menjaga negeri tempat ia tinggal. Dengan mencintai tanah air, kita menunjukkan rasa syukur kepada Allah atas nikmat tempat tinggal yang aman dan damai.
+                </p>
+              </div>
+            </div>
+            
+            <div class="bg-gradient-to-br from-sky-500 to-blue-600 rounded-xl p-5 text-white mb-5">
+              <div class="flex items-start gap-3 mb-3">
+                <span class="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center font-bold text-sm">2</span>
+                <h3 class="text-lg font-bold">Bagaimana cara muslim mencintai tanah airnya?</h3>
+              </div>
+              <div class="bg-white/10 backdrop-blur rounded-lg p-4 ml-11">
+                <p class="text-white/95 mb-3 font-semibold">Seorang muslim dapat mencintai tanah air dengan berbagai cara:</p>
+                <ul class="space-y-2 text-sm">
+                  <li class="flex items-start gap-2">
+                    <span class="text-lg">•</span>
+                    <span class="text-white/90">Menjaga persatuan dan kerukunan antar masyarakat</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-lg">•</span>
+                    <span class="text-white/90">Mematuhi aturan negara dan hukum yang berlaku</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-lg">•</span>
+                    <span class="text-white/90">Menjaga kebersihan dan kelestarian lingkungan</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-lg">•</span>
+                    <span class="text-white/90">Belajar dengan rajin agar dapat memajukan bangsa</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-lg">•</span>
+                    <span class="text-white/90">Menghormati simbol negara, seperti bendera dan lagu kebangsaan Indonesia Raya</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-lg">•</span>
+                    <span class="text-white/90">Tidak merusak fasilitas umum dan menjaga keamanan</span>
+                  </li>
+                </ul>
+                <p class="text-white/90 text-sm mt-3 italic">
+                  Semua sikap tersebut menunjukkan tanggung jawab kita sebagai warga negara Indonesia.
+                </p>
+              </div>
+            </div>
+            
+            <div class="bg-gradient-to-br from-purple-500 to-indigo-600 rounded-xl p-5 text-white">
+              <div class="flex items-start gap-3 mb-3">
+                <span class="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center font-bold text-sm">3</span>
+                <h3 class="text-lg font-bold">Apa hubungan Islam dengan cinta tanah air?</h3>
+              </div>
+              <div class="bg-white/10 backdrop-blur rounded-lg p-4 ml-11">
+                <p class="text-white/95 mb-3">
+                  Islam mengajarkan bahwa agama ini adalah <strong>rahmat bagi seluruh alam</strong>, yang dikenal dengan istilah <strong>Islam Rahmatan lil 'Alamin</strong>.
+                </p>
+                <p class="text-white/90 text-sm mb-3">
+                  Hal ini berarti ajaran Islam membawa kedamaian, kasih sayang, dan kebaikan bagi semua makhluk.
+                </p>
+                <p class="text-white/90 text-sm mb-3">
+                  Dengan mencintai tanah air, seorang muslim ikut mewujudkan nilai rahmatan lil 'alamin, seperti menjaga kedamaian, menghargai perbedaan, serta berusaha menciptakan kehidupan yang aman dan sejahtera di masyarakat.
+                </p>
+                <p class="text-white/90 text-sm mb-3">
+                  Sikap ini juga diteladankan oleh Nabi Muhammad yang mengajarkan umatnya untuk hidup rukun dan tidak membuat kerusakan di bumi.
+                </p>
+                <div class="bg-white/20 rounded-lg p-3 mt-3">
+                  <p class="text-white/95 text-sm">
+                    <strong>Kesimpulan:</strong> Ketika umat Islam menjaga persatuan dan berbuat baik kepada sesama di negara Indonesia, mereka telah menjalankan ajaran Islam sebagai <strong>rahmat bagi seluruh alam (Rahmatan lil 'Alamin).</strong>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        `
+      },
+      // Step 4b: Hikmah (Manfaat) Cinta Tanah Air
+      {
+        title: 'Hikmah Cinta Tanah Air',
+        category: 'Kegiatan Inti - PjBL',
+        time: '10 menit',
+        content: `
+          <div class="bg-white rounded-2xl p-6 shadow-lg slide-in">
+            <div class="text-center mb-6">
+              <div class="text-5xl mb-3">🌟</div>
+              <h2 class="text-xl font-bold text-amber-700">Hikmah & Manfaat Cinta Tanah Air</h2>
+              <p class="text-slate-500 text-sm">Apa kebaikan yang kita dapatkan?</p>
+            </div>
+            
+            <div class="space-y-4">
+              <div class="bg-gradient-to-br from-emerald-500 to-teal-600 rounded-xl p-5 text-white">
+                <div class="flex items-start gap-3 mb-2">
+                  <span class="text-2xl">🤝</span>
+                  <h3 class="text-lg font-bold">Menumbuhkan Persatuan dan Kesatuan Bangsa</h3>
+                </div>
+                <p class="text-white/90 text-sm ml-11">
+                  Ketika semua rakyat mencintai tanah air, kita akan bersatu padu melawan setiap ancaman. Perbedaan agama, suku, dan budaya tidak akan memecah belah kita.
+                </p>
+              </div>
+              
+              <div class="bg-gradient-to-br from-sky-500 to-blue-600 rounded-xl p-5 text-white">
+                <div class="flex items-start gap-3 mb-2">
+                  <span class="text-2xl">☮️</span>
+                  <h3 class="text-lg font-bold">Menciptakan Keamanan dan Kedamaian</h3>
+                </div>
+                <p class="text-white/90 text-sm ml-11">
+                  Negara yang aman dan damai tercipta karena setiap warga menjaga keamanan dan tidak membuat kegaduhan. Ini adalah nikmat terbesar yang bisa kita rasakan.
+                </p>
+              </div>
+              
+              <div class="bg-gradient-to-br from-purple-500 to-pink-600 rounded-xl p-5 text-white">
+                <div class="flex items-start gap-3 mb-2">
+                  <span class="text-2xl">💖</span>
+                  <h3 class="text-lg font-bold">Membuat Masyarakat Saling Menghormati</h3>
+                </div>
+                <p class="text-white/90 text-sm ml-11">
+                  Cinta tanah air mengajarkan kita untuk menghormati sesama warga negara tanpa memandang perbedaan. Kita menjadi masyarakat yang lebih sopan dan berempati.
+                </p>
+              </div>
+              
+              <div class="bg-gradient-to-br from-orange-500 to-red-600 rounded-xl p-5 text-white">
+                <div class="flex items-start gap-3 mb-2">
+                  <span class="text-2xl">📈</span>
+                  <h3 class="text-lg font-bold">Membantu Kemajuan Negara</h3>
+                </div>
+                <p class="text-white/90 text-sm ml-11">
+                  Ketika kita belajar rajin, bekerja keras, dan berinovasi untuk negara, Indonesia akan maju dan berkembang. Kemajuan negara adalah kebanggaan kita bersama.
+                </p>
+              </div>
+            </div>
+            
+            <div class="mt-6 bg-amber-100 rounded-xl p-4 text-center border-2 border-amber-400">
+              <p class="text-amber-800 font-bold text-lg">
+                <img src="https://flagcdn.com/id.svg" class="inline-block" style="height: 1em; width: auto; vertical-align: -0.125em; border-radius: 0.1em; box-shadow: 0 1px 2px rgba(0,0,0,0.1);" alt="Bendera Indonesia"> Semua manfaat ini dimulai dari hati yang mencintai Indonesia <img src="https://flagcdn.com/id.svg" class="inline-block" style="height: 1em; width: auto; vertical-align: -0.125em; border-radius: 0.1em; box-shadow: 0 1px 2px rgba(0,0,0,0.1);" alt="Bendera Indonesia">
+              </p>
+            </div>
+          </div>
+        `
+      },
+      // Step 5: Desain Proyek
+      {
+        title: 'Membuat Desain Proyek',
+        category: 'Kegiatan Inti - PjBL',
+        time: '15 menit',
+        content: `
+          <div class="bg-white rounded-2xl p-6 shadow-lg slide-in">
+            <div class="text-center mb-6">
+              <div class="text-5xl mb-3">🎨</div>
+              <h2 class="text-xl font-bold text-orange-600">Saatnya Berkarya!</h2>
+              <p class="text-slate-500 text-sm">Pilih salah satu konsep poster di bawah</p>
+            </div>
+            
+            <div class="space-y-4 mb-6">
+              <div class="bg-gradient-to-br from-emerald-50 to-teal-50 rounded-xl p-4 border-2 border-emerald-300 hover:shadow-lg transition-shadow cursor-pointer">
+                <div class="flex items-start gap-4">
+                  <div class="text-4xl">🕌<img src="https://flagcdn.com/id.svg" class="inline-block" style="height: 1em; width: auto; vertical-align: -0.125em; border-radius: 0.1em; box-shadow: 0 1px 2px rgba(0,0,0,0.1);" alt="Bendera Indonesia"></div>
+                  <div class="flex-1">
+                    <h3 class="font-bold text-emerald-700 mb-2">"Aku Islam, Aku Cinta Indonesia"</h3>
+                    <p class="text-slate-700 text-sm mb-2"><strong>Gambar:</strong> Masjid dengan kubah dan bulan sabit, bendera Indonesia berkibar, matahari atau langit biru</p>
+                    <p class="text-slate-600 text-xs italic">Pesan: "Menjadi muslim yang menjaga persatuan dan kedamaian"</p>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="bg-gradient-to-br from-sky-50 to-blue-50 rounded-xl p-4 border-2 border-sky-300 hover:shadow-lg transition-shadow cursor-pointer">
+                <div class="flex items-start gap-4">
+                  <div class="text-4xl">🤝🌍</div>
+                  <div class="flex-1">
+                    <h3 class="font-bold text-sky-700 mb-2">"Islam Rahmatan Lil 'Alamin"</h3>
+                    <p class="text-slate-700 text-sm mb-2"><strong>Gambar:</strong> Tangan-tangan yang saling berjabat atau menggenggam, peta Indonesia di belakang, simbol masjid dan bintang kecil</p>
+                    <p class="text-slate-600 text-xs italic">Pesan: "Islam membawa kedamaian bagi semua"</p>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl p-4 border-2 border-purple-300 hover:shadow-lg transition-shadow cursor-pointer">
+                <div class="flex items-start gap-4">
+                  <div class="text-4xl">👧<img src="https://flagcdn.com/id.svg" class="inline-block" style="height: 1em; width: auto; vertical-align: -0.125em; border-radius: 0.1em; box-shadow: 0 1px 2px rgba(0,0,0,0.1);" alt="Bendera Indonesia"></div>
+                  <div class="flex-1">
+                    <h3 class="font-bold text-purple-700 mb-2">"Anak Muslim Indonesia"</h3>
+                    <p class="text-slate-700 text-sm mb-2"><strong>Gambar:</strong> Anak memakai peci/hijab memegang bendera, rumput, pohon, atau gedung sekolah di belakang</p>
+                    <p class="text-slate-600 text-xs italic">Pesan: "Belajar, berbuat baik, dan menjaga negeri"</p>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="bg-gradient-to-br from-amber-50 to-orange-50 rounded-xl p-4 border-2 border-amber-300 hover:shadow-lg transition-shadow cursor-pointer">
+                <div class="flex items-start gap-4">
+                  <div class="text-4xl">🌍☮️</div>
+                  <div class="flex-1">
+                    <h3 class="font-bold text-amber-700 mb-2">"Dunia Damai"</h3>
+                    <p class="text-slate-700 text-sm mb-2"><strong>Gambar:</strong> Bumi sederhana, masjid dan burung merpati (simbol perdamaian), hati kecil atau bintang</p>
+                    <p class="text-slate-600 text-xs italic">Pesan: "Islam adalah rahmat bagi seluruh alam"</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="bg-amber-50 rounded-xl p-4">
+              <p class="font-semibold text-amber-700 mb-2">📝 Tips Membuat Poster yang Menarik:</p>
+              <ul class="text-slate-600 text-sm space-y-1">
+                <li>✏️ <strong>Sketsa dulu</strong> - Buat garis besar poster sebelum mewarnai</li>
+                <li>🎨 <strong>Warna yang cerah</strong> - Gunakan kombinasi warna yang indah dan menarik</li>
+                <li>✨ <strong>Gambar atau simbol</strong> - Tambahkan gambar yang jelas sesuai tema</li>
+                <li>📝 <strong>Tulisan jelas</strong> - Tulis pesan dengan huruf besar dan mudah dibaca</li>
+                <li>💖 <strong>Isi hati</strong> - Buat dengan penuh rasa cinta untuk negara dan agama kita</li>
+              </ul>
+            </div>
+          </div>
+        `
+      },
+      // Step 6: Penjadwalan & Monitoring
+      {
+        title: 'Penjadwalan & Monitoring Proyek',
+        category: 'Kegiatan Inti - PjBL',
+        time: '35 menit',
+        content: `
+          <div class="bg-white rounded-2xl p-6 shadow-lg slide-in">
+            <div class="text-center mb-6">
+              <div class="text-5xl mb-3">⏱️</div>
+              <h2 class="text-xl font-bold text-indigo-700">Ayo Kerjakan Postermu!</h2>
+            </div>
+            <div class="bg-indigo-50 rounded-xl p-5 mb-4">
+              <h3 class="font-bold text-indigo-700 mb-3">📋 Langkah Pengerjaan:</h3>
+              <div class="space-y-3">
+                <div class="flex items-center gap-3 bg-white rounded-lg p-3">
+                  <span class="w-8 h-8 bg-indigo-500 text-white rounded-full flex items-center justify-center font-bold">1</span>
+                  <div>
+                    <p class="font-semibold text-slate-800">Sketsa (5 menit)</p>
+                    <p class="text-slate-500 text-sm">Buat garis besar postermu</p>
+                  </div>
+                </div>
+                <div class="flex items-center gap-3 bg-white rounded-lg p-3">
+                  <span class="w-8 h-8 bg-indigo-500 text-white rounded-full flex items-center justify-center font-bold">2</span>
+                  <div>
+                    <p class="font-semibold text-slate-800">Pewarnaan (20 menit)</p>
+                    <p class="text-slate-500 text-sm">Warnai dengan rapi dan menarik</p>
+                  </div>
+                </div>
+                <div class="flex items-center gap-3 bg-white rounded-lg p-3">
+                  <span class="w-8 h-8 bg-indigo-500 text-white rounded-full flex items-center justify-center font-bold">3</span>
+                  <div>
+                    <p class="font-semibold text-slate-800">Finishing (10 menit)</p>
+                    <p class="text-slate-500 text-sm">Periksa dan sempurnakan</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="bg-emerald-100 rounded-xl p-4 text-center">
+              <p class="text-emerald-700 font-semibold">🌟 Semangat berkarya! Tunjukkan kreativitasmu! 🌟</p>
+            </div>
+          </div>
+        `
+      },
+      // Step 7: Penilaian & Evaluasi
+      {
+        title: 'Penilaian Hasil & Evaluasi',
+        category: 'Kegiatan Inti - PjBL',
+        time: '15 menit',
+        content: `
+          <div class="bg-white rounded-2xl p-6 shadow-lg slide-in">
+            <div class="text-center mb-6">
+              <div class="text-5xl mb-3">⭐</div>
+              <h2 class="text-xl font-bold text-amber-600">Presentasi & Evaluasi</h2>
+            </div>
+            <div class="bg-amber-50 rounded-xl p-5 mb-4">
+              <h3 class="font-bold text-amber-700 mb-3">🎤 Presentasikan Postermu!</h3>
+              <p class="text-slate-600 mb-3">Ceritakan kepada teman-teman:</p>
+              <ul class="space-y-2 text-slate-700">
+                <li class="flex items-start gap-2">
+                  <span class="text-amber-500">★</span>
+                  <span>Apa tema poster yang kamu pilih?</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-amber-500">★</span>
+                  <span>Apa pesan yang ingin kamu sampaikan?</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-amber-500">★</span>
+                  <span>Apa yang kamu pelajari dari pembuatan poster ini?</span>
+                </li>
+              </ul>
+            </div>
+            <div class="bg-purple-50 rounded-xl p-4">
+              <h3 class="font-bold text-purple-700 mb-2">💭 Refleksi Pengalaman:</h3>
+              <p class="text-slate-600 text-sm">
+                "Bagaimana perasaanmu setelah membuat poster tentang cinta tanah air? Apakah kamu semakin bangga menjadi muslim Indonesia?"
+              </p>
+            </div>
+          </div>
+        `
+      },
+      // Step 8: Ice Breaking - Yalal Wathan
+      {
+        title: 'Ice Breaking: Lagu Yalal Wathan',
+        category: 'Kegiatan Inti - PjBL',
+        time: '10 menit',
+        content: `
+          <div class="bg-white rounded-2xl p-6 shadow-lg slide-in">
+            <div class="text-center mb-6">
+              <div class="text-5xl mb-3">🎵</div>
+              <h2 class="text-xl font-bold text-teal-700">Mari Bernyanyi Bersama!</h2>
+            </div>
+            <div class="bg-gradient-to-br from-teal-500 to-emerald-600 rounded-xl p-6 text-white text-center mb-4">
+              <h3 class="text-2xl font-amiri mb-2">يَا لَلْ وَطَن</h3>
+              <p class="text-xl font-bold">YALAL WATHAN</p>
+              <p class="text-white/90 text-sm mt-1">Lagu Cinta Tanah Air Karya KH. Abdul Wahab Chasbullah</p>
+            </div>
+            <div class="bg-teal-50 rounded-xl p-4 mb-4">
+              <p class="text-slate-700 text-center mb-4 font-semibold">
+                🎶 Tonton video di bawah ini untuk mendengarkan dan bernyanyi bersama! 🎶
+              </p>
+              <div class="text-center">
+                <div class="w-full aspect-video rounded-xl overflow-hidden mx-auto max-w-2xl bg-black">
+                  <iframe src="https://drive.google.com/file/d/1VPUX1U7_Yce3fvL_xFsVpTJm8rtJSna7/preview" width="100%" height="100%" allow="autoplay" allowfullscreen class="border-0"></iframe>
+                </div>
+              </div>
+            </div>
+            <div class="bg-emerald-100 rounded-xl p-4 text-center">
+              <p class="text-emerald-700">
+                <span class="text-2xl"><img src="https://flagcdn.com/id.svg" class="inline-block" style="height: 1em; width: auto; vertical-align: -0.125em; border-radius: 0.1em; box-shadow: 0 1px 2px rgba(0,0,0,0.1);" alt="Bendera Indonesia"></span> Nyanyikan dengan penuh semangat dan cinta tanah air! <span class="text-2xl"><img src="https://flagcdn.com/id.svg" class="inline-block" style="height: 1em; width: auto; vertical-align: -0.125em; border-radius: 0.1em; box-shadow: 0 1px 2px rgba(0,0,0,0.1);" alt="Bendera Indonesia"></span>
+              </p>
+            </div>
+          </div>
+        `
+      },
+      // Step 9: Kuis
+      {
+        title: 'Kuis Pemahaman',
+        category: 'Kegiatan Inti - PjBL',
+        time: '5 menit',
+        content: `
+          <div class="bg-white rounded-2xl p-6 shadow-lg slide-in">
+            <div class="text-center mb-6">
+              <div class="text-5xl mb-3">📝</div>
+              <h2 class="text-xl font-bold text-orange-600">Kuis: Uji Pemahamanmu!</h2>
+            </div>
+            <div id="quiz-container">
+              <div id="quiz-questions" class="space-y-6">
+                <div class="quiz-question bg-slate-50 rounded-xl p-4" data-question="0">
+                  <p class="font-bold text-slate-800 mb-3">1. Apa arti "Hubbul Wathan minal Iman"?</p>
+                  <div class="space-y-2">
+                    <button onclick="selectAnswer(0, 'a', this)" class="quiz-option w-full text-left p-3 rounded-lg border-2 border-slate-200 hover:border-sky-400 transition-colors">
+                      A. Cinta tanah air sebagian dari iman
+                    </button>
+                    <button onclick="selectAnswer(0, 'b', this)" class="quiz-option w-full text-left p-3 rounded-lg border-2 border-slate-200 hover:border-sky-400 transition-colors">
+                      B. Cinta dunia lebih penting
+                    </button>
+                    <button onclick="selectAnswer(0, 'c', this)" class="quiz-option w-full text-left p-3 rounded-lg border-2 border-slate-200 hover:border-sky-400 transition-colors">
+                      C. Cinta harta adalah iman
+                    </button>
+                  </div>
+                </div>
+                
+                <div class="quiz-question bg-slate-50 rounded-xl p-4" data-question="1">
+                  <p class="font-bold text-slate-800 mb-3">2. Bagaimana cara menunjukkan cinta tanah air?</p>
+                  <div class="space-y-2">
+                    <button onclick="selectAnswer(1, 'a', this)" class="quiz-option w-full text-left p-3 rounded-lg border-2 border-slate-200 hover:border-sky-400 transition-colors">
+                      A. Malas belajar
+                    </button>
+                    <button onclick="selectAnswer(1, 'b', this)" class="quiz-option w-full text-left p-3 rounded-lg border-2 border-slate-200 hover:border-sky-400 transition-colors">
+                      B. Belajar giat dan menjaga kebersihan
+                    </button>
+                    <button onclick="selectAnswer(1, 'c', this)" class="quiz-option w-full text-left p-3 rounded-lg border-2 border-slate-200 hover:border-sky-400 transition-colors">
+                      C. Membuang sampah sembarangan
+                    </button>
+                  </div>
+                </div>
+                
+                <div class="quiz-question bg-slate-50 rounded-xl p-4" data-question="2">
+                  <p class="font-bold text-slate-800 mb-3">3. Apa arti "Rahmatan Lil-Alamin"?</p>
+                  <div class="space-y-2">
+                    <button onclick="selectAnswer(2, 'a', this)" class="quiz-option w-full text-left p-3 rounded-lg border-2 border-slate-200 hover:border-sky-400 transition-colors">
+                      A. Rahmat untuk orang tertentu saja
+                    </button>
+                    <button onclick="selectAnswer(2, 'b', this)" class="quiz-option w-full text-left p-3 rounded-lg border-2 border-slate-200 hover:border-sky-400 transition-colors">
+                      B. Rahmat bagi seluruh alam
+                    </button>
+                    <button onclick="selectAnswer(2, 'c', this)" class="quiz-option w-full text-left p-3 rounded-lg border-2 border-slate-200 hover:border-sky-400 transition-colors">
+                      C. Rahmat untuk diri sendiri
+                    </button>
+                  </div>
+                </div>
+                
+                <div class="quiz-question bg-slate-50 rounded-xl p-4" data-question="3">
+                  <p class="font-bold text-slate-800 mb-3">4. Manakah yang BUKAN cara mencintai tanah air?</p>
+                  <div class="space-y-2">
+                    <button onclick="selectAnswer(3, 'a', this)" class="quiz-option w-full text-left p-3 rounded-lg border-2 border-slate-200 hover:border-sky-400 transition-colors">
+                      A. Menjaga kebersihan lingkungan
+                    </button>
+                    <button onclick="selectAnswer(3, 'b', this)" class="quiz-option w-full text-left p-3 rounded-lg border-2 border-slate-200 hover:border-sky-400 transition-colors">
+                      B. Membuang sampah sembarangan
+                    </button>
+                    <button onclick="selectAnswer(3, 'c', this)" class="quiz-option w-full text-left p-3 rounded-lg border-2 border-slate-200 hover:border-sky-400 transition-colors">
+                      C. Menghormati bendera dan lagu kebangsaan
+                    </button>
+                  </div>
+                </div>
+                
+                <div class="quiz-question bg-slate-50 rounded-xl p-4" data-question="4">
+                  <p class="font-bold text-slate-800 mb-3">5. Siapa yang seharusnya mencintai tanah air menurut Islam?</p>
+                  <div class="space-y-2">
+                    <button onclick="selectAnswer(4, 'a', this)" class="quiz-option w-full text-left p-3 rounded-lg border-2 border-slate-200 hover:border-sky-400 transition-colors">
+                      A. Hanya orang dewasa
+                    </button>
+                    <button onclick="selectAnswer(4, 'b', this)" class="quiz-option w-full text-left p-3 rounded-lg border-2 border-slate-200 hover:border-sky-400 transition-colors">
+                      B. Semua muslim, mulai dari anak-anak hingga dewasa
+                    </button>
+                    <button onclick="selectAnswer(4, 'c', this)" class="quiz-option w-full text-left p-3 rounded-lg border-2 border-slate-200 hover:border-sky-400 transition-colors">
+                      C. Hanya orang yang kaya
+                    </button>
+                  </div>
+                </div>
+              </div>
+              
+              <div id="quiz-result" class="hidden mt-6 text-center">
+                <div id="result-content" class="bg-gradient-to-br from-emerald-500 to-teal-600 rounded-xl p-6 text-white">
+                  </div>
+              </div>
+              
+              <div class="mt-6 text-center">
+                <button id="check-quiz-btn" onclick="checkQuiz()" class="px-6 py-3 bg-orange-500 hover:bg-orange-600 text-white rounded-xl font-semibold transition-colors">
+                  ✅ Periksa Jawaban
+                </button>
+              </div>
+            </div>
+          </div>
+        `
+      },
+      // Step 10: Penyimpulan & Refleksi
+      {
+        title: 'Penyimpulan & Refleksi',
+        category: 'Kegiatan Penutup',
+        time: '8 menit',
+        content: `
+          <div class="bg-white rounded-2xl p-6 shadow-lg slide-in">
+            <div class="text-center mb-6">
+              <div class="text-5xl mb-3">📚</div>
+              <h2 class="text-xl font-bold text-purple-700">Apa yang Telah Kita Pelajari?</h2>
+            </div>
+            <div class="space-y-4">
+              <div class="bg-purple-50 rounded-xl p-4 border-l-4 border-purple-500">
+                <h3 class="font-bold text-purple-700 mb-2">📌 Kesimpulan:</h3>
+                <ul class="text-slate-700 space-y-2">
+                  <li class="flex items-start gap-2">
+                    <span class="text-purple-500">✓</span>
+                    <span><strong>Hubbul Wathan minal Iman</strong> artinya cinta tanah air adalah sebagian dari iman</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-purple-500">✓</span>
+                    <span>Muslim yang baik adalah <strong>warga negara yang baik</strong></span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-purple-500">✓</span>
+                    <span>Islam adalah agama <strong>Rahmatan Lil-Alamin</strong> (rahmat bagi seluruh alam)</span>
+                  </li>
+                </ul>
+              </div>
+              <div class="bg-amber-50 rounded-xl p-4 border-l-4 border-amber-500">
+                <h3 class="font-bold text-amber-700 mb-2">💭 Refleksi:</h3>
+                <p class="text-slate-700">Setelah belajar hari ini, bagaimana cara kalian menunjukkan cinta tanah air di kehidupan sehari-hari?</p>
+                <div class="mt-3 grid grid-cols-2 gap-2">
+                  <div class="bg-white rounded-lg p-2 text-center text-sm">
+                    <p class="text-2xl">📖</p>
+                    <p class="text-slate-600">Belajar dengan giat</p>
+                  </div>
+                  <div class="bg-white rounded-lg p-2 text-center text-sm">
+                    <p class="text-2xl">🧹</p>
+                    <p class="text-slate-600">Menjaga kebersihan</p>
+                  </div>
+                  <div class="bg-white rounded-lg p-2 text-center text-sm">
+                    <p class="text-2xl">🤝</p>
+                    <p class="text-slate-600">Saling menghormati</p>
+                  </div>
+                  <div class="bg-white rounded-lg p-2 text-center text-sm">
+                    <p class="text-2xl"><img src="https://flagcdn.com/id.svg" class="inline-block" style="height: 1em; width: auto; vertical-align: -0.125em; border-radius: 0.1em; box-shadow: 0 1px 2px rgba(0,0,0,0.1);" alt="Bendera Indonesia"></p>
+                    <p class="text-slate-600">Bangga jadi Indonesia</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        `
+      },
+      // Step 11: Doa Penutup & Salam
+      {
+        title: 'Doa Penutup & Salam',
+        category: 'Kegiatan Penutup',
+        time: '7 menit',
+        content: `
+          <div class="bg-white rounded-2xl p-6 shadow-lg slide-in">
+            <div class="text-center mb-6">
+              <div class="text-5xl mb-3">🤲</div>
+              <h2 class="text-xl font-bold text-rose-700">Doa Sesudah Belajar</h2>
+            </div>
+            <div class="bg-gradient-to-br from-rose-500 to-pink-600 rounded-xl p-6 text-white text-center mb-4">
+              <p class="text-xl font-amiri leading-loose mb-4">
+                اَللّٰهُمَّ أَرِنَا الْحَقَّ حَقًّا وَارْزُقْنَا اتِّبَاعَهُ
+              </p>
+              <p class="text-xl font-amiri leading-loose">
+                وَأَرِنَا الْبَاطِلَ بَاطِلًا وَارْزُقْنَا اجْتِنَابَهُ
+              </p>
+            </div>
+            <div class="bg-rose-50 rounded-xl p-4 mb-4">
+              <p class="text-slate-700 font-semibold mb-2">Artinya:</p>
+              <p class="text-slate-600 text-sm italic">
+                "Ya Allah, tunjukkanlah kepada kami kebenaran itu sebagai kebenaran dan berilah kami kemampuan untuk mengikutinya. Dan tunjukkanlah kepada kami kebatilan itu sebagai kebatilan dan berilah kami kemampuan untuk menjauhinya."
+              </p>
+            </div>
+            <div class="text-center mb-4">
+              <p class="text-rose-600 font-semibold text-lg">آمِيْن يَا رَبَّ الْعَالَمِيْن</p>
+              <p class="text-slate-500">Aamiin Ya Rabbal 'Alamiin</p>
+            </div>
+            <div class="bg-gradient-to-r from-emerald-500 to-teal-500 rounded-xl p-5 text-white text-center">
+              <h3 class="text-2xl font-amiri mb-2">
+                وَالسَّلَامُ عَلَيْكُمْ وَرَحْمَةُ اللهِ وَبَرَكَاتُهُ
+              </h3>
+              <p class="text-xl">Wassalamu'alaikum Warahmatullahi Wabarakatuh</p>
+              <div class="mt-4 text-white/90">
+                <p>🌟 Terima kasih sudah belajar dengan semangat! 🌟</p>
+                <p class="text-sm mt-1">Sampai jumpa di pembelajaran selanjutnya!</p>
+              </div>
+            </div>
+            <div class="mt-4 text-center">
+              <button onclick="showScreen('home')" class="px-6 py-3 bg-emerald-500 hover:bg-emerald-600 text-white rounded-xl font-semibold transition-colors">
+                🏠 Kembali ke Beranda
+              </button>
+            </div>
+          </div>
+        `
+      }
+    ];
+    
+    // Correct answers for quiz
+    const correctAnswers = ['a', 'b', 'b', 'b', 'b'];
+    let userAnswers = [null, null, null, null, null];
+    
+    function showScreen(screen) {
+      document.getElementById('home-screen').classList.add('hidden');
+      document.getElementById('modul-screen').classList.add('hidden');
+      document.getElementById('media-screen').classList.add('hidden');
+      
+      if (screen === 'home') {
+        document.getElementById('home-screen').classList.remove('hidden');
+      } else if (screen === 'modul') {
+        document.getElementById('modul-screen').classList.remove('hidden');
+      } else if (screen === 'media') {
+        document.getElementById('media-screen').classList.remove('hidden');
+        renderStep();
+      }
+      
+      lucide.createIcons();
+    }
+    
+    function renderStep() {
+      const content = learningContent[currentStep];
+      document.getElementById('current-activity').textContent = content.category;
+      document.getElementById('step-indicator').textContent = `${currentStep + 1}/${totalSteps}`;
+      document.getElementById('progress-bar').style.width = `${((currentStep + 1) / totalSteps) * 100}%`;
+      document.getElementById('media-content').innerHTML = content.content;
+      
+      // Fix Kuis State Reset: Mencegah error logika apabila pengguna berpindah halaman lalu kembali ke kuis.
+      if (currentStep === 10) {
+         userAnswers = [null, null, null, null, null];
+      }
+
+      // Update step dots
+      document.querySelectorAll('.step-dot').forEach((dot, index) => {
+        if (index <= currentStep) {
+          dot.classList.remove('bg-slate-300');
+          dot.classList.add('bg-emerald-500');
+        } else {
+          dot.classList.remove('bg-emerald-500');
+          dot.classList.add('bg-slate-300');
+        }
+      });
+      
+      // Update navigation buttons
+      document.getElementById('prev-btn').disabled = currentStep === 0;
+      const nextBtn = document.getElementById('next-btn');
+      if (currentStep === totalSteps - 1) {
+        nextBtn.innerHTML = '<span class="hidden sm:inline">Selesai</span><i data-lucide="check" class="w-5 h-5"></i>';
+      } else {
+        nextBtn.innerHTML = '<span class="hidden sm:inline">Selanjutnya</span><i data-lucide="chevron-right" class="w-5 h-5"></i>';
+      }
+      
+      lucide.createIcons();
+    }
+    
+    function nextStep() {
+      if (currentStep < totalSteps - 1) {
+        currentStep++;
+        renderStep();
+      } else {
+        showScreen('home');
+      }
+    }
+    
+    function prevStep() {
+      if (currentStep > 0) {
+        currentStep--;
+        renderStep();
+      }
+    }
+    
+    function goToStep(step) {
+      currentStep = step;
+      renderStep();
+    }
+    
+    function selectAnswer(questionIndex, answer, button) {
+      userAnswers[questionIndex] = answer;
+      
+      // Remove selection from other options in same question
+      const questionDiv = button.closest('.quiz-question');
+      questionDiv.querySelectorAll('.quiz-option').forEach(opt => {
+        opt.classList.remove('bg-sky-100', 'border-sky-500', 'selected');
+        opt.classList.add('border-slate-200'); // Fix Border Fallback Bug
+      });
+      
+      // Mark selected
+      button.classList.remove('border-slate-200'); // Fix Border Fallback Bug
+      button.classList.add('bg-sky-100', 'border-sky-500', 'selected');
+    }
+    
+    function checkQuiz() {
+      if (userAnswers.includes(null)) {
+        const resultDiv = document.getElementById('quiz-result');
+        resultDiv.classList.remove('hidden');
+        document.getElementById('result-content').innerHTML = `
+          <div class="text-amber-100">
+            <p class="text-xl font-bold mb-2">⚠️ Belum Lengkap!</p>
+            <p>Silakan jawab semua pertanyaan terlebih dahulu.</p>
+          </div>
+        `;
+        document.getElementById('result-content').className = 'bg-gradient-to-br from-amber-500 to-orange-600 rounded-xl p-6 text-white';
+        return;
+      }
+      
+      let score = 0;
+      userAnswers.forEach((answer, index) => {
+        const questionDiv = document.querySelector(`.quiz-question[data-question="${index}"]`);
+        const options = questionDiv.querySelectorAll('.quiz-option');
+        
+        options.forEach(opt => {
+          opt.classList.add('disabled');
+          opt.style.pointerEvents = 'none';
+        });
+        
+        options.forEach(opt => {
+          const optionLetter = opt.textContent.trim().charAt(0).toLowerCase();
+          if (optionLetter === correctAnswers[index]) {
+            opt.classList.add('correct');
+          }
+          if (optionLetter === answer && answer !== correctAnswers[index]) {
+            opt.classList.add('incorrect');
+          }
+        });
+        
+        if (answer === correctAnswers[index]) {
+          score++;
+        }
+      });
+      
+      const resultDiv = document.getElementById('quiz-result');
+      resultDiv.classList.remove('hidden');
+      
+      let resultMessage = '';
+      let resultClass = '';
+      
+      if (score === 5) {
+        resultMessage = `
+          <p class="text-4xl mb-2">🌟</p>
+          <p class="text-xl font-bold mb-2">Sempurna!</p>
+          <p>Skor: ${score}/5</p>
+          <p class="mt-2">Kamu sudah memahami materi dengan sangat luar biasa!</p>
+        `;
+        resultClass = 'bg-gradient-to-br from-emerald-500 to-teal-600 rounded-xl p-6 text-white';
+      } else if (score === 4) {
+        resultMessage = `
+          <p class="text-4xl mb-2">🌟</p>
+          <p class="text-xl font-bold mb-2">Luar Biasa!</p>
+          <p>Skor: ${score}/5</p>
+          <p class="mt-2">Kamu sudah memahami materi dengan sangat baik!</p>
+        `;
+        resultClass = 'bg-gradient-to-br from-emerald-500 to-teal-600 rounded-xl p-6 text-white';
+      } else if (score === 3) {
+        resultMessage = `
+          <p class="text-4xl mb-2">👏</p>
+          <p class="text-xl font-bold mb-2">Bagus!</p>
+          <p>Skor: ${score}/5</p>
+          <p class="mt-2">Sudah cukup baik, terus belajar ya!</p>
+        `;
+        resultClass = 'bg-gradient-to-br from-sky-500 to-blue-600 rounded-xl p-6 text-white';
+      } else {
+        resultMessage = `
+          <p class="text-4xl mb-2">💪</p>
+          <p class="text-xl font-bold mb-2">Semangat!</p>
+          <p>Skor: ${score}/5</p>
+          <p class="mt-2">Ayo pelajari lagi materinya dengan lebih teliti!</p>
+        `;
+        resultClass = 'bg-gradient-to-br from-amber-500 to-orange-600 rounded-xl p-6 text-white';
+      }
+      
+      document.getElementById('result-content').innerHTML = resultMessage;
+      document.getElementById('result-content').className = resultClass;
+      document.getElementById('check-quiz-btn').style.display = 'none';
+    }
+    
+    // Element SDK Integration
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange: async (cfg) => {
+          config = cfg;
+          document.getElementById('materi-subtitle').textContent = config.materi_title || defaultConfig.materi_title;
+        },
+        mapToCapabilities: (cfg) => ({
+          recolorables: [
+            {
+              get: () => cfg.primary_color || defaultConfig.primary_color,
+              set: (v) => { cfg.primary_color = v; window.elementSdk.setConfig({ primary_color: v }); }
+            },
+            {
+              get: () => cfg.secondary_color || defaultConfig.secondary_color,
+              set: (v) => { cfg.secondary_color = v; window.elementSdk.setConfig({ secondary_color: v }); }
+            },
+            {
+              get: () => cfg.text_color || defaultConfig.text_color,
+              set: (v) => { cfg.text_color = v; window.elementSdk.setConfig({ text_color: v }); }
+            },
+            {
+              get: () => cfg.accent_color || defaultConfig.accent_color,
+              set: (v) => { cfg.accent_color = v; window.elementSdk.setConfig({ accent_color: v }); }
+            }
+          ],
+          borderables: [],
+          fontEditable: {
+            get: () => cfg.font_family || defaultConfig.font_family,
+            set: (v) => { cfg.font_family = v; window.elementSdk.setConfig({ font_family: v }); }
+          },
+          fontSizeable: {
+            get: () => cfg.font_size || defaultConfig.font_size,
+            set: (v) => { cfg.font_size = v; window.elementSdk.setConfig({ font_size: v }); }
+          }
+        }),
+        mapToEditPanelValues: (cfg) => new Map([
+          ['app_title', cfg.app_title || defaultConfig.app_title],
+          ['materi_title', cfg.materi_title || defaultConfig.materi_title]
+        ])
+      });
+    }
+    
+    // Initialize
+    document.addEventListener('DOMContentLoaded', () => {
+      lucide.createIcons();
+    });
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9d8cb846e3bfa8e5',t:'MTc3MjkxOTIyMS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

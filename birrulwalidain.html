@@ -1,0 +1,1173 @@
+<!doctype html>
+<html lang="id" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pembelajaran Birrul Walidain</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&amp;family=Nunito:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
+  <style>
+    * { font-family: 'Nunito', sans-serif; }
+    .arabic-text { font-family: 'Amiri', serif; }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 0 20px rgba(34, 197, 94, 0.3); }
+      50% { box-shadow: 0 0 40px rgba(34, 197, 94, 0.6); }
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    
+    @keyframes star-burst {
+      0% { transform: scale(0) rotate(0deg); opacity: 0; }
+      50% { transform: scale(1.2) rotate(180deg); opacity: 1; }
+      100% { transform: scale(1) rotate(360deg); opacity: 1; }
+    }
+    
+    .animate-fade-in { animation: fadeIn 0.6s ease-out forwards; }
+    .animate-float { animation: float 3s ease-in-out infinite; }
+    .animate-pulse-glow { animation: pulse-glow 2s ease-in-out infinite; }
+    .animate-star { animation: star-burst 0.5s ease-out forwards; }
+    
+    .gradient-islamic {
+      background: linear-gradient(135deg, #065f46 0%, #047857 50%, #10b981 100%);
+    }
+    
+    .pattern-bg {
+      background-color: #f0fdf4;
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2310b981' fill-opacity='0.08'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    
+    .card-hover {
+      transition: all 0.3s ease;
+    }
+    .card-hover:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    }
+    
+    .quiz-option {
+      transition: all 0.2s ease;
+    }
+    .quiz-option:hover:not(.selected):not(.correct):not(.wrong) {
+      background: #d1fae5;
+      border-color: #10b981;
+    }
+    .quiz-option.selected { background: #fef3c7; border-color: #f59e0b; }
+    .quiz-option.correct { background: #d1fae5; border-color: #10b981; }
+    .quiz-option.wrong { background: #fee2e2; border-color: #ef4444; }
+    
+    /* FIX: Penyesuaian konfigurasi cetak agar LKPD tidak terpotong */
+    @media print {
+      html, body, #app, .h-full, .min-h-full, .overflow-auto {
+        height: auto !important;
+        min-height: auto !important;
+        overflow: visible !important;
+        position: static !important;
+      }
+      .no-print { display: none !important; }
+      .print-only { display: block !important; }
+      body, #app { 
+        background: white !important; 
+        background-image: none !important;
+      }
+      .lkpd-container { 
+        box-shadow: none !important; 
+        border: 2px solid #065f46 !important;
+        page-break-inside: avoid;
+        margin: 0 !important;
+        padding: 20px !important;
+        width: 100% !important;
+      }
+      * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+    }
+    
+    .print-only { display: none; }
+  </style>
+  <style>body { box-sizing: border-box; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full">
+  <div id="app" class="h-full overflow-auto pattern-bg"><div id="main-menu" class="min-h-full flex flex-col"><header class="gradient-islamic text-white py-8 px-4 text-center relative overflow-hidden">
+     <div class="absolute inset-0 opacity-10">
+      <svg class="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none"><pattern id="islamic-pattern" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+        <circle cx="10" cy="10" r="8" fill="none" stroke="white" stroke-width="0.5" />
+        <circle cx="10" cy="10" r="4" fill="none" stroke="white" stroke-width="0.5" />
+       </pattern> <rect width="100%" height="100%" fill="url(#islamic-pattern)" />
+      </svg>
+     </div>
+     <div class="relative z-10">
+      <div class="text-5xl mb-4">
+       🕌
+      </div>
+      <h1 id="main-title" class="text-3xl md:text-4xl font-bold mb-2 animate-fade-in">Pesantren Ramadhan</h1>
+      <h2 class="text-xl md:text-2xl font-semibold text-emerald-100 mb-2">Birrul Walidain</h2>
+      <p class="text-emerald-200 text-sm">Kasih Sayang &amp; Adab kepada Orang Tua dan Guru</p>
+      <div class="mt-4 flex justify-center gap-4 text-xs text-emerald-100"><span class="bg-emerald-800/50 px-3 py-1 rounded-full">📚 Kelas 4-6 SD</span> <span class="bg-emerald-800/50 px-3 py-1 rounded-full">⏱️ 120 Menit</span>
+      </div>
+     </div>
+    </header><main class="flex-1 p-6 md:p-10">
+     <div class="max-w-4xl mx-auto">
+      <h3 class="text-center text-emerald-800 font-bold text-xl mb-8">Pilih Menu Pembelajaran</h3>
+      <div class="grid md:grid-cols-2 gap-6"><button onclick="showSection('modul-ajar')" class="card-hover bg-white rounded-2xl p-8 text-left shadow-lg border-2 border-emerald-100 group">
+        <div class="w-16 h-16 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform"><i data-lucide="book-open" class="w-8 h-8 text-white"></i>
+        </div><h4 class="text-xl font-bold text-emerald-800 mb-2">Modul Ajar</h4><p class="text-gray-600 text-sm mb-4">Panduan lengkap pembelajaran untuk guru meliputi persiapan, pembukaan, kegiatan inti, dan penutup.</p><span class="inline-flex items-center text-emerald-600 font-semibold text-sm"> Buka Modul <i data-lucide="arrow-right" class="w-4 h-4 ml-2"></i> </span> </button> <button onclick="showSection('media-interaktif')" class="card-hover bg-white rounded-2xl p-8 text-left shadow-lg border-2 border-emerald-100 group">
+        <div class="w-16 h-16 bg-gradient-to-br from-amber-500 to-orange-600 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform"><i data-lucide="play-circle" class="w-8 h-8 text-white"></i>
+        </div><h4 class="text-xl font-bold text-emerald-800 mb-2">Media Pembelajaran Interaktif</h4><p class="text-gray-600 text-sm mb-4">Pembelajaran interaktif dengan video, kuis, ice breaking, dan lembar refleksi siswa.</p><span class="inline-flex items-center text-amber-600 font-semibold text-sm"> Mulai Belajar <i data-lucide="arrow-right" class="w-4 h-4 ml-2"></i> </span> </button>
+      </div><div class="mt-8 bg-emerald-50 border border-emerald-200 rounded-xl p-6">
+       <h4 class="font-bold text-emerald-800 mb-3 flex items-center"><i data-lucide="info" class="w-5 h-5 mr-2"></i> Informasi Pembelajaran</h4>
+       <div class="grid md:grid-cols-2 gap-4 text-sm text-emerald-700">
+        <div>
+         <p><strong>Mapel:</strong> Pesantren Ramadhan</p>
+         <p><strong>Materi:</strong> Birrul Walidain</p>
+        </div>
+        <div>
+         <p><strong>Durasi:</strong> 120 Menit (4 x 30 menit)</p>
+         <p><strong>Sasaran:</strong> Siswa Kelas 4-6 SD</p>
+        </div>
+       </div>
+      </div>
+     </div>
+    </main>
+    <footer class="text-center py-4 text-emerald-600 text-sm">
+     <p id="footer-text">© 2026 Pembelajaran Pesantren Ramadhan</p>
+    </footer>
+   </div><div id="modul-ajar" class="hidden min-h-full">
+    <div class="gradient-islamic text-white py-6 px-4 no-print">
+     <div class="max-w-4xl mx-auto flex items-center"><button onclick="showSection('main-menu')" class="mr-4 p-2 hover:bg-white/20 rounded-lg transition"> <i data-lucide="arrow-left" class="w-6 h-6"></i> </button>
+      <div>
+       <h1 class="text-2xl font-bold">📚 Modul Ajar</h1>
+       <p class="text-emerald-200 text-sm">Panduan Pembelajaran Birrul Walidain</p>
+      </div>
+     </div>
+    </div>
+    <div class="p-6 md:p-10 max-w-4xl mx-auto"><div class="bg-white rounded-2xl shadow-lg p-6 mb-6 border-l-4 border-emerald-500">
+      <h2 class="text-xl font-bold text-emerald-800 mb-4 flex items-center"><i data-lucide="file-text" class="w-6 h-6 mr-2"></i> Identitas Modul</h2>
+      <div class="grid md:grid-cols-2 gap-4 text-gray-700">
+       <div class="space-y-2">
+        <p><span class="font-semibold">Mata Pelajaran:</span> Pesantren Ramadhan</p>
+        <p><span class="font-semibold">Materi:</span> Birrul Walidain</p>
+        <p><span class="font-semibold">Kelas:</span> 4, 5, 6 SD</p>
+       </div>
+       <div class="space-y-2">
+        <p><span class="font-semibold">Alokasi Waktu:</span> 120 Menit (4 JP)</p>
+        <p><span class="font-semibold">Model:</span> Cinema Edukasi</p>
+        <p><span class="font-semibold">Metode:</span> Ceramah, Diskusi, Tanya Jawab</p>
+       </div>
+      </div>
+     </div><div class="bg-white rounded-2xl shadow-lg p-6 mb-6 border-l-4 border-amber-500">
+      <h2 class="text-xl font-bold text-emerald-800 mb-4 flex items-center"><i data-lucide="target" class="w-6 h-6 mr-2"></i> Tujuan Pembelajaran</h2>
+      <ul class="space-y-2 text-gray-700">
+       <li class="flex items-start"><span class="text-emerald-500 mr-2">✓</span> Siswa dapat memahami pengertian dan pentingnya Birrul Walidain</li>
+       <li class="flex items-start"><span class="text-emerald-500 mr-2">✓</span> Siswa dapat menjelaskan adab-adab terhadap orang tua dan guru</li>
+       <li class="flex items-start"><span class="text-emerald-500 mr-2">✓</span> Siswa dapat mengamalkan sikap hormat dan berbakti dalam kehidupan sehari-hari</li>
+       <li class="flex items-start"><span class="text-emerald-500 mr-2">✓</span> Siswa dapat merefleksikan pengalaman pribadi terkait berbakti kepada orang tua</li>
+      </ul>
+     </div><div class="bg-white rounded-2xl shadow-lg p-6 mb-6 border-l-4 border-blue-500">
+      <h2 class="text-xl font-bold text-emerald-800 mb-4 flex items-center"><i data-lucide="clipboard-check" class="w-6 h-6 mr-2"></i> Langkah-langkah Persiapan</h2>
+      <div class="grid md:grid-cols-2 gap-6">
+       <div>
+        <h3 class="font-semibold text-emerald-700 mb-2">🔧 Kebutuhan Pembelajaran:</h3>
+        <ul class="space-y-1 text-gray-700 text-sm">
+         <li>• Laptop/Komputer dengan koneksi internet</li>
+         <li>• Proyektor &amp; Speaker</li>
+         <li>• Lembar Kerja Peserta Didik (LKPD)</li>
+         <li>• Alat tulis untuk siswa</li>
+         <li>• Video pembelajaran dari Google Drive</li>
+        </ul>
+       </div>
+       <div>
+        <h3 class="font-semibold text-emerald-700 mb-2">📋 Persiapan Guru:</h3>
+        <ul class="space-y-1 text-gray-700 text-sm">
+         <li>• Menyiapkan materi Birrul Walidain</li>
+         <li>• Mengecek video dapat diputar</li>
+         <li>• Mencetak LKPD sesuai jumlah siswa</li>
+         <li>• Menyiapkan pertanyaan kuis</li>
+         <li>• Menyiapkan ice breaking</li>
+        </ul>
+       </div>
+      </div>
+     </div><div class="bg-white rounded-2xl shadow-lg p-6 mb-6 border-l-4 border-purple-500">
+      <h2 class="text-xl font-bold text-emerald-800 mb-4 flex items-center"><i data-lucide="door-open" class="w-6 h-6 mr-2"></i> Kegiatan Pembukaan (15 Menit)</h2>
+      <div class="space-y-4">
+       <div class="bg-purple-50 rounded-lg p-4">
+        <h3 class="font-semibold text-purple-700 mb-2">1. Salam &amp; Menanyakan Kabar (2 menit)</h3>
+        <p class="text-gray-700 text-sm">Guru membuka dengan salam dan menanyakan kabar siswa dengan hangat.</p>
+       </div>
+       <div class="bg-purple-50 rounded-lg p-4">
+        <h3 class="font-semibold text-purple-700 mb-2">2. Doa Sebelum Belajar (3 menit)</h3>
+        <p class="text-gray-700 text-sm arabic-text text-lg mb-2">رَضِيتُ بِاللهِ رَبًّا وَبِالإِسْلاَمِ دِينًا وَبِمُحَمَّدٍ نَبِيًّا وَرَسُولاً رَبِّ زِدْنِي عِلْمًا وَارْزُقْنِي فَهْمًا</p>
+        <p class="text-gray-600 text-xs italic">"Rodhitu billahi robba, wabil islami dina, wabimuhammadin nabiyya warosula, robbi zidni ilma, warzuqni fahma"</p>
+       </div>
+       <div class="bg-purple-50 rounded-lg p-4">
+        <h3 class="font-semibold text-purple-700 mb-2">3. Apersepsi (5 menit)</h3>
+        <p class="text-gray-700 text-sm">Guru bertanya: "Siapa yang tadi pagi berpamitan dengan orang tua? Bagaimana cara kalian berpamitan?"</p>
+       </div>
+       <div class="bg-purple-50 rounded-lg p-4">
+        <h3 class="font-semibold text-purple-700 mb-2">4. Motivasi (5 menit)</h3>
+        <p class="text-gray-700 text-sm">Guru menyampaikan pentingnya berbakti kepada orang tua sebagai kunci keberkahan hidup dan ridho Allah SWT.</p>
+       </div>
+      </div>
+     </div><div class="bg-white rounded-2xl shadow-lg p-6 mb-6 border-l-4 border-emerald-500">
+      <h2 class="text-xl font-bold text-emerald-800 mb-4 flex items-center"><i data-lucide="layers" class="w-6 h-6 mr-2"></i> Kegiatan Inti (90 Menit) - Model Cinema Edukasi</h2>
+      <div class="space-y-4">
+       <div class="bg-emerald-50 rounded-lg p-4">
+        <h3 class="font-semibold text-emerald-700 mb-2">1. Penyampaian Materi (25 menit)</h3>
+        <ul class="text-gray-700 text-sm space-y-1">
+         <li>• Pengertian Birrul Walidain (berbakti kepada orang tua)</li>
+         <li>• Dalil Al-Quran tentang berbakti: QS. Al-Isra ayat 23-24</li>
+         <li>• Adab-adab kepada orang tua dan guru</li>
+         <li>• Contoh perilaku berbakti dalam kehidupan sehari-hari</li>
+        </ul>
+       </div>
+       <div class="bg-emerald-50 rounded-lg p-4">
+        <h3 class="font-semibold text-emerald-700 mb-2">2. Menonton Film Pendek (20 menit)</h3>
+        <p class="text-gray-700 text-sm">Siswa menonton video pembelajaran tentang Birrul Walidain.</p>
+        <p class="text-emerald-600 text-xs mt-1">🎬 Link: drive.google.com/file/d/1XfMB3joMgLYF1fq2iyNsnwRLrdIOGg9m/view</p>
+       </div>
+       <div class="bg-emerald-50 rounded-lg p-4">
+        <h3 class="font-semibold text-emerald-700 mb-2">3. Refleksi &amp; LKPD (20 menit)</h3>
+        <p class="text-gray-700 text-sm">Siswa mengisi Lembar Kerja Peserta Didik untuk merefleksikan video dan pengalaman pribadi.</p>
+       </div>
+       <div class="bg-emerald-50 rounded-lg p-4">
+        <h3 class="font-semibold text-emerald-700 mb-2">4. Ice Breaking (10 menit)</h3>
+        <p class="text-gray-700 text-sm">Permainan "Telepon Kasih Sayang" - siswa menyampaikan pesan positif untuk orang tua secara berantai.</p>
+       </div>
+       <div class="bg-emerald-50 rounded-lg p-4">
+        <h3 class="font-semibold text-emerald-700 mb-2">5. Kuis Interaktif (15 menit)</h3>
+        <p class="text-gray-700 text-sm">Kuis pilihan ganda untuk mengukur pemahaman siswa tentang materi Birrul Walidain.</p>
+       </div>
+      </div>
+     </div><div class="bg-white rounded-2xl shadow-lg p-6 mb-6 border-l-4 border-rose-500">
+      <h2 class="text-xl font-bold text-emerald-800 mb-4 flex items-center"><i data-lucide="door-closed" class="w-6 h-6 mr-2"></i> Kegiatan Penutup (15 Menit)</h2>
+      <div class="space-y-4">
+       <div class="bg-rose-50 rounded-lg p-4">
+        <h3 class="font-semibold text-rose-700 mb-2">1. Penyimpulan (5 menit)</h3>
+        <p class="text-gray-700 text-sm">Guru bersama siswa menyimpulkan poin-poin penting tentang Birrul Walidain.</p>
+       </div>
+       <div class="bg-rose-50 rounded-lg p-4">
+        <h3 class="font-semibold text-rose-700 mb-2">2. Refleksi Akhir (5 menit)</h3>
+        <p class="text-gray-700 text-sm">Siswa menyampaikan satu hal yang akan dipraktikkan di rumah untuk berbakti kepada orang tua.</p>
+       </div>
+       <div class="bg-rose-50 rounded-lg p-4">
+        <h3 class="font-semibold text-rose-700 mb-2">3. Doa Sesudah Belajar (3 menit)</h3>
+        <p class="text-gray-700 text-sm arabic-text text-lg mb-2">اَللّٰهُمَّ أَرِنَا الْحَقَّ حَقًّا وَارْزُقْنَا اتِّبَاعَهُ وَأَرِنَا الْبَاطِلَ بَاطِلاً وَارْزُقْنَا اجْتِنَابَهُ</p>
+        <p class="text-gray-600 text-xs italic">"Allahumma arinal haqqa haqqa warzuqnat tiba'ah wa arinal batila batila warzuqnaj tinabah"</p>
+       </div>
+       <div class="bg-rose-50 rounded-lg p-4">
+        <h3 class="font-semibold text-rose-700 mb-2">4. Salam Penutup (2 menit)</h3>
+        <p class="text-gray-700 text-sm">Guru menutup pembelajaran dengan salam dan pesan untuk mengamalkan ilmu yang dipelajari.</p>
+       </div>
+      </div>
+     </div><button onclick="showSection('main-menu')" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-3 rounded-xl font-semibold transition no-print"> ← Kembali ke Menu Utama </button>
+    </div>
+   </div><div id="media-interaktif" class="hidden min-h-full">
+    <div class="gradient-islamic text-white py-4 px-4 no-print sticky top-0 z-50">
+     <div class="max-w-4xl mx-auto flex items-center justify-between">
+      <div class="flex items-center"><button onclick="showSection('main-menu')" class="mr-3 p-2 hover:bg-white/20 rounded-lg transition"> <i data-lucide="arrow-left" class="w-5 h-5"></i> </button>
+       <div>
+        <h1 class="text-lg font-bold">🎬 Media Pembelajaran Interaktif</h1>
+       </div>
+      </div>
+      <div id="progress-indicator" class="text-sm bg-white/20 px-3 py-1 rounded-full"></div>
+     </div>
+    </div><div class="bg-white shadow-md py-3 px-4 no-print sticky top-16 z-40">
+     <div class="max-w-4xl mx-auto flex justify-center gap-2 overflow-x-auto"><button onclick="goToStep(1)" class="step-btn px-3 py-1 rounded-full text-xs font-semibold whitespace-nowrap" data-step="1">Pembuka</button> <button onclick="goToStep(2)" class="step-btn px-3 py-1 rounded-full text-xs font-semibold whitespace-nowrap" data-step="2">Materi</button> <button onclick="goToStep(3)" class="step-btn px-3 py-1 rounded-full text-xs font-semibold whitespace-nowrap" data-step="3">Video</button> <button onclick="goToStep(4)" class="step-btn px-3 py-1 rounded-full text-xs font-semibold whitespace-nowrap" data-step="4">Refleksi</button> <button onclick="goToStep(5)" class="step-btn px-3 py-1 rounded-full text-xs font-semibold whitespace-nowrap" data-step="5">Ice Breaking</button> <button onclick="goToStep(6)" class="step-btn px-3 py-1 rounded-full text-xs font-semibold whitespace-nowrap" data-step="6">Kuis</button> <button onclick="goToStep(7)" class="step-btn px-3 py-1 rounded-full text-xs font-semibold whitespace-nowrap" data-step="7">Penutup</button>
+     </div>
+    </div>
+    <div class="p-6 md:p-10 max-w-4xl mx-auto"><div id="step-1" class="step-content">
+      <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
+       <div class="bg-gradient-to-r from-purple-600 to-indigo-600 text-white p-6">
+        <div class="flex items-center gap-3">
+         <div class="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center text-2xl">
+          🌟
+         </div>
+         <div>
+          <h2 class="text-xl font-bold">Kegiatan Pembukaan</h2>
+          <p class="text-purple-200 text-sm">15 Menit</p>
+         </div>
+        </div>
+       </div>
+       <div class="p-6 space-y-6"><div class="bg-purple-50 rounded-xl p-5 animate-fade-in">
+         <h3 class="font-bold text-purple-800 text-lg mb-3">🙋 Salam &amp; Kabar</h3>
+         <div class="bg-white rounded-lg p-4 border-2 border-purple-200">
+          <p class="text-xl text-center font-semibold text-purple-700">Assalamu'alaikum Warahmatullahi Wabarakatuh!</p>
+          <p class="text-center text-gray-600 mt-2">Apa kabar anak-anak sholeh dan sholehah?</p>
+          <div class="flex justify-center gap-4 mt-4"><span class="text-4xl animate-float" style="animation-delay: 0s">😊</span> <span class="text-4xl animate-float" style="animation-delay: 0.2s">🤲</span> <span class="text-4xl animate-float" style="animation-delay: 0.4s">💚</span>
+          </div>
+         </div>
+        </div><div class="bg-emerald-50 rounded-xl p-5 animate-fade-in" style="animation-delay: 0.2s">
+         <h3 class="font-bold text-emerald-800 text-lg mb-3">🤲 Doa Sebelum Belajar</h3>
+         <div class="bg-white rounded-lg p-5 border-2 border-emerald-200 text-center">
+          <p class="arabic-text text-2xl leading-loose text-emerald-800 mb-4">رَضِيتُ بِاللهِ رَبًّا وَبِالإِسْلاَمِ دِينًا وَبِمُحَمَّدٍ نَبِيًّا وَرَسُولاً</p>
+          <p class="arabic-text text-2xl leading-loose text-emerald-800 mb-4">رَبِّ زِدْنِي عِلْمًا وَارْزُقْنِي فَهْمًا</p>
+          <hr class="my-4">
+          <p class="text-gray-700 italic">"Rodhitu billahi robba, wabil islami dina, wabimuhammadin nabiyya warosula, robbi zidni ilma, warzuqni fahma"</p>
+          <p class="text-sm text-gray-500 mt-3">"Aku ridha Allah sebagai Tuhanku, Islam sebagai agamaku, dan Muhammad sebagai Nabi dan Rasulku. Ya Tuhanku, tambahkanlah ilmuku dan berikanlah aku pemahaman."</p>
+         </div>
+        </div><div class="bg-amber-50 rounded-xl p-5 animate-fade-in" style="animation-delay: 0.4s">
+         <h3 class="font-bold text-amber-800 text-lg mb-3">💭 Apersepsi</h3>
+         <div class="bg-white rounded-lg p-4 border-2 border-amber-200">
+          <p class="text-gray-700 mb-3">Coba jawab pertanyaan berikut:</p>
+          <div class="space-y-3">
+           <div class="flex items-start gap-3 bg-amber-100 p-3 rounded-lg"><span class="text-2xl">❓</span>
+            <p class="text-amber-800 font-medium">Siapa yang tadi pagi berpamitan dengan orang tua sebelum berangkat?</p>
+           </div>
+           <div class="flex items-start gap-3 bg-amber-100 p-3 rounded-lg"><span class="text-2xl">❓</span>
+            <p class="text-amber-800 font-medium">Bagaimana cara kalian menunjukkan sayang kepada Ayah dan Ibu?</p>
+           </div>
+          </div>
+         </div>
+        </div><div class="bg-rose-50 rounded-xl p-5 animate-fade-in" style="animation-delay: 0.6s">
+         <h3 class="font-bold text-rose-800 text-lg mb-3">🔥 Motivasi</h3>
+         <div class="bg-white rounded-lg p-4 border-2 border-rose-200">
+          <div class="text-center">
+           <div class="text-5xl mb-4">
+            👨‍👩‍👧‍👦
+           </div>
+           <p class="text-lg text-gray-700 font-medium mb-3">"Ridho Allah tergantung pada ridho orang tua, dan murka Allah tergantung pada murka orang tua."</p>
+           <p class="text-sm text-rose-600">(HR. Tirmidzi)</p>
+           <div class="mt-4 p-3 bg-rose-100 rounded-lg">
+            <p class="text-rose-700 font-semibold">💡 Berbakti kepada orang tua adalah kunci keberkahan hidup!</p>
+           </div>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div><button onclick="goToStep(2)" class="w-full mt-6 bg-emerald-600 hover:bg-emerald-700 text-white py-4 rounded-xl font-semibold transition flex items-center justify-center gap-2 no-print"> Lanjut ke Materi <i data-lucide="arrow-right" class="w-5 h-5"></i> </button>
+     </div><div id="step-2" class="step-content hidden">
+      <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
+       <div class="bg-gradient-to-r from-emerald-600 to-teal-600 text-white p-6">
+        <div class="flex items-center gap-3">
+         <div class="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center text-2xl">
+          📖
+         </div>
+         <div>
+          <h2 class="text-xl font-bold">Materi: Birrul Walidain</h2>
+          <p class="text-emerald-200 text-sm">25 Menit</p>
+         </div>
+        </div>
+       </div>
+       <div class="p-6 space-y-6"><div class="bg-emerald-50 rounded-xl p-5">
+         <h3 class="font-bold text-emerald-800 text-lg mb-3 flex items-center gap-2"><span class="w-8 h-8 bg-emerald-600 text-white rounded-lg flex items-center justify-center text-sm">1</span> Apa itu Birrul Walidain?</h3>
+         <div class="bg-white rounded-lg p-4 border-2 border-emerald-200">
+          <p class="text-gray-700 leading-relaxed"><strong>Birrul Walidain</strong> berasal dari bahasa Arab yang artinya <strong>berbakti kepada kedua orang tua</strong>. Ini adalah kewajiban setiap anak Muslim untuk menghormati, menyayangi, dan menaati orang tua dalam hal kebaikan.</p>
+          <div class="mt-4 flex justify-center gap-4">
+           <div class="text-center">
+            <div class="text-4xl mb-2">
+             👨
+            </div>
+            <p class="text-sm font-semibold text-emerald-700">Ayah</p>
+           </div>
+           <div class="text-4xl text-red-500">
+            ❤️
+           </div>
+           <div class="text-center">
+            <div class="text-4xl mb-2">
+             👩
+            </div>
+            <p class="text-sm font-semibold text-emerald-700">Ibu</p>
+           </div>
+          </div>
+         </div>
+        </div><div class="bg-amber-50 rounded-xl p-5">
+         <h3 class="font-bold text-amber-800 text-lg mb-3 flex items-center gap-2"><span class="w-8 h-8 bg-amber-600 text-white rounded-lg flex items-center justify-center text-sm">2</span> Dalil Al-Quran &amp; Hadis</h3>
+         <div class="space-y-4">
+          <div class="bg-white rounded-lg p-5 border-2 border-amber-200 text-center">
+           <p class="text-sm text-amber-600 mb-2 font-semibold">📖 QS. Al-Isra: 23-24</p>
+           <p class="arabic-text text-xl leading-loose text-gray-800 mb-4">وَقَضَىٰ رَبُّكَ أَلَّا تَعْبُدُوا إِلَّا إِيَّاهُ وَبِالْوَالِدَيْنِ إِحْسَانًا</p>
+           <p class="text-gray-600 text-sm italic">"Dan Tuhanmu telah memerintahkan supaya kamu jangan menyembah selain Dia dan hendaklah kamu berbuat baik pada ibu bapakmu dengan sebaik-baiknya."</p>
+          </div>
+          <div class="bg-white rounded-lg p-5 border-2 border-amber-200 text-center">
+           <p class="text-sm text-amber-600 mb-2 font-semibold">📚 Hadis Tentang Menghormati Guru</p>
+           <p class="arabic-text text-xl leading-loose text-gray-800 mb-3">لَيْسَ مِنَّا مَنْ لَمْ يُجِلَّ الْكَبِيرَ وَيَرْحَمِ الصَّغِيرَ وَيَعْرِفْ لِلْعَالِمِ حَقَّهُ</p>
+           <p class="text-gray-600 text-sm italic mb-2">"Laysa minna man lam yujill al-kabir wa yarham as-saghir wa ya'rif al-'alim haqqahu"</p>
+           <p class="text-gray-700 italic">"Bukan termasuk golongan kami orang yang tidak menghormati yang lebih tua, tidak menyayangi yang lebih muda, dan tidak mengetahui hak orang alim (guru)."</p>
+           <p class="text-gray-500 text-xs mt-3">(HR. Ahmad)</p>
+          </div>
+         </div>
+        </div><div class="bg-blue-50 rounded-xl p-5">
+         <h3 class="font-bold text-blue-800 text-lg mb-3 flex items-center gap-2"><span class="w-8 h-8 bg-blue-600 text-white rounded-lg flex items-center justify-center text-sm">3</span> Adab kepada Orang Tua &amp; Guru</h3>
+         <div class="grid md:grid-cols-2 gap-4">
+          <div class="bg-white rounded-lg p-4 border-2 border-blue-200">
+           <h4 class="font-semibold text-blue-700 mb-3 text-center">👨‍👩‍👧 Kepada Orang Tua</h4>
+           <ul class="space-y-2 text-sm text-gray-700">
+            <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Berbicara sopan &amp; lemah lembut</li>
+            <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Menaati perintah (dalam kebaikan)</li>
+            <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Membantu pekerjaan rumah</li>
+            <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Mendoakan kebaikan untuk mereka</li>
+            <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Tidak membentak atau berkata "ah"</li>
+           </ul>
+          </div>
+          <div class="bg-white rounded-lg p-4 border-2 border-blue-200">
+           <h4 class="font-semibold text-blue-700 mb-3 text-center">👨‍🏫 Kepada Guru</h4>
+           <ul class="space-y-2 text-sm text-gray-700">
+            <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Mengucapkan salam saat bertemu</li>
+            <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Mendengarkan dengan penuh perhatian</li>
+            <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Mengerjakan tugas dengan baik</li>
+            <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Berterima kasih atas ilmu yang diberikan</li>
+            <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Tidak membantah dengan kasar</li>
+           </ul>
+          </div>
+         </div>
+        </div><div class="bg-rose-50 rounded-xl p-5">
+         <h3 class="font-bold text-rose-800 text-lg mb-3 flex items-center gap-2"><span class="w-8 h-8 bg-rose-600 text-white rounded-lg flex items-center justify-center text-sm">4</span> Contoh Perilaku Sehari-hari</h3>
+         <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+          <div class="bg-white rounded-lg p-3 text-center border-2 border-rose-200">
+           <div class="text-3xl mb-2">
+            🌅
+           </div>
+           <p class="text-xs text-gray-600">Bangun pagi &amp; merapikan tempat tidur</p>
+          </div>
+          <div class="bg-white rounded-lg p-3 text-center border-2 border-rose-200">
+           <div class="text-3xl mb-2">
+            🧹
+           </div>
+           <p class="text-xs text-gray-600">Membantu membersihkan rumah</p>
+          </div>
+          <div class="bg-white rounded-lg p-3 text-center border-2 border-rose-200">
+           <div class="text-3xl mb-2">
+            📚
+           </div>
+           <p class="text-xs text-gray-600">Belajar dengan rajin</p>
+          </div>
+          <div class="bg-white rounded-lg p-3 text-center border-2 border-rose-200">
+           <div class="text-3xl mb-2">
+            🤲
+           </div>
+           <p class="text-xs text-gray-600">Mendoakan orang tua</p>
+          </div>
+         </div>
+        </div><div class="bg-indigo-50 rounded-xl p-5">
+         <h3 class="font-bold text-indigo-800 text-lg mb-3 flex items-center gap-2"><span class="w-8 h-8 bg-indigo-600 text-white rounded-lg flex items-center justify-center text-sm">5</span> Berbakti kepada Orang Tua yang Sudah Meninggal</h3>
+         <div class="bg-white rounded-lg p-4 border-2 border-indigo-200 mb-4">
+          <p class="text-gray-700 mb-4">Berbakti kepada orang tua tidak hanya saat mereka masih hidup, tetapi juga setelah mereka meninggal dunia. Ini adalah bentuk cinta dan hormat yang abadi.</p>
+          <div class="space-y-3">
+           <div class="bg-indigo-50 rounded-lg p-3 border-l-4 border-indigo-600">
+            <h4 class="font-semibold text-indigo-700 mb-1 flex items-center gap-2"><span class="text-lg">🤲</span> Mendoakan Mereka</h4>
+            <p class="text-gray-700 text-sm">Mengirimkan doa dan doa khusus ("doa istigfar") untuk orang tua yang telah meninggal. Ini adalah amal jariyah yang terus mengalir pahalanya.</p>
+           </div>
+           <div class="bg-indigo-50 rounded-lg p-3 border-l-4 border-indigo-600">
+            <h4 class="font-semibold text-indigo-700 mb-1 flex items-center gap-2"><span class="text-lg">📖</span> Mengamalkan Wasiat Mereka</h4>
+            <p class="text-gray-700 text-sm">Melaksanakan pesan dan nasihat yang mereka tinggalkan, serta melanjutkan kebaikan yang mereka lakukan.</p>
+           </div>
+           <div class="bg-indigo-50 rounded-lg p-3 border-l-4 border-indigo-600">
+            <h4 class="font-semibold text-indigo-700 mb-1 flex items-center gap-2"><span class="text-lg">❤️</span> Berbuat Baik kepada Keluarga Mereka</h4>
+            <p class="text-gray-700 text-sm">Menunjukkan kasih sayang kepada kerabat dan teman-teman orang tua sebagai bentuk kehormatan kepada mereka.</p>
+           </div>
+           <div class="bg-indigo-50 rounded-lg p-3 border-l-4 border-indigo-600">
+            <h4 class="font-semibold text-indigo-700 mb-1 flex items-center gap-2"><span class="text-lg">💪</span> Menjadi Anak yang Berbakti</h4>
+            <p class="text-gray-700 text-sm">Hidup dengan baik, belajar rajin, dan berbuat kebaikan adalah cara terbaik untuk menghormati kenangan mereka.</p>
+           </div>
+          </div>
+         </div>
+         <div class="bg-white rounded-lg p-4 border-2 border-indigo-200 text-center">
+          <p class="text-sm text-emerald-600 mb-2 font-semibold">📚 Hadis tentang Doa untuk Orang Tua</p>
+          <p class="arabic-text text-lg leading-loose text-gray-800 mb-3">اللَّهُمَّ اغْفِرْ لِي وَلِوَالِدَيَّ</p>
+          <p class="text-gray-600 text-sm italic mb-2">"Allahumma ighfir li wa liwaalidayya"</p>
+          <p class="text-gray-700 italic text-sm">"Ya Allah, ampunilah dosa-dosaku dan dosa kedua orang tuaku"</p>
+          <p class="text-gray-500 text-xs mt-3">(Doa yang dianjurkan untuk dibaca kapan saja)</p>
+         </div>
+        </div>
+       </div>
+      </div>
+      <div class="flex gap-4 mt-6 no-print"><button onclick="goToStep(1)" class="flex-1 bg-gray-200 hover:bg-gray-300 text-gray-700 py-4 rounded-xl font-semibold transition flex items-center justify-center gap-2"> <i data-lucide="arrow-left" class="w-5 h-5"></i> Sebelumnya </button> <button onclick="goToStep(3)" class="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white py-4 rounded-xl font-semibold transition flex items-center justify-center gap-2"> Lanjut ke Video <i data-lucide="arrow-right" class="w-5 h-5"></i> </button>
+      </div>
+     </div><div id="step-3" class="step-content hidden">
+      <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
+       <div class="bg-gradient-to-r from-red-600 to-rose-600 text-white p-6">
+        <div class="flex items-center gap-3">
+         <div class="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center text-2xl">
+          🎬
+         </div>
+         <div>
+          <h2 class="text-xl font-bold">Menonton Film Pendek</h2>
+          <p class="text-red-200 text-sm">20 Menit</p>
+         </div>
+        </div>
+       </div>
+       <div class="p-6">
+        <div class="bg-gray-100 rounded-xl p-4 mb-4">
+         <p class="text-sm text-gray-600 mb-3">📺 Silakan tonton video pembelajaran berikut dengan seksama:</p>
+         <div class="aspect-video bg-black rounded-lg overflow-hidden"><iframe class="w-full h-full" src="https://drive.google.com/file/d/1XfMB3joMgLYF1fq2iyNsnwRLrdIOGg9m/preview" title="Video Birrul Walidain" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen> </iframe>
+         </div>
+        </div>
+        <div class="bg-amber-50 rounded-xl p-4 border border-amber-200">
+         <h4 class="font-semibold text-amber-800 mb-2 flex items-center gap-2"><i data-lucide="lightbulb" class="w-5 h-5"></i> Petunjuk Menonton:</h4>
+         <ul class="text-sm text-gray-700 space-y-1">
+          <li>• Perhatikan dengan seksama isi video</li>
+          <li>• Catat hal-hal penting yang kamu pelajari</li>
+          <li>• Renungkan pesan yang disampaikan</li>
+          <li>• Siapkan pertanyaan jika ada yang belum dipahami</li>
+         </ul>
+        </div>
+       </div>
+      </div>
+      <div class="flex gap-4 mt-6 no-print"><button onclick="goToStep(2)" class="flex-1 bg-gray-200 hover:bg-gray-300 text-gray-700 py-4 rounded-xl font-semibold transition flex items-center justify-center gap-2"> <i data-lucide="arrow-left" class="w-5 h-5"></i> Sebelumnya </button> <button onclick="goToStep(4)" class="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white py-4 rounded-xl font-semibold transition flex items-center justify-center gap-2"> Lanjut ke Refleksi <i data-lucide="arrow-right" class="w-5 h-5"></i> </button>
+      </div>
+     </div><div id="step-4" class="step-content hidden">
+      <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
+       <div class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white p-6 no-print">
+        <div class="flex items-center justify-between">
+         <div class="flex items-center gap-3">
+          <div class="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center text-2xl">
+           📝
+          </div>
+          <div>
+           <h2 class="text-xl font-bold">Lembar Refleksi Siswa</h2>
+           <p class="text-indigo-200 text-sm">20 Menit</p>
+          </div>
+         </div><button onclick="printLKPD()" class="bg-white text-indigo-600 px-4 py-2 rounded-lg font-semibold hover:bg-indigo-50 transition flex items-center gap-2"> <i data-lucide="printer" class="w-5 h-5"></i> Cetak LKPD </button>
+        </div>
+       </div><div class="lkpd-container p-8" id="lkpd-print-area"><div class="border-4 border-emerald-600 rounded-xl p-6 mb-6">
+         <div class="flex items-center justify-between mb-4">
+          <div class="text-4xl">
+           🕌
+          </div>
+          <div class="text-center flex-1">
+           <h1 class="text-2xl font-bold text-emerald-800">LEMBAR KERJA PESERTA DIDIK</h1>
+           <h2 class="text-lg text-emerald-600">Pesantren Ramadhan - Birrul Walidain</h2>
+          </div>
+          <div class="text-4xl">
+           📝
+          </div>
+         </div>
+         <div class="grid grid-cols-2 gap-4 text-sm border-t-2 border-emerald-300 pt-4">
+          <div class="space-y-2">
+           <div class="flex"><span class="font-semibold w-20">Nama</span> <span>: ...................................</span>
+           </div>
+           <div class="flex"><span class="font-semibold w-20">Kelas</span> <span>: ...................................</span>
+           </div>
+          </div>
+          <div class="space-y-2">
+           <div class="flex"><span class="font-semibold w-20">Tanggal</span> <span>: ...................................</span>
+           </div>
+           <div class="flex"><span class="font-semibold w-20">Sekolah</span> <span>: ...................................</span>
+           </div>
+          </div>
+         </div>
+        </div><div class="bg-emerald-50 rounded-xl p-4 mb-6 border-2 border-emerald-200">
+         <h3 class="font-bold text-emerald-800 mb-2 flex items-center gap-2"><span class="text-xl">🎯</span> Tujuan Pembelajaran:</h3>
+         <p class="text-gray-700 text-sm">Setelah menonton video dan mengerjakan LKPD ini, siswa dapat memahami pentingnya berbakti kepada orang tua dan guru serta merefleksikan pengalaman pribadi.</p>
+        </div><div class="space-y-6">
+         <div class="border-2 border-blue-200 rounded-xl p-5 bg-blue-50/50">
+          <h3 class="font-bold text-blue-800 mb-3 flex items-center gap-2"><span class="w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center">1</span> Refleksi Video</h3>
+          <p class="text-gray-700 mb-3">Apa pesan utama dari video yang telah kamu tonton?</p>
+          <div class="bg-white border-2 border-dashed border-blue-300 rounded-lg p-4 min-h-24">
+           <p class="text-gray-400 text-sm">Tulis jawabanmu di sini...</p>
+          </div>
+         </div>
+         <div class="border-2 border-purple-200 rounded-xl p-5 bg-purple-50/50">
+          <h3 class="font-bold text-purple-800 mb-3 flex items-center gap-2"><span class="w-8 h-8 bg-purple-600 text-white rounded-full flex items-center justify-center">2</span> Pengalaman Pribadi</h3>
+          <p class="text-gray-700 mb-3">Ceritakan satu pengalaman saat kamu berbakti kepada orang tua!</p>
+          <div class="bg-white border-2 border-dashed border-purple-300 rounded-lg p-4 min-h-24">
+           <p class="text-gray-400 text-sm">Tulis pengalamanmu di sini...</p>
+          </div>
+         </div>
+         <div class="border-2 border-amber-200 rounded-xl p-5 bg-amber-50/50">
+          <h3 class="font-bold text-amber-800 mb-3 flex items-center gap-2"><span class="w-8 h-8 bg-amber-600 text-white rounded-full flex items-center justify-center">3</span> Adab kepada Guru</h3>
+          <p class="text-gray-700 mb-3">Sebutkan 3 cara kamu menghormati guru di sekolah:</p>
+          <div class="bg-white border-2 border-dashed border-amber-300 rounded-lg p-4">
+           <ol class="space-y-3">
+            <li class="flex items-start gap-2"><span class="font-bold">1.</span> <span class="flex-1 border-b border-gray-300 pb-1">.................................................</span></li>
+            <li class="flex items-start gap-2"><span class="font-bold">2.</span> <span class="flex-1 border-b border-gray-300 pb-1">.................................................</span></li>
+            <li class="flex items-start gap-2"><span class="font-bold">3.</span> <span class="flex-1 border-b border-gray-300 pb-1">.................................................</span></li>
+           </ol>
+          </div>
+         </div>
+         <div class="border-2 border-rose-200 rounded-xl p-5 bg-rose-50/50">
+          <h3 class="font-bold text-rose-800 mb-3 flex items-center gap-2"><span class="w-8 h-8 bg-rose-600 text-white rounded-full flex items-center justify-center">4</span> Komitmen</h3>
+          <p class="text-gray-700 mb-3">Tuliskan 2 hal yang akan kamu lakukan untuk berbakti kepada orang tua mulai hari ini:</p>
+          <div class="bg-white border-2 border-dashed border-rose-300 rounded-lg p-4">
+           <div class="flex items-center gap-3 mb-3">
+            <div class="w-6 h-6 border-2 border-rose-400 rounded"></div><span class="flex-1 border-b border-gray-300 pb-1">.................................................</span>
+           </div>
+           <div class="flex items-center gap-3">
+            <div class="w-6 h-6 border-2 border-rose-400 rounded"></div><span class="flex-1 border-b border-gray-300 pb-1">.................................................</span>
+           </div>
+          </div>
+         </div>
+         <div class="border-2 border-emerald-200 rounded-xl p-5 bg-emerald-50/50">
+          <h3 class="font-bold text-emerald-800 mb-3 flex items-center gap-2"><span class="w-8 h-8 bg-emerald-600 text-white rounded-full flex items-center justify-center">5</span> Doa untuk Orang Tua</h3>
+          <p class="text-gray-700 mb-3">Tuliskan doa yang sering kamu panjatkan untuk kedua orang tuamu:</p>
+          <div class="bg-white border-2 border-dashed border-emerald-300 rounded-lg p-4 min-h-20">
+           <p class="text-gray-400 text-sm">Tulis doamu di sini...</p>
+          </div>
+         </div>
+        </div><div class="mt-6 pt-4 border-t-2 border-emerald-300">
+         <div class="flex justify-between items-center text-sm text-gray-600">
+          <p>📚 Pesantren Ramadhan 2026</p>
+          <p>✨ Berbaktilah kepada Orang Tua ✨</p>
+         </div>
+        </div>
+       </div>
+      </div>
+      <div class="flex gap-4 mt-6 no-print"><button onclick="goToStep(3)" class="flex-1 bg-gray-200 hover:bg-gray-300 text-gray-700 py-4 rounded-xl font-semibold transition flex items-center justify-center gap-2"> <i data-lucide="arrow-left" class="w-5 h-5"></i> Sebelumnya </button> <button onclick="goToStep(5)" class="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white py-4 rounded-xl font-semibold transition flex items-center justify-center gap-2"> Lanjut Ice Breaking <i data-lucide="arrow-right" class="w-5 h-5"></i> </button>
+      </div>
+     </div><div id="step-5" class="step-content hidden">
+      <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
+       <div class="bg-gradient-to-r from-pink-500 to-orange-500 text-white p-6">
+        <div class="flex items-center gap-3">
+         <div class="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center text-2xl animate-float">
+          🎉
+         </div>
+         <div>
+          <h2 class="text-xl font-bold">Ice Breaking: Telepon Kasih Sayang</h2>
+          <p class="text-pink-200 text-sm">10 Menit</p>
+         </div>
+        </div>
+       </div>
+       <div class="p-6">
+        <div class="bg-gradient-to-br from-pink-50 to-orange-50 rounded-xl p-6 mb-6 border-2 border-pink-200">
+         <h3 class="font-bold text-pink-700 text-lg mb-4 text-center">🎮 Cara Bermain</h3>
+         <div class="grid md:grid-cols-2 gap-4">
+          <div class="bg-white rounded-lg p-4 text-center shadow-sm">
+           <div class="text-3xl mb-2">
+            1️⃣
+           </div>
+           <p class="text-sm text-gray-700">Duduk membentuk lingkaran besar</p>
+          </div>
+          <div class="bg-white rounded-lg p-4 text-center shadow-sm">
+           <div class="text-3xl mb-2">
+            2️⃣
+           </div>
+           <p class="text-sm text-gray-700">Guru berbisik pesan kasih sayang ke siswa pertama</p>
+          </div>
+          <div class="bg-white rounded-lg p-4 text-center shadow-sm">
+           <div class="text-3xl mb-2">
+            3️⃣
+           </div>
+           <p class="text-sm text-gray-700">Pesan diteruskan berbisik ke teman sebelah</p>
+          </div>
+          <div class="bg-white rounded-lg p-4 text-center shadow-sm">
+           <div class="text-3xl mb-2">
+            4️⃣
+           </div>
+           <p class="text-sm text-gray-700">Siswa terakhir mengucapkan pesan dengan keras</p>
+          </div>
+         </div>
+        </div>
+        <div class="bg-amber-50 rounded-xl p-5 mb-6 border border-amber-200">
+         <h4 class="font-bold text-amber-800 mb-3 flex items-center gap-2"><span class="text-xl">💬</span> Contoh Pesan untuk Diteruskan:</h4>
+         <div class="grid gap-3">
+          <div class="bg-white rounded-lg p-3 border-l-4 border-pink-400">
+           <p class="text-gray-700">"Ibu adalah malaikat tanpa sayap yang selalu menjagaku"</p>
+          </div>
+          <div class="bg-white rounded-lg p-3 border-l-4 border-orange-400">
+           <p class="text-gray-700">"Ayah adalah pahlawan yang tidak pernah mengenal lelah"</p>
+          </div>
+          <div class="bg-white rounded-lg p-3 border-l-4 border-amber-400">
+           <p class="text-gray-700">"Terima kasih Ayah Ibu atas semua kasih sayangnya"</p>
+          </div>
+         </div>
+        </div><div class="bg-emerald-50 rounded-xl p-5 border border-emerald-200">
+         <h4 class="font-bold text-emerald-800 mb-3 flex items-center gap-2"><span class="text-xl">🎯</span> Bonus: Tebak Gerakan Kasih Sayang</h4>
+         <p class="text-gray-700 mb-4">Satu siswa memperagakan gerakan berbakti tanpa suara, yang lain menebak!</p>
+         <div class="flex flex-wrap justify-center gap-3">
+          <div id="gesture-btn-1" class="gesture-btn bg-white border-2 border-emerald-300 rounded-xl p-3 cursor-pointer hover:bg-emerald-100 transition text-center" onclick="revealGesture(1)">
+           <div class="text-3xl mb-1">
+            ❓
+           </div>
+           <p class="text-xs text-gray-500">Klik untuk lihat</p>
+          </div>
+          <div id="gesture-btn-2" class="gesture-btn bg-white border-2 border-emerald-300 rounded-xl p-3 cursor-pointer hover:bg-emerald-100 transition text-center" onclick="revealGesture(2)">
+           <div class="text-3xl mb-1">
+            ❓
+           </div>
+           <p class="text-xs text-gray-500">Klik untuk lihat</p>
+          </div>
+          <div id="gesture-btn-3" class="gesture-btn bg-white border-2 border-emerald-300 rounded-xl p-3 cursor-pointer hover:bg-emerald-100 transition text-center" onclick="revealGesture(3)">
+           <div class="text-3xl mb-1">
+            ❓
+           </div>
+           <p class="text-xs text-gray-500">Klik untuk lihat</p>
+          </div>
+          <div id="gesture-btn-4" class="gesture-btn bg-white border-2 border-emerald-300 rounded-xl p-3 cursor-pointer hover:bg-emerald-100 transition text-center" onclick="revealGesture(4)">
+           <div class="text-3xl mb-1">
+            ❓
+           </div>
+           <p class="text-xs text-gray-500">Klik untuk lihat</p>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+      <div class="flex gap-4 mt-6 no-print"><button onclick="goToStep(4)" class="flex-1 bg-gray-200 hover:bg-gray-300 text-gray-700 py-4 rounded-xl font-semibold transition flex items-center justify-center gap-2"> <i data-lucide="arrow-left" class="w-5 h-5"></i> Sebelumnya </button> <button onclick="goToStep(6)" class="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white py-4 rounded-xl font-semibold transition flex items-center justify-center gap-2"> Lanjut ke Kuis <i data-lucide="arrow-right" class="w-5 h-5"></i> </button>
+      </div>
+     </div><div id="step-6" class="step-content hidden">
+      <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
+       <div class="bg-gradient-to-r from-cyan-600 to-blue-600 text-white p-6">
+        <div class="flex items-center justify-between">
+         <div class="flex items-center gap-3">
+          <div class="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center text-2xl">
+           🧠
+          </div>
+          <div>
+           <h2 class="text-xl font-bold">Kuis Interaktif</h2>
+           <p class="text-cyan-200 text-sm">15 Menit</p>
+          </div>
+         </div>
+         <div id="quiz-score" class="hidden bg-white/20 px-4 py-2 rounded-lg"><span class="text-sm">Skor: </span> <span id="score-value" class="font-bold text-xl">0</span> <span class="text-sm">/5</span>
+         </div>
+        </div>
+       </div>
+       <div class="p-6">
+        <div id="quiz-container"></div>
+        <div id="quiz-result" class="hidden text-center py-8">
+         <div id="result-emoji" class="text-7xl mb-4"></div>
+         <h3 id="result-title" class="text-2xl font-bold mb-2"></h3>
+         <p id="result-message" class="text-gray-600 mb-6"></p>
+         <div id="final-score" class="bg-emerald-100 rounded-xl p-6 inline-block mb-6">
+          <p class="text-emerald-600 text-sm">Skor Akhir</p>
+          <p class="text-4xl font-bold text-emerald-700"><span id="final-score-value">0</span>/5</p>
+         </div><button onclick="resetQuiz()" class="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 rounded-xl font-semibold transition flex items-center gap-2 mx-auto"> <i data-lucide="refresh-cw" class="w-5 h-5"></i> Ulangi Kuis </button>
+        </div>
+       </div>
+      </div>
+      <div class="flex gap-4 mt-6 no-print"><button onclick="goToStep(5)" class="flex-1 bg-gray-200 hover:bg-gray-300 text-gray-700 py-4 rounded-xl font-semibold transition flex items-center justify-center gap-2"> <i data-lucide="arrow-left" class="w-5 h-5"></i> Sebelumnya </button> <button onclick="goToStep(7)" class="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white py-4 rounded-xl font-semibold transition flex items-center justify-center gap-2"> Lanjut ke Penutup <i data-lucide="arrow-right" class="w-5 h-5"></i> </button>
+      </div>
+     </div><div id="step-7" class="step-content hidden">
+      <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
+       <div class="bg-gradient-to-r from-emerald-600 to-green-600 text-white p-6">
+        <div class="flex items-center gap-3">
+         <div class="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center text-2xl">
+          🌙
+         </div>
+         <div>
+          <h2 class="text-xl font-bold">Kegiatan Penutup</h2>
+          <p class="text-emerald-200 text-sm">15 Menit</p>
+         </div>
+        </div>
+       </div>
+       <div class="p-6 space-y-6"><div class="bg-emerald-50 rounded-xl p-5 animate-fade-in">
+         <h3 class="font-bold text-emerald-800 text-lg mb-3 flex items-center gap-2"><span class="text-xl">📌</span> Penyimpulan</h3>
+         <div class="bg-white rounded-lg p-4 border-2 border-emerald-200">
+          <p class="text-gray-700 mb-3">Hari ini kita telah belajar tentang:</p>
+          <ul class="space-y-2">
+           <li class="flex items-center gap-2 text-gray-700"><span class="w-6 h-6 bg-emerald-500 text-white rounded-full flex items-center justify-center text-xs">✓</span> Pengertian Birrul Walidain (berbakti kepada orang tua)</li>
+           <li class="flex items-center gap-2 text-gray-700"><span class="w-6 h-6 bg-emerald-500 text-white rounded-full flex items-center justify-center text-xs">✓</span> Dalil Al-Quran tentang berbakti kepada orang tua</li>
+           <li class="flex items-center gap-2 text-gray-700"><span class="w-6 h-6 bg-emerald-500 text-white rounded-full flex items-center justify-center text-xs">✓</span> Adab-adab kepada orang tua dan guru</li>
+           <li class="flex items-center gap-2 text-gray-700"><span class="w-6 h-6 bg-emerald-500 text-white rounded-full flex items-center justify-center text-xs">✓</span> Contoh perilaku berbakti dalam kehidupan sehari-hari</li>
+          </ul>
+         </div>
+        </div><div class="bg-amber-50 rounded-xl p-5 animate-fade-in" style="animation-delay: 0.2s">
+         <h3 class="font-bold text-amber-800 text-lg mb-3 flex items-center gap-2"><span class="text-xl">💭</span> Refleksi Akhir Pembelajaran</h3>
+         <div class="bg-white rounded-lg p-4 border-2 border-amber-200">
+          <p class="text-gray-700 mb-4">Sebutkan satu hal yang akan kamu praktikkan di rumah untuk berbakti kepada orang tua:</p>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+           <div class="bg-amber-100 rounded-lg p-3 text-center cursor-pointer hover:bg-amber-200 transition" onclick="selectReflection(this)">
+            <div class="text-2xl mb-1">
+             🧹
+            </div>
+            <p class="text-xs">Membantu pekerjaan rumah</p>
+           </div>
+           <div class="bg-amber-100 rounded-lg p-3 text-center cursor-pointer hover:bg-amber-200 transition" onclick="selectReflection(this)">
+            <div class="text-2xl mb-1">
+             📚
+            </div>
+            <p class="text-xs">Rajin belajar</p>
+           </div>
+           <div class="bg-amber-100 rounded-lg p-3 text-center cursor-pointer hover:bg-amber-200 transition" onclick="selectReflection(this)">
+            <div class="text-2xl mb-1">
+             🤲
+            </div>
+            <p class="text-xs">Mendoakan orang tua</p>
+           </div>
+           <div class="bg-amber-100 rounded-lg p-3 text-center cursor-pointer hover:bg-amber-200 transition" onclick="selectReflection(this)">
+            <div class="text-2xl mb-1">
+             💬
+            </div>
+            <p class="text-xs">Berbicara sopan</p>
+           </div>
+          </div>
+         </div>
+        </div><div class="bg-indigo-50 rounded-xl p-5 animate-fade-in" style="animation-delay: 0.4s">
+         <h3 class="font-bold text-indigo-800 text-lg mb-3 flex items-center gap-2"><span class="text-xl">🤲</span> Doa Sesudah Belajar</h3>
+         <div class="bg-white rounded-lg p-5 border-2 border-indigo-200 text-center">
+          <p class="arabic-text text-2xl leading-loose text-indigo-800 mb-4">اَللّٰهُمَّ أَرِنَا الْحَقَّ حَقًّا وَارْزُقْنَا اتِّبَاعَهُ</p>
+          <p class="arabic-text text-2xl leading-loose text-indigo-800 mb-4">وَأَرِنَا الْبَاطِلَ بَاطِلاً وَارْزُقْنَا اجْتِنَابَهُ</p>
+          <hr class="my-4">
+          <p class="text-gray-700 italic">"Allahumma arinal haqqa haqqa warzuqnat tiba'ah wa arinal batila batila warzuqnaj tinabah"</p>
+          <p class="text-sm text-gray-500 mt-3">"Ya Allah, tunjukkanlah kepada kami kebenaran itu sebagai kebenaran dan berilah kami kemampuan untuk mengikutinya. Dan tunjukkanlah kepada kami kebatilan itu sebagai kebatilan dan berilah kami kemampuan untuk menjauhinya."</p>
+         </div>
+        </div><div class="bg-emerald-100 rounded-xl p-6 text-center animate-fade-in" style="animation-delay: 0.6s">
+         <div class="text-5xl mb-4">
+          🕌
+         </div>
+         <h3 class="text-2xl font-bold text-emerald-800 mb-2">Wassalamu'alaikum Warahmatullahi Wabarakatuh</h3>
+         <p class="text-emerald-600">Semoga ilmu yang dipelajari hari ini menjadi berkah dan bermanfaat</p>
+         <div class="flex justify-center gap-2 mt-4"><span class="text-3xl animate-float" style="animation-delay: 0s">⭐</span> <span class="text-3xl animate-float" style="animation-delay: 0.1s">🌙</span> <span class="text-3xl animate-float" style="animation-delay: 0.2s">⭐</span>
+         </div>
+        </div>
+       </div>
+      </div>
+      <div class="flex gap-4 mt-6 no-print"><button onclick="goToStep(6)" class="flex-1 bg-gray-200 hover:bg-gray-300 text-gray-700 py-4 rounded-xl font-semibold transition flex items-center justify-center gap-2"> <i data-lucide="arrow-left" class="w-5 h-5"></i> Sebelumnya </button> <button onclick="showSection('main-menu')" class="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white py-4 rounded-xl font-semibold transition flex items-center justify-center gap-2"> <i data-lucide="home" class="w-5 h-5"></i> Kembali ke Menu </button>
+      </div>
+     </div>
+    </div>
+   </div>
+  </div>
+  <script>
+    // Default Config
+    const defaultConfig = {
+      app_title: 'Pesantren Ramadhan',
+      school_name: 'Pembelajaran Pesantren Ramadhan',
+      primary_color: '#065f46',
+      secondary_color: '#10b981',
+      accent_color: '#f59e0b',
+      text_color: '#1f2937',
+      background_color: '#f0fdf4'
+    };
+
+    let currentStep = 1;
+    const totalSteps = 7;
+
+    // Quiz Data
+    const quizData = [
+      {
+        question: "Apa arti dari Birrul Walidain?",
+        options: [
+          "Berbakti kepada kedua orang tua",
+          "Berbakti kepada guru",
+          "Berbakti kepada teman",
+          "Berbakti kepada tetangga"
+        ],
+        correct: 0
+      },
+      {
+        question: "Dalam QS. Al-Isra ayat 23, Allah memerintahkan kita untuk berbuat baik kepada siapa?",
+        options: [
+          "Teman sebaya",
+          "Ibu bapak",
+          "Guru di sekolah",
+          "Orang yang tidak dikenal"
+        ],
+        correct: 1
+      },
+      {
+        question: "Mana yang BUKAN termasuk adab kepada orang tua?",
+        options: [
+          "Berbicara sopan dan lemah lembut",
+          "Membantu pekerjaan rumah",
+          "Membentak saat tidak setuju",
+          "Mendoakan kebaikan untuk mereka"
+        ],
+        correct: 2
+      },
+      {
+        question: "Ridho Allah tergantung pada...?",
+        options: [
+          "Ridho teman",
+          "Ridho guru",
+          "Ridho orang tua",
+          "Ridho tetangga"
+        ],
+        correct: 2
+      },
+      {
+        question: "Cara menghormati guru yang benar adalah...?",
+        options: [
+          "Tidak mengerjakan tugas",
+          "Berbicara saat guru menjelaskan",
+          "Mendengarkan dengan penuh perhatian",
+          "Tidur di kelas"
+        ],
+        correct: 2
+      }
+    ];
+
+    let currentQuizIndex = 0;
+    let score = 0;
+    let quizAnswered = false;
+
+    // Initialize
+    function init() {
+      lucide.createIcons();
+      updateStepButtons();
+      renderQuiz();
+    }
+
+    // Show Section
+    function showSection(sectionId) {
+      document.querySelectorAll('#app > div').forEach(div => div.classList.add('hidden'));
+      document.getElementById(sectionId).classList.remove('hidden');
+      
+      if (sectionId === 'media-interaktif') {
+        goToStep(1);
+      }
+      
+      window.scrollTo(0, 0);
+      lucide.createIcons();
+    }
+
+    // Go to Step
+    function goToStep(step) {
+      currentStep = step;
+      document.querySelectorAll('.step-content').forEach(el => el.classList.add('hidden'));
+      document.getElementById(`step-${step}`).classList.remove('hidden');
+      updateStepButtons();
+      updateProgressIndicator();
+      window.scrollTo(0, 0);
+      lucide.createIcons();
+    }
+
+    // Update Step Buttons
+    function updateStepButtons() {
+      document.querySelectorAll('.step-btn').forEach(btn => {
+        const btnStep = parseInt(btn.dataset.step);
+        btn.classList.remove('bg-emerald-600', 'text-white', 'bg-emerald-100', 'text-emerald-700', 'bg-gray-100', 'text-gray-500');
+        
+        if (btnStep === currentStep) {
+          btn.classList.add('bg-emerald-600', 'text-white');
+        } else if (btnStep < currentStep) {
+          btn.classList.add('bg-emerald-100', 'text-emerald-700');
+        } else {
+          btn.classList.add('bg-gray-100', 'text-gray-500');
+        }
+      });
+    }
+
+    // Update Progress Indicator
+    function updateProgressIndicator() {
+      const indicator = document.getElementById('progress-indicator');
+      indicator.textContent = `${currentStep}/${totalSteps}`;
+    }
+
+    // Print LKPD
+    function printLKPD() {
+      window.print();
+    }
+
+    // Reveal Gesture
+    const gestures = [
+      { emoji: "🙏", text: "Bersalaman" },
+      { emoji: "🧹", text: "Membantu bersih-bersih" },
+      { emoji: "🫂", text: "Memeluk orang tua" },
+      { emoji: "☕", text: "Membuatkan minuman" }
+    ];
+
+    function revealGesture(num) {
+      const btn = document.getElementById(`gesture-btn-${num}`);
+      const gesture = gestures[num - 1];
+      btn.innerHTML = `<div class="text-3xl mb-1 animate-star">${gesture.emoji}</div><p class="text-xs text-emerald-700 font-semibold">${gesture.text}</p>`;
+      btn.classList.remove('cursor-pointer', 'hover:bg-emerald-100');
+      btn.classList.add('bg-emerald-100');
+    }
+
+    // Render Quiz
+    function renderQuiz() {
+      const container = document.getElementById('quiz-container');
+      const quiz = quizData[currentQuizIndex];
+      
+      container.innerHTML = `
+        <div class="mb-4 flex items-center justify-between">
+          <span class="bg-cyan-100 text-cyan-700 px-3 py-1 rounded-full text-sm font-semibold">
+            Pertanyaan ${currentQuizIndex + 1} dari ${quizData.length}
+          </span>
+          <div class="flex gap-1">
+            ${quizData.map((_, i) => `
+              <div class="w-3 h-3 rounded-full ${i < currentQuizIndex ? 'bg-emerald-500' : i === currentQuizIndex ? 'bg-cyan-500' : 'bg-gray-200'}"></div>
+            `).join('')}
+          </div>
+        </div>
+        
+        <div class="bg-gradient-to-br from-cyan-50 to-blue-50 rounded-xl p-6 mb-6 border-2 border-cyan-200">
+          <h3 class="text-lg font-bold text-gray-800 mb-1">${quiz.question}</h3>
+        </div>
+        
+        <div class="space-y-3" id="quiz-options">
+          ${quiz.options.map((option, index) => `
+            <button onclick="selectAnswer(${index})" class="quiz-option w-full text-left p-4 rounded-xl border-2 border-gray-200 hover:border-cyan-400 transition flex items-center gap-3" data-index="${index}">
+              <span class="w-8 h-8 bg-gray-100 rounded-lg flex items-center justify-center font-bold text-gray-600">${String.fromCharCode(65 + index)}</span>
+              <span class="flex-1">${option}</span>
+            </button>
+          `).join('')}
+        </div>
+        
+        <div id="answer-feedback" class="hidden mt-4"></div>
+        
+        <button id="next-quiz-btn" onclick="nextQuiz()" class="hidden w-full mt-6 bg-emerald-600 hover:bg-emerald-700 text-white py-3 rounded-xl font-semibold transition">
+          ${currentQuizIndex < quizData.length - 1 ? 'Pertanyaan Selanjutnya →' : 'Lihat Hasil'}
+        </button>
+      `;
+      
+      document.getElementById('quiz-score').classList.remove('hidden');
+      document.getElementById('score-value').textContent = score;
+      quizAnswered = false;
+    }
+
+    // Select Answer
+    function selectAnswer(index) {
+      if (quizAnswered) return;
+      quizAnswered = true;
+      
+      const quiz = quizData[currentQuizIndex];
+      const options = document.querySelectorAll('.quiz-option');
+      const feedback = document.getElementById('answer-feedback');
+      
+      options.forEach((opt, i) => {
+        opt.classList.remove('hover:border-cyan-400');
+        if (i === quiz.correct) {
+          opt.classList.add('correct');
+        } else if (i === index && index !== quiz.correct) {
+          opt.classList.add('wrong');
+        }
+      });
+      
+      if (index === quiz.correct) {
+        score++;
+        document.getElementById('score-value').textContent = score;
+        feedback.innerHTML = `
+          <div class="bg-emerald-100 border-2 border-emerald-300 rounded-xl p-4 flex items-center gap-3">
+            <span class="text-3xl">🎉</span>
+            <div>
+              <p class="font-bold text-emerald-800">Benar! Hebat!</p>
+              <p class="text-emerald-600 text-sm">Kamu memilih jawaban yang tepat.</p>
+            </div>
+          </div>
+        `;
+      } else {
+        feedback.innerHTML = `
+          <div class="bg-rose-100 border-2 border-rose-300 rounded-xl p-4 flex items-center gap-3">
+            <span class="text-3xl">😊</span>
+            <div>
+              <p class="font-bold text-rose-800">Belum tepat</p>
+              <p class="text-rose-600 text-sm">Jawaban yang benar adalah: <strong>${quiz.options[quiz.correct]}</strong></p>
+            </div>
+          </div>
+        `;
+      }
+      
+      feedback.classList.remove('hidden');
+      document.getElementById('next-quiz-btn').classList.remove('hidden');
+    }
+
+    // Next Quiz
+    function nextQuiz() {
+      currentQuizIndex++;
+      
+      if (currentQuizIndex >= quizData.length) {
+        showQuizResult();
+      } else {
+        renderQuiz();
+      }
+    }
+
+    // Show Quiz Result
+    function showQuizResult() {
+      document.getElementById('quiz-container').classList.add('hidden');
+      document.getElementById('quiz-score').classList.add('hidden');
+      
+      const result = document.getElementById('quiz-result');
+      result.classList.remove('hidden');
+      
+      let emoji, title, message;
+      
+      if (score === 5) {
+        emoji = '🏆';
+        title = 'Luar Biasa!';
+        message = 'Kamu mendapat nilai sempurna! Kamu benar-benar memahami materi Birrul Walidain.';
+      } else if (score >= 4) {
+        emoji = '🌟';
+        title = 'Hebat!';
+        message = 'Kamu sudah sangat memahami materi dengan baik. Terus semangat belajar!';
+      } else if (score >= 3) {
+        emoji = '👍';
+        title = 'Bagus!';
+        message = 'Kamu sudah cukup memahami materi. Terus tingkatkan ya!';
+      } else {
+        emoji = '💪';
+        title = 'Semangat!';
+        message = 'Jangan menyerah! Coba pelajari kembali materinya dan ulangi kuisnya.';
+      }
+      
+      document.getElementById('result-emoji').textContent = emoji;
+      document.getElementById('result-title').textContent = title;
+      document.getElementById('result-title').className = `text-2xl font-bold mb-2 ${score >= 4 ? 'text-emerald-700' : score >= 3 ? 'text-amber-700' : 'text-blue-700'}`;
+      document.getElementById('result-message').textContent = message;
+      document.getElementById('final-score-value').textContent = score;
+      
+      lucide.createIcons();
+    }
+
+    // Reset Quiz
+    function resetQuiz() {
+      currentQuizIndex = 0;
+      score = 0;
+      document.getElementById('quiz-result').classList.add('hidden');
+      document.getElementById('quiz-container').classList.remove('hidden');
+      renderQuiz();
+    }
+
+    // Select Reflection
+    function selectReflection(el) {
+      document.querySelectorAll('.bg-amber-100').forEach(item => {
+        item.classList.remove('ring-4', 'ring-emerald-400', 'bg-emerald-100');
+        item.classList.add('bg-amber-100');
+      });
+      el.classList.remove('bg-amber-100');
+      el.classList.add('ring-4', 'ring-emerald-400', 'bg-emerald-100');
+    }
+
+    // Element SDK Integration
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange: async (config) => {
+          const title = document.getElementById('main-title');
+          const footer = document.getElementById('footer-text');
+          
+          if (title) title.textContent = config.app_title || defaultConfig.app_title;
+          if (footer) footer.textContent = `© 2026 ${config.school_name || defaultConfig.school_name}`;
+        },
+        mapToCapabilities: (config) => ({
+          recolorables: [
+            {
+              get: () => config.primary_color || defaultConfig.primary_color,
+              set: (value) => window.elementSdk.setConfig({ primary_color: value })
+            },
+            {
+              get: () => config.secondary_color || defaultConfig.secondary_color,
+              set: (value) => window.elementSdk.setConfig({ secondary_color: value })
+            },
+            {
+              get: () => config.accent_color || defaultConfig.accent_color,
+              set: (value) => window.elementSdk.setConfig({ accent_color: value })
+            },
+            {
+              get: () => config.text_color || defaultConfig.text_color,
+              set: (value) => window.elementSdk.setConfig({ text_color: value })
+            },
+            {
+              get: () => config.background_color || defaultConfig.background_color,
+              set: (value) => window.elementSdk.setConfig({ background_color: value })
+            }
+          ],
+          borderables: [],
+          fontEditable: undefined,
+          fontSizeable: undefined
+        }),
+        mapToEditPanelValues: (config) => new Map([
+          ['app_title', config.app_title || defaultConfig.app_title],
+          ['school_name', config.school_name || defaultConfig.school_name]
+        ])
+      });
+    }
+
+    // Initialize on load
+    init();
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9d8af3ffc38640af',t:'MTc3MjkwMDY5NS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

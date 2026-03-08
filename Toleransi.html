@@ -1,0 +1,1342 @@
+<!doctype html>
+<html lang="id" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modul Pesantren Ramadhan - Toleransi</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&amp;family=Nunito:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
+  <style>
+    * { font-family: 'Nunito', sans-serif; }
+    .arabic-font { font-family: 'Amiri', serif; }
+    .gradient-header { background: linear-gradient(135deg, #065f46 0%, #047857 50%, #10b981 100%); }
+    .card-hover { transition: all 0.3s ease; }
+    .card-hover:hover { transform: translateY(-4px); box-shadow: 0 12px 24px rgba(0,0,0,0.15); }
+    .pulse-glow { animation: pulseGlow 2s ease-in-out infinite; }
+    @keyframes pulseGlow {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4); }
+      50% { box-shadow: 0 0 0 12px rgba(16, 185, 129, 0); }
+    }
+    .slide-in { animation: slideIn 0.5s ease-out; }
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .print-area { background: white; }
+    
+    /* Peningkatan sistem printing agar tidak perlu popup */
+    @media print {
+      body * { visibility: hidden; }
+      
+      body.print-modul #modulContent, body.print-modul #modulContent * { visibility: visible; }
+      body.print-modul #modulContent { position: absolute; left: 0; top: 0; width: 100%; box-shadow: none; }
+
+      body.print-lkpd #lkpdContent, body.print-lkpd #lkpdContent * { visibility: visible; }
+      body.print-lkpd #lkpdContent { position: absolute; left: 0; top: 0; width: 100%; box-shadow: none; border: none; }
+
+      body.print-skenario #skenarioContent, body.print-skenario #skenarioContent * { visibility: visible; }
+      body.print-skenario #skenarioContent { position: absolute; left: 0; top: 0; width: 100%; }
+      
+      .no-print { display: none !important; }
+      .scenario-card { page-break-inside: avoid; break-inside: avoid; }
+    }
+    
+    .quiz-option { transition: all 0.2s ease; }
+    .quiz-option:hover { background: #d1fae5; border-color: #10b981; }
+    .quiz-option.selected { background: #a7f3d0; border-color: #059669; }
+    .quiz-option.correct { background: #bbf7d0; border-color: #22c55e; }
+    .quiz-option.incorrect { background: #fecaca; border-color: #ef4444; }
+    .scenario-card { background: linear-gradient(145deg, #fef3c7 0%, #fde68a 100%); }
+    .step-badge { 
+      width: 36px; height: 36px; 
+      display: flex; align-items: center; justify-content: center;
+      border-radius: 50%; font-weight: 700;
+    }
+  </style>
+  <style>body { box-sizing: border-box; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full bg-gradient-to-br from-emerald-50 via-green-50 to-teal-50 overflow-auto">
+  <div id="app" class="w-full min-h-full"><div id="mainMenu" class="min-h-full flex flex-col"><header class="gradient-header text-white py-8 px-4 shadow-xl">
+     <div class="max-w-4xl mx-auto text-center">
+      <div class="flex items-center justify-center gap-3 mb-3"><span class="text-4xl">🕌</span>
+       <h1 id="mainTitle" class="text-2xl md:text-3xl font-bold">Pesantren Ramadhan</h1><span class="text-4xl">☪️</span>
+      </div>
+      <h2 class="text-lg md:text-xl font-semibold opacity-95">Pembelajaran Toleransi</h2>
+      <p class="text-sm mt-2 opacity-80">Menghargai Perbedaan Sesama Teman</p>
+      <div class="mt-4 flex flex-wrap justify-center gap-3 text-xs"><span class="bg-white/20 px-3 py-1 rounded-full">📚 Kelas 4-6 SD</span> <span class="bg-white/20 px-3 py-1 rounded-full">⏱️ 120 Menit</span> <span class="bg-white/20 px-3 py-1 rounded-full">🎯 Problem Based Learning</span>
+      </div>
+     </div>
+    </header><main class="flex-1 p-6 md:p-8">
+     <div class="max-w-4xl mx-auto">
+      <div class="grid md:grid-cols-2 gap-6"><button onclick="showSection('modulAjar')" class="card-hover bg-white rounded-2xl p-6 shadow-lg border-2 border-emerald-100 text-left group">
+        <div class="flex items-start gap-4">
+         <div class="w-16 h-16 bg-emerald-100 rounded-xl flex items-center justify-center text-3xl group-hover:scale-110 transition-transform">
+          📖
+         </div>
+         <div class="flex-1">
+          <h3 class="text-xl font-bold text-emerald-800 mb-2">Modul Ajar</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">Panduan lengkap pembelajaran meliputi persiapan, pembukaan, kegiatan inti, dan penutup.</p>
+          <div class="mt-3 flex items-center text-emerald-600 text-sm font-semibold"><span>Buka Modul</span> <i data-lucide="arrow-right" class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform"></i>
+          </div>
+         </div>
+        </div></button> <button onclick="showSection('mediaInteraktif')" class="card-hover bg-white rounded-2xl p-6 shadow-lg border-2 border-teal-100 text-left group">
+        <div class="flex items-start gap-4">
+         <div class="w-16 h-16 bg-teal-100 rounded-xl flex items-center justify-center text-3xl group-hover:scale-110 transition-transform pulse-glow">
+          🎮
+         </div>
+         <div class="flex-1">
+          <h3 class="text-xl font-bold text-teal-800 mb-2">Media Pembelajaran Interaktif</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">Kegiatan interaktif: doa, materi, diskusi kelompok, ice breaking, dan kuis.</p>
+          <div class="mt-3 flex items-center text-teal-600 text-sm font-semibold"><span>Mulai Belajar</span> <i data-lucide="play" class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform"></i>
+          </div>
+         </div>
+        </div></button>
+      </div><div class="mt-8 bg-gradient-to-r from-amber-50 to-yellow-50 rounded-xl p-5 border border-amber-200">
+       <div class="flex items-start gap-3"><span class="text-2xl">💡</span>
+        <div>
+         <h4 class="font-bold text-amber-800 mb-1">Tujuan Pembelajaran</h4>
+         <p class="text-amber-700 text-sm">Siswa mampu memahami dan menerapkan sikap toleransi dalam kehidupan sehari-hari, menghargai perbedaan antar sesama teman, serta menjaga kerukunan di lingkungan sekolah.</p>
+        </div>
+       </div>
+      </div>
+     </div>
+    </main><footer class="bg-emerald-800 text-white py-4 px-4 text-center text-sm">
+     <p id="footerTeacher">Dibuat untuk Pesantren Ramadhan</p>
+    </footer>
+   </div><div id="modulAjar" class="hidden min-h-full flex flex-col">
+    <header class="gradient-header text-white py-4 px-4 shadow-lg no-print">
+     <div class="max-w-5xl mx-auto flex items-center justify-between"><button onclick="showSection('mainMenu')" class="flex items-center gap-2 hover:bg-white/10 px-3 py-2 rounded-lg transition-colors"> <i data-lucide="arrow-left" class="w-5 h-5"></i> <span>Kembali</span> </button>
+      <h1 class="text-lg font-bold">📖 Modul Ajar</h1><button onclick="printModul()" class="flex items-center gap-2 bg-white/20 hover:bg-white/30 px-4 py-2 rounded-lg transition-colors"> <i data-lucide="printer" class="w-4 h-4"></i> <span>Cetak</span> </button>
+     </div>
+    </header>
+    <main class="flex-1 p-4 md:p-6 overflow-auto">
+     <div id="modulContent" class="print-area max-w-5xl mx-auto bg-white rounded-xl shadow-lg p-6 md:p-8"><div class="text-center border-b-2 border-emerald-200 pb-6 mb-6">
+       <h1 class="text-2xl md:text-3xl font-bold text-emerald-800 mb-2">MODUL AJAR</h1>
+       <h2 class="text-xl font-semibold text-gray-700">Pesantren Ramadhan</h2>
+       <h3 class="text-lg text-emerald-600 mt-2">Tema: Toleransi (Menghargai Perbedaan Sesama Teman)</h3>
+      </div><div class="bg-emerald-50 rounded-lg p-5 mb-6">
+       <h3 class="font-bold text-emerald-800 mb-3 flex items-center gap-2"><span class="step-badge bg-emerald-600 text-white text-sm">i</span> INFORMASI UMUM</h3>
+       <div class="grid md:grid-cols-2 gap-3 text-sm">
+        <div class="flex gap-2">
+         <span class="font-semibold text-gray-700 w-36">Mata Pelajaran</span><span>: Pesantren Ramadhan</span>
+        </div>
+        <div class="flex gap-2">
+         <span class="font-semibold text-gray-700 w-36">Kelas/Jenjang</span><span>: 4-6 SD</span>
+        </div>
+        <div class="flex gap-2">
+         <span class="font-semibold text-gray-700 w-36">Alokasi Waktu</span><span>: 120 Menit (4 x 30 menit)</span>
+        </div>
+        <div class="flex gap-2">
+         <span class="font-semibold text-gray-700 w-36">Model Pembelajaran</span><span>: Problem Based Learning (PBL)</span>
+        </div>
+        <div class="flex gap-2 md:col-span-2">
+         <span class="font-semibold text-gray-700 w-36">Materi Pokok</span><span>: Toleransi - Menghargai Perbedaan Sesama Teman</span>
+        </div>
+       </div>
+      </div><div class="mb-6">
+       <h3 class="font-bold text-emerald-800 mb-3 flex items-center gap-2"><span class="step-badge bg-emerald-600 text-white text-sm">A</span> CAPAIAN PEMBELAJARAN</h3>
+       <div class="bg-gray-50 rounded-lg p-4">
+        <p class="text-gray-700 text-sm leading-relaxed">Peserta didik mampu memahami konsep toleransi dalam Islam, menghargai perbedaan sesama teman, dan menerapkan sikap saling menghormati dalam kehidupan sehari-hari di lingkungan sekolah maupun masyarakat.</p>
+       </div>
+      </div><div class="mb-6">
+       <h3 class="font-bold text-emerald-800 mb-3 flex items-center gap-2"><span class="step-badge bg-emerald-600 text-white text-sm">B</span> TUJUAN PEMBELAJARAN</h3>
+       <div class="bg-gray-50 rounded-lg p-4">
+        <ol class="list-decimal list-inside space-y-2 text-sm text-gray-700">
+         <li>Siswa dapat menjelaskan pengertian toleransi menurut Islam dengan benar</li>
+         <li>Siswa dapat menyebutkan minimal 3 contoh sikap toleransi di sekolah</li>
+         <li>Siswa dapat menganalisis permasalahan terkait kerukunan dan memberikan solusi yang tepat</li>
+         <li>Siswa dapat menerapkan sikap toleransi dalam kehidupan sehari-hari</li>
+         <li>Siswa dapat bekerja sama dalam kelompok dengan menghargai pendapat teman</li>
+        </ol>
+       </div>
+      </div><div class="mb-6">
+       <h3 class="font-bold text-emerald-800 mb-3 flex items-center gap-2"><span class="step-badge bg-blue-600 text-white text-sm">C</span> LANGKAH-LANGKAH PERSIAPAN (KEBUTUHAN PEMBELAJARAN)</h3>
+       <div class="bg-blue-50 rounded-lg p-4">
+        <div class="grid md:grid-cols-2 gap-4">
+         <div>
+          <h4 class="font-semibold text-blue-800 mb-2">📋 Bahan Ajar:</h4>
+          <ul class="list-disc list-inside text-sm text-gray-700 space-y-1">
+           <li>Modul pembelajaran tentang toleransi</li>
+           <li>Kartu skenario masalah kontekstual</li>
+           <li>LKPD (Lembar Kerja Peserta Didik)</li>
+           <li>Slide presentasi/media visual</li>
+          </ul>
+         </div>
+         <div>
+          <h4 class="font-semibold text-blue-800 mb-2">🛠️ Alat dan Media:</h4>
+          <ul class="list-disc list-inside text-sm text-gray-700 space-y-1">
+           <li>Laptop/Proyektor/Layar</li>
+           <li>Papan tulis dan spidol</li>
+           <li>Kertas plano untuk presentasi kelompok</li>
+           <li>Alat tulis untuk siswa</li>
+          </ul>
+         </div>
+         <div class="md:col-span-2">
+          <h4 class="font-semibold text-blue-800 mb-2">✅ Persiapan Sebelum Pembelajaran:</h4>
+          <ul class="list-disc list-inside text-sm text-gray-700 space-y-1">
+           <li>Menyiapkan ruang kelas dengan formasi kelompok (4-5 kelompok)</li>
+           <li>Mencetak LKPD dan kartu skenario sesuai jumlah kelompok</li>
+           <li>Memastikan perangkat teknologi berfungsi dengan baik</li>
+           <li>Menyiapkan reward/penghargaan untuk kelompok terbaik</li>
+          </ul>
+         </div>
+        </div>
+       </div>
+      </div><div class="mb-6">
+       <h3 class="font-bold text-emerald-800 mb-3 flex items-center gap-2"><span class="step-badge bg-amber-500 text-white text-sm">D</span> KEGIATAN PEMBUKAAN (15 Menit)</h3>
+       <div class="bg-amber-50 rounded-lg p-4">
+        <table class="w-full text-sm">
+         <thead>
+          <tr class="border-b border-amber-200">
+           <th class="text-left py-2 px-2 w-24">Waktu</th>
+           <th class="text-left py-2 px-2">Kegiatan</th>
+          </tr>
+         </thead>
+         <tbody>
+          <tr class="border-b border-amber-100">
+           <td class="py-2 px-2 text-amber-700 font-medium">2 menit</td>
+           <td class="py-2 px-2"><strong>Salam &amp; Kabar:</strong> Guru mengucapkan salam dan menanyakan kabar siswa dengan penuh semangat</td>
+          </tr>
+          <tr class="border-b border-amber-100">
+           <td class="py-2 px-2 text-amber-700 font-medium">3 menit</td>
+           <td class="py-2 px-2"><strong>Doa Belajar:</strong> Membaca doa bersama-sama (Rodhitu billahi robba...)</td>
+          </tr>
+          <tr class="border-b border-amber-100">
+           <td class="py-2 px-2 text-amber-700 font-medium">5 menit</td>
+           <td class="py-2 px-2"><strong>Apersepsi:</strong> Guru bertanya tentang pengalaman siswa berinteraksi dengan teman yang berbeda (suku, hobi, pendapat)</td>
+          </tr>
+          <tr>
+           <td class="py-2 px-2 text-amber-700 font-medium">5 menit</td>
+           <td class="py-2 px-2"><strong>Motivasi:</strong> Guru menyampaikan pentingnya toleransi dan tujuan pembelajaran hari ini</td>
+          </tr>
+         </tbody>
+        </table>
+       </div>
+      </div><div class="mb-6">
+       <h3 class="font-bold text-emerald-800 mb-3 flex items-center gap-2"><span class="step-badge bg-emerald-600 text-white text-sm">E</span> KEGIATAN INTI - MODEL PBL (90 Menit)</h3>
+       <div class="space-y-4"><div class="bg-emerald-50 rounded-lg p-4 border-l-4 border-emerald-500">
+         <h4 class="font-bold text-emerald-800 mb-2">Fase 1: Orientasi Siswa pada Masalah (15 menit)</h4>
+         <ul class="list-disc list-inside text-sm text-gray-700 space-y-1">
+          <li>Guru menampilkan video/cerita tentang konflik antar siswa karena perbedaan</li>
+          <li>Guru mengajukan pertanyaan pemantik: "Apa yang terjadi jika kita tidak saling menghargai perbedaan?"</li>
+          <li>Siswa diminta mengidentifikasi masalah yang muncul dari ketidakrukunan</li>
+         </ul>
+        </div><div class="bg-teal-50 rounded-lg p-4 border-l-4 border-teal-500">
+         <h4 class="font-bold text-teal-800 mb-2">Fase 2: Mengorganisasi Siswa untuk Belajar (15 menit)</h4>
+         <ul class="list-disc list-inside text-sm text-gray-700 space-y-1">
+          <li>Guru menjelaskan materi tentang toleransi dalam Islam (pengertian, dalil, contoh)</li>
+          <li>Siswa dibagi menjadi 4-5 kelompok heterogen</li>
+          <li>Setiap kelompok menerima LKPD dan Kartu Skenario Masalah</li>
+         </ul>
+        </div><div class="bg-cyan-50 rounded-lg p-4 border-l-4 border-cyan-500">
+         <h4 class="font-bold text-cyan-800 mb-2">Fase 3: Membimbing Penyelidikan Kelompok (20 menit)</h4>
+         <ul class="list-disc list-inside text-sm text-gray-700 space-y-1">
+          <li>Kelompok berdiskusi menganalisis skenario masalah yang diterima</li>
+          <li>Siswa mengidentifikasi penyebab masalah dan mencari solusi</li>
+          <li>Guru berkeliling membimbing dan memfasilitasi diskusi</li>
+         </ul>
+        </div><div class="bg-green-50 rounded-lg p-4 border-l-4 border-green-500">
+         <h4 class="font-bold text-green-800 mb-2">Fase 4: Mengembangkan dan Menyajikan Hasil (20 menit)</h4>
+         <ul class="list-disc list-inside text-sm text-gray-700 space-y-1">
+          <li>Setiap kelompok mempresentasikan hasil diskusi</li>
+          <li>Kelompok lain memberikan tanggapan dan pertanyaan</li>
+          <li>Guru memberikan apresiasi dan penguatan</li>
+         </ul>
+        </div><div class="bg-lime-50 rounded-lg p-4 border-l-4 border-lime-500">
+         <h4 class="font-bold text-lime-800 mb-2">Fase 5: Menganalisis dan Mengevaluasi (10 menit)</h4>
+         <ul class="list-disc list-inside text-sm text-gray-700 space-y-1">
+          <li>Guru bersama siswa menganalisis solusi terbaik dari setiap kelompok</li>
+          <li>Menyimpulkan nilai-nilai toleransi yang dapat diterapkan</li>
+         </ul>
+        </div><div class="bg-purple-50 rounded-lg p-4 border-l-4 border-purple-500">
+         <h4 class="font-bold text-purple-800 mb-2">Ice Breaking &amp; Kuis (10 menit)</h4>
+         <ul class="list-disc list-inside text-sm text-gray-700 space-y-1">
+          <li>Ice breaking: Permainan "Tepuk Toleransi" untuk menyegarkan suasana</li>
+          <li>Kuis interaktif untuk mengukur pemahaman siswa</li>
+         </ul>
+        </div>
+       </div>
+      </div><div class="mb-6">
+       <h3 class="font-bold text-emerald-800 mb-3 flex items-center gap-2"><span class="step-badge bg-indigo-600 text-white text-sm">F</span> KEGIATAN PENUTUP (15 Menit)</h3>
+       <div class="bg-indigo-50 rounded-lg p-4">
+        <table class="w-full text-sm">
+         <thead>
+          <tr class="border-b border-indigo-200">
+           <th class="text-left py-2 px-2 w-24">Waktu</th>
+           <th class="text-left py-2 px-2">Kegiatan</th>
+          </tr>
+         </thead>
+         <tbody>
+          <tr class="border-b border-indigo-100">
+           <td class="py-2 px-2 text-indigo-700 font-medium">5 menit</td>
+           <td class="py-2 px-2"><strong>Penyimpulan:</strong> Guru bersama siswa menyimpulkan materi pembelajaran</td>
+          </tr>
+          <tr class="border-b border-indigo-100">
+           <td class="py-2 px-2 text-indigo-700 font-medium">5 menit</td>
+           <td class="py-2 px-2"><strong>Refleksi:</strong> Siswa menyampaikan kesan dan komitmen menerapkan toleransi</td>
+          </tr>
+          <tr class="border-b border-indigo-100">
+           <td class="py-2 px-2 text-indigo-700 font-medium">3 menit</td>
+           <td class="py-2 px-2"><strong>Doa Penutup:</strong> Membaca doa sesudah belajar bersama-sama</td>
+          </tr>
+          <tr>
+           <td class="py-2 px-2 text-indigo-700 font-medium">2 menit</td>
+           <td class="py-2 px-2"><strong>Salam:</strong> Guru mengakhiri pembelajaran dengan salam</td>
+          </tr>
+         </tbody>
+        </table>
+       </div>
+      </div><div class="mb-6">
+       <h3 class="font-bold text-emerald-800 mb-3 flex items-center gap-2"><span class="step-badge bg-rose-600 text-white text-sm">G</span> ASESMEN / PENILAIAN</h3>
+       <div class="bg-rose-50 rounded-lg p-4">
+        <div class="grid md:grid-cols-3 gap-4 text-sm">
+         <div>
+          <h4 class="font-semibold text-rose-800 mb-2">📝 Sikap:</h4>
+          <p class="text-gray-700">Observasi sikap toleransi selama diskusi kelompok</p>
+         </div>
+         <div>
+          <h4 class="font-semibold text-rose-800 mb-2">📊 Pengetahuan:</h4>
+          <p class="text-gray-700">Kuis interaktif dan tanya jawab</p>
+         </div>
+         <div>
+          <h4 class="font-semibold text-rose-800 mb-2">🎯 Keterampilan:</h4>
+          <p class="text-gray-700">Presentasi hasil diskusi kelompok</p>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </main>
+   </div><div id="mediaInteraktif" class="hidden min-h-full flex flex-col">
+    <header class="gradient-header text-white py-3 px-4 shadow-lg no-print sticky top-0 z-50">
+     <div class="max-w-5xl mx-auto flex items-center justify-between"><button onclick="showSection('mainMenu')" class="flex items-center gap-2 hover:bg-white/10 px-3 py-2 rounded-lg transition-colors"> <i data-lucide="arrow-left" class="w-5 h-5"></i> <span class="hidden sm:inline">Kembali</span> </button>
+      <h1 class="text-sm md:text-lg font-bold">🎮 Media Pembelajaran Interaktif</h1>
+      <div class="text-xs bg-white/20 px-3 py-1 rounded-full" id="timerDisplay">
+       ⏱️ 120:00
+      </div>
+     </div>
+    </header><div class="bg-white shadow-sm no-print">
+     <div class="max-w-5xl mx-auto px-4 py-2">
+      <div class="flex items-center gap-2 text-xs overflow-x-auto pb-1"><button onclick="goToStep(0)" class="step-nav flex items-center gap-1 px-3 py-1.5 rounded-full transition-colors whitespace-nowrap" data-step="0"> <span>1</span> Pembuka </button> <i data-lucide="chevron-right" class="w-4 h-4 text-gray-400 flex-shrink-0"></i> <button onclick="goToStep(1)" class="step-nav flex items-center gap-1 px-3 py-1.5 rounded-full transition-colors whitespace-nowrap" data-step="1"> <span>2</span> Orientasi </button> <i data-lucide="chevron-right" class="w-4 h-4 text-gray-400 flex-shrink-0"></i> <button onclick="goToStep(2)" class="step-nav flex items-center gap-1 px-3 py-1.5 rounded-full transition-colors whitespace-nowrap" data-step="2"> <span>3</span> Materi </button> <i data-lucide="chevron-right" class="w-4 h-4 text-gray-400 flex-shrink-0"></i> <button onclick="goToStep(3)" class="step-nav flex items-center gap-1 px-3 py-1.5 rounded-full transition-colors whitespace-nowrap" data-step="3"> <span>4</span> Diskusi </button> <i data-lucide="chevron-right" class="w-4 h-4 text-gray-400 flex-shrink-0"></i> <button onclick="goToStep(4)" class="step-nav flex items-center gap-1 px-3 py-1.5 rounded-full transition-colors whitespace-nowrap" data-step="4"> <span>5</span> Presentasi </button> <i data-lucide="chevron-right" class="w-4 h-4 text-gray-400 flex-shrink-0"></i> <button onclick="goToStep(5)" class="step-nav flex items-center gap-1 px-3 py-1.5 rounded-full transition-colors whitespace-nowrap" data-step="5"> <span>6</span> Evaluasi </button> <i data-lucide="chevron-right" class="w-4 h-4 text-gray-400 flex-shrink-0"></i> <button onclick="goToStep(6)" class="step-nav flex items-center gap-1 px-3 py-1.5 rounded-full transition-colors whitespace-nowrap" data-step="6"> <span>7</span> Ice Break </button> <i data-lucide="chevron-right" class="w-4 h-4 text-gray-400 flex-shrink-0"></i> <button onclick="goToStep(7)" class="step-nav flex items-center gap-1 px-3 py-1.5 rounded-full transition-colors whitespace-nowrap" data-step="7"> <span>8</span> Kuis </button> <i data-lucide="chevron-right" class="w-4 h-4 text-gray-400 flex-shrink-0"></i> <button onclick="goToStep(8)" class="step-nav flex items-center gap-1 px-3 py-1.5 rounded-full transition-colors whitespace-nowrap" data-step="8"> <span>9</span> Penutup </button>
+      </div>
+     </div>
+    </div>
+    <main class="flex-1 p-4 md:p-6 overflow-auto">
+     <div class="max-w-4xl mx-auto"><div class="step-content slide-in" data-step="0">
+       <div class="bg-white rounded-2xl shadow-lg p-6 md:p-8">
+        <div class="text-center mb-6"><span class="text-5xl mb-4 block">🌙</span>
+         <h2 class="text-2xl font-bold text-emerald-800">Kegiatan Pembukaan</h2>
+         <p class="text-gray-600 mt-1">15 Menit</p>
+        </div><div class="bg-gradient-to-r from-emerald-50 to-teal-50 rounded-xl p-5 mb-4">
+         <h3 class="font-bold text-emerald-800 mb-3 flex items-center gap-2"><span class="w-8 h-8 bg-emerald-600 text-white rounded-full flex items-center justify-center text-sm">1</span> Salam dan Menanyakan Kabar</h3>
+         <div class="bg-white rounded-lg p-4 text-center">
+          <p class="text-2xl arabic-font text-emerald-800 mb-2">اَلسَّلَامُ عَلَيْكُمْ وَرَحْمَةُ اللهِ وَبَرَكَاتُهُ</p>
+          <p class="text-gray-600 italic">"Assalamu'alaikum Warahmatullahi Wabarakatuh"</p>
+          <div class="mt-4 p-3 bg-amber-50 rounded-lg">
+           <p class="text-amber-800">💬 "Bagaimana kabar anak-anak hari ini? Sudah siap belajar?"</p>
+          </div>
+         </div>
+        </div><div class="bg-gradient-to-r from-amber-50 to-yellow-50 rounded-xl p-5 mb-4">
+         <h3 class="font-bold text-amber-800 mb-3 flex items-center gap-2"><span class="w-8 h-8 bg-amber-600 text-white rounded-full flex items-center justify-center text-sm">2</span> Doa Sebelum Belajar</h3>
+         <div class="bg-white rounded-lg p-4 text-center">
+          <p class="text-xl md:text-2xl arabic-font text-emerald-800 mb-3 leading-relaxed">رَضِيْتُ بِاللهِ رَبًّا وَبِالْإِسْلَامِ دِيْنًا وَبِمُحَمَّدٍ نَبِيًّا وَرَسُوْلًا</p>
+          <p class="text-gray-700 italic mb-3">"Rodhitu billahi robba, wabil islami dina, wabimuhammadin nabiyya warosula"</p>
+          <p class="text-xl md:text-2xl arabic-font text-emerald-800 mb-3">رَبِّ زِدْنِي عِلْمًا وَارْزُقْنِي فَهْمًا</p>
+          <p class="text-gray-700 italic">"Robbi zidni ilma, warzuqni fahma"</p>
+          <div class="mt-4 p-3 bg-emerald-50 rounded-lg text-sm text-emerald-800"><strong>Artinya:</strong> "Aku ridha Allah sebagai Tuhanku, Islam sebagai agamaku, dan Muhammad sebagai Nabi dan Rasulku. Ya Allah, tambahkanlah ilmu kepadaku dan berikanlah aku pemahaman."
+          </div>
+         </div>
+        </div><div class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-5 mb-4">
+         <h3 class="font-bold text-blue-800 mb-3 flex items-center gap-2"><span class="w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm">3</span> Apersepsi</h3>
+         <div class="bg-white rounded-lg p-4">
+          <p class="text-gray-700 mb-3">Guru mengajukan pertanyaan untuk menggali pengetahuan awal siswa:</p>
+          <div class="space-y-2">
+           <div class="flex items-start gap-2 p-2 bg-blue-50 rounded-lg"><span>❓</span>
+            <p class="text-blue-800">"Siapa yang punya teman dengan suku atau daerah yang berbeda?"</p>
+           </div>
+           <div class="flex items-start gap-2 p-2 bg-blue-50 rounded-lg"><span>❓</span>
+            <p class="text-blue-800">"Apakah kalian pernah berbeda pendapat dengan teman? Bagaimana cara mengatasinya?"</p>
+           </div>
+           <div class="flex items-start gap-2 p-2 bg-blue-50 rounded-lg"><span>❓</span>
+            <p class="text-blue-800">"Apa yang kalian ketahui tentang toleransi?"</p>
+           </div>
+          </div>
+         </div>
+        </div><div class="bg-gradient-to-r from-purple-50 to-pink-50 rounded-xl p-5">
+         <h3 class="font-bold text-purple-800 mb-3 flex items-center gap-2"><span class="w-8 h-8 bg-purple-600 text-white rounded-full flex items-center justify-center text-sm">4</span> Motivasi</h3>
+         <div class="bg-white rounded-lg p-4">
+          <div class="text-center mb-4"><span class="text-4xl">🌟</span>
+          </div>
+          <p class="text-gray-700 text-center mb-3">"Hari ini kita akan belajar tentang <strong>TOLERANSI</strong> - bagaimana menghargai perbedaan sesama teman agar kita bisa hidup rukun dan damai."</p>
+          <div class="bg-emerald-50 rounded-lg p-3 text-center">
+           <p class="text-emerald-800 font-medium">"Dengan toleransi, perbedaan menjadi kekuatan, bukan perpecahan!"</p>
+          </div>
+         </div>
+        </div>
+        <div class="mt-6 text-center"><button onclick="nextStep()" class="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-3 rounded-xl font-semibold transition-colors flex items-center gap-2 mx-auto"> Lanjut ke Kegiatan Inti <i data-lucide="arrow-right" class="w-5 h-5"></i> </button>
+        </div>
+       </div>
+      </div><div class="step-content hidden slide-in" data-step="1">
+       <div class="bg-white rounded-2xl shadow-lg p-6 md:p-8">
+        <div class="text-center mb-6"><span class="text-5xl mb-4 block">🎯</span>
+         <h2 class="text-2xl font-bold text-emerald-800">Fase 1: Orientasi pada Masalah</h2>
+         <p class="text-gray-600 mt-1">Pentingnya Kerukunan di Sekolah (15 Menit)</p>
+        </div><div class="bg-red-50 rounded-xl p-5 mb-6">
+         <h3 class="font-bold text-red-800 mb-3 flex items-center gap-2"><i data-lucide="film" class="w-5 h-5"></i> Cerita Kontekstual</h3>
+         <div class="bg-white rounded-lg p-4">
+          <div class="flex items-start gap-4"><span class="text-4xl">📖</span>
+           <div>
+            <h4 class="font-bold text-gray-800 mb-2">Konflik di Kelas 5B</h4>
+            <p class="text-gray-700 text-sm leading-relaxed mb-3">Di SD Bahagia, Kelas 5B sedang ribut. Ahmad dan Budi bertengkar karena Ahmad mengejek makanan khas daerah Budi. Dina dan Sari tidak mau sekelompok karena berbeda pendapat tentang permainan favorit. Akibatnya, suasana kelas menjadi tidak nyaman dan pembelajaran terganggu.</p>
+            <p class="text-gray-700 text-sm leading-relaxed">Bu Guru sangat sedih melihat murid-muridnya tidak akur. Padahal, mereka semua adalah saudara yang harus saling menyayangi.</p>
+           </div>
+          </div>
+         </div>
+        </div><div class="bg-amber-50 rounded-xl p-5 mb-6">
+         <h3 class="font-bold text-amber-800 mb-3">🤔 Pertanyaan Pemantik</h3>
+         <div class="grid gap-3">
+          <div class="bg-white rounded-lg p-3 border-l-4 border-amber-500">
+           <p class="text-gray-700">"Apa yang salah dari sikap Ahmad dan teman-temannya?"</p>
+          </div>
+          <div class="bg-white rounded-lg p-3 border-l-4 border-amber-500">
+           <p class="text-gray-700">"Apa akibatnya jika kita tidak saling menghargai perbedaan?"</p>
+          </div>
+          <div class="bg-white rounded-lg p-3 border-l-4 border-amber-500">
+           <p class="text-gray-700">"Bagaimana seharusnya sikap kita terhadap teman yang berbeda?"</p>
+          </div>
+         </div>
+        </div>
+        <div class="flex justify-between mt-6"><button onclick="prevStep()" class="bg-gray-200 hover:bg-gray-300 text-gray-700 px-6 py-3 rounded-xl font-semibold transition-colors flex items-center gap-2"> <i data-lucide="arrow-left" class="w-5 h-5"></i> Sebelumnya </button> <button onclick="nextStep()" class="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 rounded-xl font-semibold transition-colors flex items-center gap-2"> Lanjut ke Materi <i data-lucide="arrow-right" class="w-5 h-5"></i> </button>
+        </div>
+       </div>
+      </div><div class="step-content hidden slide-in" data-step="2">
+       <div class="bg-white rounded-2xl shadow-lg p-6 md:p-8">
+        <div class="text-center mb-6"><span class="text-5xl mb-4 block">📚</span>
+         <h2 class="text-2xl font-bold text-emerald-800">Fase 2: Materi Pembelajaran</h2>
+         <p class="text-gray-600 mt-1">Memahami Toleransi dalam Islam (15 Menit)</p>
+        </div><div class="bg-emerald-50 rounded-xl p-5 mb-4">
+         <h3 class="font-bold text-emerald-800 mb-3 flex items-center gap-2"><span class="w-8 h-8 bg-emerald-600 text-white rounded-full flex items-center justify-center text-sm">1</span> Pengertian Toleransi</h3>
+         <div class="bg-white rounded-lg p-4">
+          <p class="text-gray-700 mb-3"><strong>Toleransi (التسامح)</strong> adalah sikap menghargai, menghormati, dan menerima perbedaan yang ada di antara sesama manusia, baik perbedaan suku, budaya, pendapat, maupun kebiasaan.</p>
+          <div class="bg-emerald-50 rounded-lg p-3">
+           <p class="text-emerald-800 text-sm">💡 Dalam bahasa Arab, toleransi disebut <strong>"Tasamuh"</strong> yang berarti sikap lapang dada dan memaafkan.</p>
+          </div>
+         </div>
+        </div><div class="bg-amber-50 rounded-xl p-5 mb-4">
+         <h3 class="font-bold text-amber-800 mb-3 flex items-center gap-2"><span class="w-8 h-8 bg-amber-600 text-white rounded-full flex items-center justify-center text-sm">2</span> Dalil tentang Toleransi</h3>
+         <div class="bg-white rounded-lg p-4 text-center">
+          <p class="text-xl arabic-font text-emerald-800 mb-3 leading-relaxed">يَا أَيُّهَا النَّاسُ إِنَّا خَلَقْنَاكُم مِّن ذَكَرٍ وَأُنثَىٰ وَجَعَلْنَاكُمْ شُعُوبًا وَقَبَائِلَ لِتَعَارَفُوا</p>
+          <p class="text-gray-600 text-sm mb-2">(QS. Al-Hujurat: 13)</p>
+          <p class="text-gray-700 text-sm italic">"Wahai manusia, sungguh Kami telah menciptakan kamu dari seorang laki-laki dan perempuan, kemudian Kami jadikan kamu berbangsa-bangsa dan bersuku-suku agar kamu saling mengenal."</p>
+         </div>
+        </div><div class="bg-blue-50 rounded-xl p-5 mb-4">
+         <h3 class="font-bold text-blue-800 mb-3 flex items-center gap-2"><span class="w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm">3</span> Contoh Sikap Toleransi di Sekolah</h3>
+         <div class="grid md:grid-cols-2 gap-3">
+          <div class="bg-white rounded-lg p-3 flex items-start gap-2"><span class="text-green-500">✅</span>
+           <p class="text-gray-700 text-sm">Menghormati teman yang berbeda suku atau daerah</p>
+          </div>
+          <div class="bg-white rounded-lg p-3 flex items-start gap-2"><span class="text-green-500">✅</span>
+           <p class="text-gray-700 text-sm">Tidak mengejek makanan atau bahasa daerah teman</p>
+          </div>
+          <div class="bg-white rounded-lg p-3 flex items-start gap-2"><span class="text-green-500">✅</span>
+           <p class="text-gray-700 text-sm">Mau berteman dengan siapa saja tanpa membeda-bedakan</p>
+          </div>
+          <div class="bg-white rounded-lg p-3 flex items-start gap-2"><span class="text-green-500">✅</span>
+           <p class="text-gray-700 text-sm">Menghargai pendapat teman yang berbeda</p>
+          </div>
+          <div class="bg-white rounded-lg p-3 flex items-start gap-2"><span class="text-green-500">✅</span>
+           <p class="text-gray-700 text-sm">Membantu teman yang kesulitan tanpa pilih kasih</p>
+          </div>
+          <div class="bg-white rounded-lg p-3 flex items-start gap-2"><span class="text-green-500">✅</span>
+           <p class="text-gray-700 text-sm">Tidak memaksakan kehendak kepada teman</p>
+          </div>
+         </div>
+        </div><div class="bg-purple-50 rounded-xl p-5">
+         <h3 class="font-bold text-purple-800 mb-3 flex items-center gap-2"><span class="w-8 h-8 bg-purple-600 text-white rounded-full flex items-center justify-center text-sm">4</span> Manfaat Toleransi</h3>
+         <div class="grid md:grid-cols-3 gap-3">
+          <div class="bg-white rounded-lg p-3 text-center"><span class="text-3xl block mb-2">🤝</span>
+           <p class="text-gray-700 text-sm font-medium">Hidup rukun dan damai</p>
+          </div>
+          <div class="bg-white rounded-lg p-3 text-center"><span class="text-3xl block mb-2">💪</span>
+           <p class="text-gray-700 text-sm font-medium">Persatuan semakin kuat</p>
+          </div>
+          <div class="bg-white rounded-lg p-3 text-center"><span class="text-3xl block mb-2">😊</span>
+           <p class="text-gray-700 text-sm font-medium">Suasana menyenangkan</p>
+          </div>
+         </div>
+        </div>
+        <div class="flex justify-between mt-6"><button onclick="prevStep()" class="bg-gray-200 hover:bg-gray-300 text-gray-700 px-6 py-3 rounded-xl font-semibold transition-colors flex items-center gap-2"> <i data-lucide="arrow-left" class="w-5 h-5"></i> Sebelumnya </button> <button onclick="nextStep()" class="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 rounded-xl font-semibold transition-colors flex items-center gap-2"> Lanjut ke Diskusi <i data-lucide="arrow-right" class="w-5 h-5"></i> </button>
+        </div>
+       </div>
+      </div><div class="step-content hidden slide-in" data-step="3">
+       <div class="bg-white rounded-2xl shadow-lg p-6 md:p-8">
+        <div class="text-center mb-6"><span class="text-5xl mb-4 block">👥</span>
+         <h2 class="text-2xl font-bold text-emerald-800">Fase 3: Diskusi Kelompok</h2>
+         <p class="text-gray-600 mt-1">Penyelidikan Kelompok (20 Menit)</p>
+        </div><div class="mb-6">
+         <div class="flex items-center justify-between mb-4">
+          <h3 class="font-bold text-emerald-800 flex items-center gap-2"><i data-lucide="file-text" class="w-5 h-5"></i> LKPD (Lembar Kerja Peserta Didik)</h3><button onclick="printLKPD()" class="bg-emerald-100 hover:bg-emerald-200 text-emerald-700 px-4 py-2 rounded-lg text-sm font-medium flex items-center gap-2 transition-colors"> <i data-lucide="printer" class="w-4 h-4"></i> Cetak LKPD </button>
+         </div>
+         <div id="lkpdContent" class="print-area bg-gray-50 rounded-xl p-6 border-2 border-dashed border-gray-300">
+          <div class="text-center border-b-2 border-gray-300 pb-4 mb-4">
+           <h1 class="text-xl font-bold text-gray-800">LEMBAR KERJA PESERTA DIDIK (LKPD)</h1>
+           <h2 class="text-lg font-semibold text-emerald-700">Tema: Toleransi - Menghargai Perbedaan Sesama Teman</h2>
+           <p class="text-gray-600 text-sm mt-2">Pesantren Ramadhan | Kelas 4-6 SD</p>
+          </div>
+          <div class="grid md:grid-cols-2 gap-4 mb-6">
+           <div class="bg-white rounded-lg p-3 border border-gray-200">
+            <p class="text-sm text-gray-600">Nama Kelompok: ___________________</p>
+           </div>
+           <div class="bg-white rounded-lg p-3 border border-gray-200">
+            <p class="text-sm text-gray-600">Tanggal: ___________________</p>
+           </div>
+          </div>
+          <div class="bg-white rounded-lg p-4 border border-gray-200 mb-4">
+           <p class="text-sm text-gray-600 mb-2">Anggota Kelompok:</p>
+           <div class="grid grid-cols-2 gap-2">
+            <p class="text-sm">1. ___________________</p>
+            <p class="text-sm">2. ___________________</p>
+            <p class="text-sm">3. ___________________</p>
+            <p class="text-sm">4. ___________________</p>
+            <p class="text-sm">5. ___________________</p>
+            <p class="text-sm">6. ___________________</p>
+           </div>
+          </div>
+          <div class="space-y-4">
+           <div class="bg-emerald-50 rounded-lg p-4">
+            <h4 class="font-bold text-emerald-800 mb-2">📋 Petunjuk Kegiatan:</h4>
+            <ol class="list-decimal list-inside text-sm text-gray-700 space-y-1">
+             <li>Baca Kartu Skenario yang diberikan guru dengan teliti</li>
+             <li>Diskusikan bersama kelompok untuk menjawab pertanyaan</li>
+             <li>Tuliskan hasil diskusi pada lembar ini</li>
+             <li>Siapkan presentasi hasil diskusi kelompok</li>
+            </ol>
+           </div>
+           <div class="bg-white rounded-lg p-4 border border-gray-200">
+            <h4 class="font-bold text-gray-800 mb-3">❓ Pertanyaan Diskusi:</h4>
+            <div class="space-y-4">
+             <div>
+              <p class="text-sm font-medium text-gray-700 mb-2">1. Apa masalah yang terjadi dalam skenario tersebut?</p>
+              <div class="border-b border-gray-300 min-h-16 mb-1"></div>
+              <div class="border-b border-gray-300 min-h-8"></div>
+             </div>
+             <div>
+              <p class="text-sm font-medium text-gray-700 mb-2">2. Mengapa masalah tersebut bisa terjadi?</p>
+              <div class="border-b border-gray-300 min-h-16 mb-1"></div>
+              <div class="border-b border-gray-300 min-h-8"></div>
+             </div>
+             <div>
+              <p class="text-sm font-medium text-gray-700 mb-2">3. Bagaimana solusi yang tepat untuk mengatasi masalah tersebut?</p>
+              <div class="border-b border-gray-300 min-h-16 mb-1"></div>
+              <div class="border-b border-gray-300 min-h-8"></div>
+             </div>
+             <div>
+              <p class="text-sm font-medium text-gray-700 mb-2">4. Sikap toleransi apa yang harus diterapkan?</p>
+              <div class="border-b border-gray-300 min-h-16 mb-1"></div>
+              <div class="border-b border-gray-300 min-h-8"></div>
+             </div>
+             <div>
+              <p class="text-sm font-medium text-gray-700 mb-2">5. Apa yang akan terjadi jika semua orang menerapkan toleransi?</p>
+              <div class="border-b border-gray-300 min-h-16 mb-1"></div>
+              <div class="border-b border-gray-300 min-h-8"></div>
+             </div>
+            </div>
+           </div>
+          </div>
+         </div>
+        </div><div>
+         <div class="flex items-center justify-between mb-4">
+          <h3 class="font-bold text-amber-800 flex items-center gap-2"><i data-lucide="credit-card" class="w-5 h-5"></i> Kartu Skenario Masalah</h3><button onclick="printSkenario()" class="bg-amber-100 hover:bg-amber-200 text-amber-700 px-4 py-2 rounded-lg text-sm font-medium flex items-center gap-2 transition-colors"> <i data-lucide="printer" class="w-4 h-4"></i> Cetak Semua Kartu </button>
+         </div>
+         <div id="skenarioContent" class="print-area grid md:grid-cols-2 gap-4"><div class="scenario-card rounded-xl p-5 border-2 border-amber-300">
+           <div class="flex items-center justify-between mb-3"><span class="bg-amber-600 text-white px-3 py-1 rounded-full text-sm font-bold">Kelompok 1</span> <span class="text-2xl">📋</span>
+           </div>
+           <h4 class="font-bold text-amber-900 mb-2">Skenario: Ejek Mengejek</h4>
+           <p class="text-amber-800 text-sm leading-relaxed">Riko berasal dari Papua dan kulitnya lebih gelap dari teman-temannya. Beberapa anak di kelas sering mengejek Riko dengan sebutan "si hitam". Riko menjadi sedih dan tidak mau bermain dengan teman-temannya.</p>
+           <div class="mt-3 text-xs text-amber-700">
+            💡 Diskusikan: Bagaimana seharusnya sikap teman-teman terhadap Riko?
+           </div>
+          </div><div class="scenario-card rounded-xl p-5 border-2 border-amber-300">
+           <div class="flex items-center justify-between mb-3"><span class="bg-amber-600 text-white px-3 py-1 rounded-full text-sm font-bold">Kelompok 2</span> <span class="text-2xl">📋</span>
+           </div>
+           <h4 class="font-bold text-amber-900 mb-2">Skenario: Pilih-Pilih Teman</h4>
+           <p class="text-amber-800 text-sm leading-relaxed">Ketika kerja kelompok, Dina tidak mau sekelompok dengan Ani karena Ani berasal dari keluarga yang kurang mampu. Dina hanya mau berkelompok dengan teman-teman yang "keren" menurutnya.</p>
+           <div class="mt-3 text-xs text-amber-700">
+            💡 Diskusikan: Apa yang salah dari sikap Dina? Apa dampaknya?
+           </div>
+          </div><div class="scenario-card rounded-xl p-5 border-2 border-amber-300">
+           <div class="flex items-center justify-between mb-3"><span class="bg-amber-600 text-white px-3 py-1 rounded-full text-sm font-bold">Kelompok 3</span> <span class="text-2xl">📋</span>
+           </div>
+           <h4 class="font-bold text-amber-900 mb-2">Skenario: Menghina Makanan</h4>
+           <p class="text-amber-800 text-sm leading-relaxed">Saat istirahat, Budi membawa bekal makanan khas daerahnya. Teman-teman mengejek makanan Budi dengan berkata "Ih, makanannya aneh!" dan "Bau!" padahal itu adalah makanan kesukaan keluarga Budi.</p>
+           <div class="mt-3 text-xs text-amber-700">
+            💡 Diskusikan: Bagaimana perasaan Budi? Apa yang seharusnya dilakukan?
+           </div>
+          </div><div class="scenario-card rounded-xl p-5 border-2 border-amber-300">
+           <div class="flex items-center justify-between mb-3"><span class="bg-amber-600 text-white px-3 py-1 rounded-full text-sm font-bold">Kelompok 4</span> <span class="text-2xl">📋</span>
+           </div>
+           <h4 class="font-bold text-amber-900 mb-2">Skenario: Beda Pendapat</h4>
+           <p class="text-amber-800 text-sm leading-relaxed">Dalam diskusi kelompok, Ahmad dan Sari berbeda pendapat tentang jawaban soal. Ahmad ngotot pendapatnya yang benar dan tidak mau mendengarkan penjelasan Sari. Akhirnya mereka bertengkar dan tidak berbicara satu sama lain.</p>
+           <div class="mt-3 text-xs text-amber-700">
+            💡 Diskusikan: Bagaimana cara menyelesaikan perbedaan pendapat dengan baik?
+           </div>
+          </div><div class="scenario-card rounded-xl p-5 border-2 border-amber-300 md:col-span-2 md:max-w-md md:mx-auto">
+           <div class="flex items-center justify-between mb-3"><span class="bg-amber-600 text-white px-3 py-1 rounded-full text-sm font-bold">Kelompok 5</span> <span class="text-2xl">📋</span>
+           </div>
+           <h4 class="font-bold text-amber-900 mb-2">Skenario: Mengucilkan Teman</h4>
+           <p class="text-amber-800 text-sm leading-relaxed">Fajar adalah anak baru di kelas. Karena Fajar pendiam dan berbicara dengan logat yang berbeda, teman-teman tidak ada yang mau mengajak Fajar bermain. Fajar selalu sendirian saat istirahat.</p>
+           <div class="mt-3 text-xs text-amber-700">
+            💡 Diskusikan: Apa yang harus dilakukan agar Fajar tidak dikucilkan?
+           </div>
+          </div>
+         </div>
+        </div>
+        <div class="flex justify-between mt-6"><button onclick="prevStep()" class="bg-gray-200 hover:bg-gray-300 text-gray-700 px-6 py-3 rounded-xl font-semibold transition-colors flex items-center gap-2"> <i data-lucide="arrow-left" class="w-5 h-5"></i> Sebelumnya </button> <button onclick="nextStep()" class="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 rounded-xl font-semibold transition-colors flex items-center gap-2"> Lanjut ke Presentasi <i data-lucide="arrow-right" class="w-5 h-5"></i> </button>
+        </div>
+       </div>
+      </div><div class="step-content hidden slide-in" data-step="4">
+       <div class="bg-white rounded-2xl shadow-lg p-6 md:p-8">
+        <div class="text-center mb-6"><span class="text-5xl mb-4 block">🎤</span>
+         <h2 class="text-2xl font-bold text-emerald-800">Fase 4: Presentasi Hasil</h2>
+         <p class="text-gray-600 mt-1">Menyajikan Hasil Diskusi (20 Menit)</p>
+        </div>
+        <div class="bg-emerald-50 rounded-xl p-5 mb-6">
+         <h3 class="font-bold text-emerald-800 mb-4">📝 Panduan Presentasi</h3>
+         <div class="grid md:grid-cols-2 gap-4">
+          <div class="bg-white rounded-lg p-4">
+           <h4 class="font-semibold text-emerald-700 mb-2 flex items-center gap-2"><span class="w-6 h-6 bg-emerald-600 text-white rounded-full flex items-center justify-center text-xs">1</span> Untuk Presenter</h4>
+           <ul class="text-sm text-gray-700 space-y-1">
+            <li>✓ Bacakan skenario masalah kelompok</li>
+            <li>✓ Jelaskan hasil analisis masalah</li>
+            <li>✓ Sampaikan solusi yang diusulkan</li>
+            <li>✓ Sebutkan sikap toleransi yang diterapkan</li>
+           </ul>
+          </div>
+          <div class="bg-white rounded-lg p-4">
+           <h4 class="font-semibold text-teal-700 mb-2 flex items-center gap-2"><span class="w-6 h-6 bg-teal-600 text-white rounded-full flex items-center justify-center text-xs">2</span> Untuk Audiens</h4>
+           <ul class="text-sm text-gray-700 space-y-1">
+            <li>✓ Dengarkan dengan seksama</li>
+            <li>✓ Catat hal-hal penting</li>
+            <li>✓ Siapkan pertanyaan atau tanggapan</li>
+            <li>✓ Berikan apresiasi setiap selesai presentasi</li>
+           </ul>
+          </div>
+         </div>
+        </div><div class="bg-amber-50 rounded-xl p-5 mb-6">
+         <h3 class="font-bold text-amber-800 mb-3">⏱️ Timer Presentasi (4 menit/kelompok)</h3>
+         <div class="text-center">
+          <div id="presentationTimer" class="text-5xl font-bold text-amber-600 mb-4">
+           04:00
+          </div>
+          <div class="flex justify-center gap-3"><button onclick="startPresentationTimer()" class="bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded-lg font-medium flex items-center gap-2"> <i data-lucide="play" class="w-4 h-4"></i> Mulai </button> <button onclick="pausePresentationTimer()" class="bg-amber-500 hover:bg-amber-600 text-white px-6 py-2 rounded-lg font-medium flex items-center gap-2"> <i data-lucide="pause" class="w-4 h-4"></i> Pause </button> <button onclick="resetPresentationTimer()" class="bg-gray-500 hover:bg-gray-600 text-white px-6 py-2 rounded-lg font-medium flex items-center gap-2"> <i data-lucide="rotate-ccw" class="w-4 h-4"></i> Reset </button>
+          </div>
+         </div>
+        </div><div class="bg-blue-50 rounded-xl p-5">
+         <h3 class="font-bold text-blue-800 mb-3">✅ Checklist Presentasi</h3>
+         <div class="grid grid-cols-2 md:grid-cols-5 gap-2"><label class="bg-white rounded-lg p-3 flex items-center gap-2 cursor-pointer hover:bg-blue-100 transition-colors"> <input type="checkbox" class="w-5 h-5 text-blue-600 rounded"> <span class="text-sm font-medium">Kelompok 1</span> </label> <label class="bg-white rounded-lg p-3 flex items-center gap-2 cursor-pointer hover:bg-blue-100 transition-colors"> <input type="checkbox" class="w-5 h-5 text-blue-600 rounded"> <span class="text-sm font-medium">Kelompok 2</span> </label> <label class="bg-white rounded-lg p-3 flex items-center gap-2 cursor-pointer hover:bg-blue-100 transition-colors"> <input type="checkbox" class="w-5 h-5 text-blue-600 rounded"> <span class="text-sm font-medium">Kelompok 3</span> </label> <label class="bg-white rounded-lg p-3 flex items-center gap-2 cursor-pointer hover:bg-blue-100 transition-colors"> <input type="checkbox" class="w-5 h-5 text-blue-600 rounded"> <span class="text-sm font-medium">Kelompok 4</span> </label> <label class="bg-white rounded-lg p-3 flex items-center gap-2 cursor-pointer hover:bg-blue-100 transition-colors"> <input type="checkbox" class="w-5 h-5 text-blue-600 rounded"> <span class="text-sm font-medium">Kelompok 5</span> </label>
+         </div>
+        </div>
+        <div class="flex justify-between mt-6"><button onclick="prevStep()" class="bg-gray-200 hover:bg-gray-300 text-gray-700 px-6 py-3 rounded-xl font-semibold transition-colors flex items-center gap-2"> <i data-lucide="arrow-left" class="w-5 h-5"></i> Sebelumnya </button> <button onclick="nextStep()" class="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 rounded-xl font-semibold transition-colors flex items-center gap-2"> Lanjut ke Evaluasi <i data-lucide="arrow-right" class="w-5 h-5"></i> </button>
+        </div>
+       </div>
+      </div><div class="step-content hidden slide-in" data-step="5">
+       <div class="bg-white rounded-2xl shadow-lg p-6 md:p-8">
+        <div class="text-center mb-6"><span class="text-5xl mb-4 block">📊</span>
+         <h2 class="text-2xl font-bold text-emerald-800">Fase 5: Evaluasi Proses</h2>
+         <p class="text-gray-600 mt-1">Menganalisis dan Mengevaluasi (10 Menit)</p>
+        </div>
+        <div class="space-y-4">
+         <div class="bg-emerald-50 rounded-xl p-5">
+          <h3 class="font-bold text-emerald-800 mb-3 flex items-center gap-2"><i data-lucide="check-circle" class="w-5 h-5"></i> Kesimpulan Bersama</h3>
+          <div class="bg-white rounded-lg p-4">
+           <p class="text-gray-700 mb-3">Dari semua presentasi, kita dapat menyimpulkan:</p>
+           <div class="space-y-2">
+            <div class="flex items-start gap-2 p-2 bg-emerald-50 rounded"><span class="text-emerald-600">✅</span>
+             <p class="text-sm text-gray-700">Setiap orang memiliki perbedaan yang harus dihargai</p>
+            </div>
+            <div class="flex items-start gap-2 p-2 bg-emerald-50 rounded"><span class="text-emerald-600">✅</span>
+             <p class="text-sm text-gray-700">Mengejek atau merendahkan perbedaan adalah perbuatan yang salah</p>
+            </div>
+            <div class="flex items-start gap-2 p-2 bg-emerald-50 rounded"><span class="text-emerald-600">✅</span>
+             <p class="text-sm text-gray-700">Toleransi menciptakan kerukunan dan kedamaian</p>
+            </div>
+            <div class="flex items-start gap-2 p-2 bg-emerald-50 rounded"><span class="text-emerald-600">✅</span>
+             <p class="text-sm text-gray-700">Kita harus saling membantu tanpa membeda-bedakan</p>
+            </div>
+           </div>
+          </div>
+         </div>
+         <div class="bg-amber-50 rounded-xl p-5">
+          <h3 class="font-bold text-amber-800 mb-3 flex items-center gap-2"><i data-lucide="star" class="w-5 h-5"></i> Apresiasi Kelompok Terbaik</h3>
+          <div class="bg-white rounded-lg p-4 text-center">
+           <p class="text-gray-700 mb-3">Guru memberikan apresiasi kepada kelompok dengan:</p>
+           <div class="grid grid-cols-3 gap-2 text-sm">
+            <div class="bg-yellow-100 rounded-lg p-2"><span class="text-2xl block">🥇</span>
+             <p class="text-yellow-800 font-medium">Solusi Terbaik</p>
+            </div>
+            <div class="bg-gray-100 rounded-lg p-2"><span class="text-2xl block">🥈</span>
+             <p class="text-gray-700 font-medium">Presentasi Terbaik</p>
+            </div>
+            <div class="bg-orange-100 rounded-lg p-2"><span class="text-2xl block">🥉</span>
+             <p class="text-orange-800 font-medium">Kerjasama Terbaik</p>
+            </div>
+           </div>
+          </div>
+         </div>
+        </div>
+        <div class="flex justify-between mt-6"><button onclick="prevStep()" class="bg-gray-200 hover:bg-gray-300 text-gray-700 px-6 py-3 rounded-xl font-semibold transition-colors flex items-center gap-2"> <i data-lucide="arrow-left" class="w-5 h-5"></i> Sebelumnya </button> <button onclick="nextStep()" class="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 rounded-xl font-semibold transition-colors flex items-center gap-2"> Lanjut ke Ice Breaking <i data-lucide="arrow-right" class="w-5 h-5"></i> </button>
+        </div>
+       </div>
+      </div><div class="step-content hidden slide-in" data-step="6">
+       <div class="bg-white rounded-2xl shadow-lg p-6 md:p-8">
+        <div class="text-center mb-6"><span class="text-5xl mb-4 block">🎉</span>
+         <h2 class="text-2xl font-bold text-emerald-800">Ice Breaking</h2>
+         <p class="text-gray-600 mt-1">Permainan Flip Card (5 Menit)</p>
+        </div>
+        <div class="bg-gradient-to-r from-purple-100 to-blue-100 rounded-xl p-6 mb-6">
+         <h3 class="font-bold text-purple-800 mb-4 text-center text-xl">🎮 Flip Card: Agama &amp; Tempat Ibadah</h3>
+         <div class="bg-white rounded-lg p-5">
+          <p class="text-gray-700 mb-4 text-center font-medium">Klik kartu untuk membalik dan temukan pasangan agama dengan tempat ibadahnya!</p>
+          <div id="flipCardContainer" class="grid grid-cols-4 gap-3 mb-6"></div><div id="matchingResult" class="hidden bg-green-50 rounded-lg p-4 text-center border-2 border-green-300">
+           <p class="text-xl font-bold text-green-700 mb-2">✅ Sempurna!</p>
+           <p class="text-gray-700">Kamu sudah menemukan semua pasangan agama dengan tempat ibadahnya!</p>
+          </div><div class="grid grid-cols-2 gap-3 mt-4 text-center">
+           <div class="bg-purple-50 rounded-lg p-3">
+            <p class="text-2xl font-bold text-purple-600" id="matchCount">0</p>
+            <p class="text-sm text-purple-700">Pasangan Ditemukan</p>
+           </div>
+           <div class="bg-blue-50 rounded-lg p-3">
+            <p class="text-2xl font-bold text-blue-600" id="moveCount">0</p>
+            <p class="text-sm text-blue-700">Jumlah Klik</p>
+           </div>
+          </div><div class="text-center mt-4">
+           <button onclick="resetFlipCards()" class="bg-purple-600 hover:bg-purple-700 text-white px-6 py-2 rounded-lg font-medium"> 🔄 Coba Lagi </button>
+          </div>
+         </div>
+        </div>
+        <div class="bg-blue-50 rounded-xl p-5">
+         <h3 class="font-bold text-blue-800 mb-3 flex items-center gap-2"><i data-lucide="info" class="w-5 h-5"></i> Penjelasan Tempat Ibadah</h3>
+         <div class="bg-white rounded-lg p-4 text-sm text-gray-700 space-y-2">
+          <p><strong>🕌 Masjid:</strong> Tempat ibadah umat Islam</p>
+          <p><strong>⛪ Gereja:</strong> Tempat ibadah umat Kristen Protestan</p>
+          <p><strong>⛪ Katedral:</strong> Tempat ibadah umat Kristen Katolik</p>
+          <p><strong>🏯 Pura:</strong> Tempat ibadah umat Hindu</p>
+          <p><strong>🏯 Vihara:</strong> Tempat ibadah umat Buddha</p>
+          <p><strong>🏮 Klenteng:</strong> Tempat ibadah umat Konghucu</p>
+          <p class="mt-3 pt-3 border-t border-gray-300 text-blue-700 font-medium">💡 Meskipun berbeda tempat ibadah, kita semua adalah saudara yang harus saling menghormati!</p>
+         </div>
+        </div>
+        <div class="flex justify-between mt-6"><button onclick="prevStep()" class="bg-gray-200 hover:bg-gray-300 text-gray-700 px-6 py-3 rounded-xl font-semibold transition-colors flex items-center gap-2"> <i data-lucide="arrow-left" class="w-5 h-5"></i> Sebelumnya </button> <button onclick="nextStep()" class="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 rounded-xl font-semibold transition-colors flex items-center gap-2"> Lanjut ke Kuis <i data-lucide="arrow-right" class="w-5 h-5"></i> </button>
+        </div>
+       </div>
+      </div><div class="step-content hidden slide-in" data-step="7">
+       <div class="bg-white rounded-2xl shadow-lg p-6 md:p-8">
+        <div class="text-center mb-6"><span class="text-5xl mb-4 block">📝</span>
+         <h2 class="text-2xl font-bold text-emerald-800">Kuis Interaktif</h2>
+         <p class="text-gray-600 mt-1">Uji Pemahaman (5 Menit)</p>
+        </div>
+        <div id="quizContainer"><div id="quizQuestion" class="bg-emerald-50 rounded-xl p-5 mb-4">
+          <div class="flex items-center justify-between mb-3"><span class="bg-emerald-600 text-white px-3 py-1 rounded-full text-sm font-bold">Soal <span id="currentQuestion">1</span>/5</span> <span id="quizScore" class="bg-amber-500 text-white px-3 py-1 rounded-full text-sm font-bold">Skor: 0</span>
+          </div>
+          <h3 id="questionText" class="text-lg font-bold text-emerald-800 mb-4">Loading...</h3>
+          <div id="quizOptions" class="space-y-2"></div>
+         </div>
+         <div id="quizFeedback" class="hidden bg-gray-50 rounded-xl p-4 mb-4 text-center">
+          <p id="feedbackText" class="text-lg font-bold"></p>
+         </div>
+         <div class="text-center"><button id="nextQuestionBtn" onclick="nextQuestion()" class="hidden bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 rounded-xl font-semibold transition-colors"> Soal Berikutnya </button>
+         </div>
+        </div><div id="quizResult" class="hidden text-center">
+         <div class="bg-gradient-to-r from-emerald-100 to-teal-100 rounded-xl p-8"><span class="text-6xl block mb-4">🎊</span>
+          <h3 class="text-2xl font-bold text-emerald-800 mb-2">Kuis Selesai!</h3>
+          <p id="finalScore" class="text-xl text-emerald-700 mb-4"></p>
+          <div id="scoreMessage" class="bg-white rounded-lg p-4 mb-4"></div><button onclick="resetQuiz()" class="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-2 rounded-lg font-medium"> Ulangi Kuis </button>
+         </div>
+        </div>
+        <div class="flex justify-between mt-6"><button onclick="prevStep()" class="bg-gray-200 hover:bg-gray-300 text-gray-700 px-6 py-3 rounded-xl font-semibold transition-colors flex items-center gap-2"> <i data-lucide="arrow-left" class="w-5 h-5"></i> Sebelumnya </button> <button onclick="nextStep()" class="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 rounded-xl font-semibold transition-colors flex items-center gap-2"> Lanjut ke Penutup <i data-lucide="arrow-right" class="w-5 h-5"></i> </button>
+        </div>
+       </div>
+      </div><div class="step-content hidden slide-in" data-step="8">
+       <div class="bg-white rounded-2xl shadow-lg p-6 md:p-8">
+        <div class="text-center mb-6"><span class="text-5xl mb-4 block">🌟</span>
+         <h2 class="text-2xl font-bold text-emerald-800">Kegiatan Penutup</h2>
+         <p class="text-gray-600 mt-1">15 Menit</p>
+        </div><div class="bg-emerald-50 rounded-xl p-5 mb-4">
+         <h3 class="font-bold text-emerald-800 mb-3 flex items-center gap-2"><span class="w-8 h-8 bg-emerald-600 text-white rounded-full flex items-center justify-center text-sm">1</span> Penyimpulan Bersama</h3>
+         <div class="bg-white rounded-lg p-4">
+          <p class="text-gray-700 mb-3">Hari ini kita telah belajar tentang:</p>
+          <div class="grid md:grid-cols-2 gap-2">
+           <div class="flex items-start gap-2 p-2 bg-emerald-50 rounded"><span>📌</span>
+            <p class="text-sm text-emerald-800">Pengertian toleransi dalam Islam</p>
+           </div>
+           <div class="flex items-start gap-2 p-2 bg-emerald-50 rounded"><span>📌</span>
+            <p class="text-sm text-emerald-800">Pentingnya menghargai perbedaan</p>
+           </div>
+           <div class="flex items-start gap-2 p-2 bg-emerald-50 rounded"><span>📌</span>
+            <p class="text-sm text-emerald-800">Contoh sikap toleransi di sekolah</p>
+           </div>
+           <div class="flex items-start gap-2 p-2 bg-emerald-50 rounded"><span>📌</span>
+            <p class="text-sm text-emerald-800">Cara menyelesaikan perbedaan dengan baik</p>
+           </div>
+          </div>
+         </div>
+        </div><div class="bg-blue-50 rounded-xl p-5 mb-4">
+         <h3 class="font-bold text-blue-800 mb-3 flex items-center gap-2"><span class="w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm">2</span> Refleksi Akhir Pembelajaran</h3>
+         <div class="bg-white rounded-lg p-4">
+          <p class="text-gray-700 mb-3">Guru mengajak siswa untuk merefleksikan pembelajaran:</p>
+          <div class="space-y-2">
+           <div class="p-3 bg-blue-50 rounded-lg">
+            <p class="text-blue-800 text-sm">"Apa yang paling berkesan dari pembelajaran hari ini?"</p>
+           </div>
+           <div class="p-3 bg-blue-50 rounded-lg">
+            <p class="text-blue-800 text-sm">"Sikap toleransi apa yang akan kalian terapkan mulai hari ini?"</p>
+           </div>
+           <div class="p-3 bg-blue-50 rounded-lg">
+            <p class="text-blue-800 text-sm">"Bagaimana komitmen kalian untuk menjaga kerukunan di sekolah?"</p>
+           </div>
+          </div>
+         </div>
+        </div><div class="bg-amber-50 rounded-xl p-5 mb-4">
+         <h3 class="font-bold text-amber-800 mb-3 flex items-center gap-2"><span class="w-8 h-8 bg-amber-600 text-white rounded-full flex items-center justify-center text-sm">3</span> Doa Sesudah Belajar</h3>
+         <div class="bg-white rounded-lg p-4 text-center">
+          <p class="text-xl md:text-2xl arabic-font text-emerald-800 mb-3 leading-relaxed">اَللَّهُمَّ أَرِنَا الْحَقَّ حَقًّا وَارْزُقْنَا اتِّبَاعَهُ وَأَرِنَا الْبَاطِلَ بَاطِلاً وَارْزُقْنَا اجْتِنَابَهُ</p>
+          <p class="text-gray-700 italic mb-3">"Allahumma arinal haqqa haqqa warzuqnat tiba'ah wa arinal batila batila warzuqnaj tinabah"</p>
+          <div class="bg-emerald-50 rounded-lg p-3 text-sm text-emerald-800"><strong>Artinya:</strong> "Ya Allah, tunjukkanlah kepada kami kebenaran sebagai kebenaran dan karuniakanlah kami untuk mengikutinya, dan tunjukkanlah kepada kami kebatilan sebagai kebatilan dan karuniakanlah kami untuk menjauhinya."
+          </div>
+         </div>
+        </div><div class="bg-gradient-to-r from-emerald-100 to-teal-100 rounded-xl p-5">
+         <h3 class="font-bold text-emerald-800 mb-3 flex items-center gap-2"><span class="w-8 h-8 bg-emerald-600 text-white rounded-full flex items-center justify-center text-sm">4</span> Salam Penutup</h3>
+         <div class="bg-white rounded-lg p-4 text-center">
+          <p class="text-2xl arabic-font text-emerald-800 mb-2">وَالسَّلَامُ عَلَيْكُمْ وَرَحْمَةُ اللهِ وَبَرَكَاتُهُ</p>
+          <p class="text-gray-600 italic">"Wassalamu'alaikum Warahmatullahi Wabarakatuh"</p>
+          <div class="mt-4 p-3 bg-emerald-50 rounded-lg">
+           <p class="text-emerald-800 font-medium">🤲 Terima kasih telah mengikuti pembelajaran dengan baik!</p>
+           <p class="text-emerald-700 text-sm mt-1">Semoga ilmu yang didapat bermanfaat dan diberkahi Allah SWT.</p>
+          </div>
+         </div>
+        </div>
+        <div class="flex justify-between mt-6"><button onclick="prevStep()" class="bg-gray-200 hover:bg-gray-300 text-gray-700 px-6 py-3 rounded-xl font-semibold transition-colors flex items-center gap-2"> <i data-lucide="arrow-left" class="w-5 h-5"></i> Sebelumnya </button> <button onclick="showSection('mainMenu')" class="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 rounded-xl font-semibold transition-colors flex items-center gap-2"> <i data-lucide="home" class="w-5 h-5"></i> Kembali ke Menu Utama </button>
+        </div>
+       </div>
+      </div>
+     </div>
+    </main>
+   </div>
+  </div>
+  <script>
+    // Default configuration
+    const defaultConfig = {
+      app_title: 'Pesantren Ramadhan',
+      teacher_name: 'Dibuat untuk Pesantren Ramadhan',
+      primary_color: '#065f46',
+      secondary_color: '#10b981',
+      accent_color: '#fbbf24'
+    };
+    
+    let config = { ...defaultConfig };
+    
+    // Element SDK Integration
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange: async (newConfig) => {
+          config = { ...defaultConfig, ...newConfig };
+          updateUI();
+        },
+        mapToCapabilities: (config) => ({
+          recolorables: [
+            {
+              get: () => config.primary_color || defaultConfig.primary_color,
+              set: (value) => {
+                config.primary_color = value;
+                window.elementSdk.setConfig({ primary_color: value });
+              }
+            },
+            {
+              get: () => config.secondary_color || defaultConfig.secondary_color,
+              set: (value) => {
+                config.secondary_color = value;
+                window.elementSdk.setConfig({ secondary_color: value });
+              }
+            },
+            {
+              get: () => config.accent_color || defaultConfig.accent_color,
+              set: (value) => {
+                config.accent_color = value;
+                window.elementSdk.setConfig({ accent_color: value });
+              }
+            }
+          ],
+          borderables: [],
+          fontEditable: undefined,
+          fontSizeable: undefined
+        }),
+        mapToEditPanelValues: (config) => new Map([
+          ['app_title', config.app_title || defaultConfig.app_title],
+          ['teacher_name', config.teacher_name || defaultConfig.teacher_name]
+        ])
+      });
+    }
+    
+    function updateUI() {
+      const mainTitle = document.getElementById('mainTitle');
+      const footerTeacher = document.getElementById('footerTeacher');
+      
+      if (mainTitle) mainTitle.textContent = config.app_title || defaultConfig.app_title;
+      if (footerTeacher) footerTeacher.textContent = config.teacher_name || defaultConfig.teacher_name;
+    }
+    
+    // Navigation
+    let currentStep = 0;
+    const totalSteps = 9;
+    
+    function showSection(sectionId) {
+      document.querySelectorAll('#app > div').forEach(section => {
+        section.classList.add('hidden');
+      });
+      document.getElementById(sectionId).classList.remove('hidden');
+      
+      if (sectionId === 'mediaInteraktif') {
+        updateStepNav();
+        initQuiz();
+      }
+      
+      lucide.createIcons();
+    }
+    
+    function goToStep(step) {
+      document.querySelectorAll('.step-content').forEach(content => {
+        content.classList.add('hidden');
+      });
+      document.querySelector(`.step-content[data-step="${step}"]`).classList.remove('hidden');
+      currentStep = step;
+      updateStepNav();
+      lucide.createIcons();
+    }
+    
+    function nextStep() {
+      if (currentStep < totalSteps - 1) {
+        goToStep(currentStep + 1);
+      }
+    }
+    
+    function prevStep() {
+      if (currentStep > 0) {
+        goToStep(currentStep - 1);
+      }
+    }
+    
+    function updateStepNav() {
+      document.querySelectorAll('.step-nav').forEach(btn => {
+        const step = parseInt(btn.dataset.step);
+        btn.classList.remove('bg-emerald-600', 'text-white', 'bg-emerald-100', 'text-emerald-700', 'bg-gray-100', 'text-gray-600');
+        
+        if (step === currentStep) {
+          btn.classList.add('bg-emerald-600', 'text-white');
+        } else if (step < currentStep) {
+          btn.classList.add('bg-emerald-100', 'text-emerald-700');
+        } else {
+          btn.classList.add('bg-gray-100', 'text-gray-600');
+        }
+      });
+    }
+    
+    // Print Functions Diperbarui untuk kestabilan tanpa terblokir popup blocker
+    function printModul() {
+      const originalClass = document.body.className;
+      document.body.classList.add('print-modul');
+      window.print();
+      document.body.className = originalClass;
+    }
+    
+    function printLKPD() {
+      const originalClass = document.body.className;
+      document.body.classList.add('print-lkpd');
+      window.print();
+      document.body.className = originalClass;
+    }
+    
+    function printSkenario() {
+      const originalClass = document.body.className;
+      document.body.classList.add('print-skenario');
+      window.print();
+      document.body.className = originalClass;
+    }
+    
+    // Presentation Timer
+    let presentationTime = 240;
+    let presentationInterval = null;
+    
+    function startPresentationTimer() {
+      if (presentationInterval) return;
+      presentationInterval = setInterval(() => {
+        if (presentationTime > 0) {
+          presentationTime--;
+          updatePresentationDisplay();
+        } else {
+          clearInterval(presentationInterval);
+          presentationInterval = null;
+        }
+      }, 1000);
+    }
+    
+    function pausePresentationTimer() {
+      clearInterval(presentationInterval);
+      presentationInterval = null;
+    }
+    
+    function resetPresentationTimer() {
+      pausePresentationTimer();
+      presentationTime = 240;
+      updatePresentationDisplay();
+    }
+    
+    function updatePresentationDisplay() {
+      const minutes = Math.floor(presentationTime / 60);
+      const seconds = presentationTime % 60;
+      document.getElementById('presentationTimer').textContent = 
+        `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+    }
+    
+    // Quiz System
+    const quizData = [
+      {
+        question: "Apa yang dimaksud dengan toleransi?",
+        options: [
+          "Memaksakan pendapat kepada orang lain",
+          "Menghargai dan menerima perbedaan sesama manusia",
+          "Hanya berteman dengan orang yang sama",
+          "Mengejek perbedaan orang lain"
+        ],
+        correct: 1
+      },
+      {
+        question: "Sikap yang TIDAK menunjukkan toleransi adalah...",
+        options: [
+          "Menghormati teman yang berbeda suku",
+          "Membantu teman tanpa membeda-bedakan",
+          "Mengejek makanan khas daerah teman",
+          "Mendengarkan pendapat teman dengan baik"
+        ],
+        correct: 2
+      },
+      {
+        question: "Apa manfaat dari sikap toleransi?",
+        options: [
+          "Menimbulkan perpecahan",
+          "Membuat suasana tidak nyaman",
+          "Menciptakan kerukunan dan kedamaian",
+          "Membuat orang menjadi lemah"
+        ],
+        correct: 2
+      },
+      {
+        question: "Dalam Al-Quran Surat Al-Hujurat ayat 13, Allah menciptakan manusia berbangsa-bangsa dan bersuku-suku agar...",
+        options: [
+          "Saling bermusuhan",
+          "Saling mengenal",
+          "Saling mengejek",
+          "Saling menjauhi"
+        ],
+        correct: 1
+      },
+      {
+        question: "Ketika ada teman baru yang pendiam, sikap toleransi yang tepat adalah...",
+        options: [
+          "Membiarkan dia sendirian",
+          "Mengejek cara bicaranya",
+          "Mengajak berkenalan dan berteman",
+          "Menghindari dia"
+        ],
+        correct: 2
+      }
+    ];
+    
+    let currentQuestionIndex = 0;
+    let score = 0;
+    let answered = false;
+    
+    function initQuiz() {
+      currentQuestionIndex = 0;
+      score = 0;
+      answered = false;
+      showQuestion();
+    }
+    
+    function showQuestion() {
+      const question = quizData[currentQuestionIndex];
+      document.getElementById('currentQuestion').textContent = currentQuestionIndex + 1;
+      document.getElementById('questionText').textContent = question.question;
+      document.getElementById('quizScore').textContent = `Skor: ${score}`;
+      
+      const optionsContainer = document.getElementById('quizOptions');
+      optionsContainer.innerHTML = '';
+      
+      question.options.forEach((option, index) => {
+        const button = document.createElement('button');
+        button.className = 'quiz-option w-full text-left p-3 border-2 border-gray-200 rounded-lg text-gray-700 hover:border-emerald-500';
+        button.innerHTML = `<span class="font-bold text-emerald-600 mr-2">${String.fromCharCode(65 + index)}.</span> ${option}`;
+        button.onclick = () => selectAnswer(index);
+        optionsContainer.appendChild(button);
+      });
+      
+      document.getElementById('quizContainer').classList.remove('hidden');
+      document.getElementById('quizResult').classList.add('hidden');
+      document.getElementById('quizFeedback').classList.add('hidden');
+      document.getElementById('nextQuestionBtn').classList.add('hidden');
+      answered = false;
+    }
+    
+    function selectAnswer(index) {
+      if (answered) return;
+      answered = true;
+      
+      const question = quizData[currentQuestionIndex];
+      const options = document.querySelectorAll('.quiz-option');
+      
+      options.forEach((opt, i) => {
+        opt.classList.remove('hover:border-emerald-500');
+        if (i === question.correct) {
+          opt.classList.add('correct');
+        } else if (i === index && i !== question.correct) {
+          opt.classList.add('incorrect');
+        }
+      });
+      
+      const feedback = document.getElementById('quizFeedback');
+      const feedbackText = document.getElementById('feedbackText');
+      
+      if (index === question.correct) {
+        score += 20;
+        feedbackText.textContent = '✅ Benar! Hebat!';
+        feedbackText.className = 'text-lg font-bold text-green-600';
+      } else {
+        feedbackText.textContent = '❌ Kurang tepat. Jawaban yang benar: ' + String.fromCharCode(65 + question.correct);
+        feedbackText.className = 'text-lg font-bold text-red-600';
+      }
+      
+      feedback.classList.remove('hidden');
+      document.getElementById('quizScore').textContent = `Skor: ${score}`;
+      
+      if (currentQuestionIndex < quizData.length - 1) {
+        document.getElementById('nextQuestionBtn').textContent = 'Soal Berikutnya';
+        document.getElementById('nextQuestionBtn').classList.remove('hidden');
+      } else {
+        document.getElementById('nextQuestionBtn').textContent = 'Lihat Hasil';
+        document.getElementById('nextQuestionBtn').classList.remove('hidden');
+      }
+    }
+    
+    function nextQuestion() {
+      if (currentQuestionIndex < quizData.length - 1) {
+        currentQuestionIndex++;
+        showQuestion();
+      } else {
+        showResult();
+      }
+    }
+    
+    function showResult() {
+      document.getElementById('quizContainer').classList.add('hidden');
+      document.getElementById('quizResult').classList.remove('hidden');
+      
+      document.getElementById('finalScore').textContent = `Skor Akhir: ${score}/100`;
+      
+      let message = '';
+      if (score >= 80) {
+        message = '<p class="text-green-600 font-bold text-lg">🌟 Luar Biasa!</p><p class="text-gray-600 mt-2">Kamu sudah memahami toleransi dengan sangat baik!</p>';
+      } else if (score >= 60) {
+        message = '<p class="text-blue-600 font-bold text-lg">👍 Bagus!</p><p class="text-gray-600 mt-2">Pemahaman kamu sudah cukup baik. Terus belajar ya!</p>';
+      } else {
+        message = '<p class="text-amber-600 font-bold text-lg">💪 Semangat!</p><p class="text-gray-600 mt-2">Mari pelajari lagi materi tentang toleransi.</p>';
+      }
+      document.getElementById('scoreMessage').innerHTML = message;
+    }
+    
+    function resetQuiz() {
+      initQuiz();
+    }
+    
+    // Flip Card Game System
+    const cardPairs = [
+      { id: 1, type: 'agama', content: '☪️ Islam', match: 2 },
+      { id: 2, type: 'tempat', content: '🕌 Masjid', match: 1 },
+      { id: 3, type: 'agama', content: '✝️ Kristen', match: 4 },
+      { id: 4, type: 'tempat', content: '⛪ Gereja', match: 3 },
+      { id: 5, type: 'agama', content: '✝️ Katolik', match: 6 },
+      { id: 6, type: 'tempat', content: '⛪ Katedral', match: 5 },
+      { id: 7, type: 'agama', content: '🕉️ Hindu', match: 8 },
+      { id: 8, type: 'tempat', content: '🏯 Pura', match: 7 },
+      { id: 9, type: 'agama', content: '☸️ Buddha', match: 10 },
+      { id: 10, type: 'tempat', content: '🏯 Vihara', match: 9 },
+      { id: 11, type: 'agama', content: '🏮 Konghucu', match: 12 },
+      { id: 12, type: 'tempat', content: '🏮 Klenteng', match: 11 }
+    ];
+    
+    let flipCardState = {
+      cards: cardPairs.slice(),
+      flipped: new Set(),
+      matched: new Set(),
+      firstCard: null,
+      secondCard: null,
+      canFlip: true,
+      moves: 0
+    };
+    
+    function initFlipCards() {
+      flipCardState = {
+        cards: cardPairs.slice(),
+        flipped: new Set(),
+        matched: new Set(),
+        firstCard: null,
+        secondCard: null,
+        canFlip: true,
+        moves: 0
+      };
+      
+      // Shuffle cards
+      flipCardState.cards = flipCardState.cards.sort(() => Math.random() - 0.5);
+      
+      renderFlipCards();
+      document.getElementById('matchingResult').classList.add('hidden');
+      document.getElementById('matchCount').textContent = '0';
+      document.getElementById('moveCount').textContent = '0';
+    }
+    
+    function renderFlipCards() {
+      const container = document.getElementById('flipCardContainer');
+      container.innerHTML = '';
+      
+      flipCardState.cards.forEach(card => {
+        const isFlipped = flipCardState.flipped.has(card.id);
+        const isMatched = flipCardState.matched.has(card.id);
+        
+        const cardEl = document.createElement('div');
+        cardEl.className = `flip-card h-24 cursor-pointer`;
+        cardEl.style.perspective = '1000px';
+        
+        const cardInner = document.createElement('div');
+        cardInner.className = `flip-card-inner relative w-full h-full transition-transform duration-300`;
+        cardInner.style.transformStyle = 'preserve-3d';
+        cardInner.style.transform = isFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)';
+        
+        // Front of card
+        const front = document.createElement('div');
+        front.className = `flip-card-front absolute w-full h-full flex items-center justify-center rounded-lg font-bold text-2xl bg-gradient-to-br from-purple-400 to-purple-600 text-white border-2 border-purple-500`;
+        front.style.backfaceVisibility = 'hidden';
+        front.textContent = '?';
+        
+        // Back of card
+        const back = document.createElement('div');
+        back.className = `flip-card-back absolute w-full h-full flex items-center justify-center rounded-lg font-bold text-xl bg-gradient-to-br text-white border-2`;
+        back.style.backfaceVisibility = 'hidden';
+        back.style.transform = 'rotateY(180deg)';
+        
+        if (card.type === 'agama') {
+          back.classList.add('from-purple-300', 'to-purple-500', 'border-purple-400');
+        } else {
+          back.classList.add('from-blue-300', 'to-blue-500', 'border-blue-400');
+        }
+        
+        if (isMatched) {
+          back.classList.add('ring-2', 'ring-green-400');
+          cardEl.style.pointerEvents = 'none';
+        }
+        
+        back.textContent = card.content;
+        
+        cardInner.appendChild(front);
+        cardInner.appendChild(back);
+        cardEl.appendChild(cardInner);
+        
+        cardEl.addEventListener('click', () => flipCard(card.id, cardInner));
+        container.appendChild(cardEl);
+      });
+    }
+    
+    function flipCard(cardId, cardElement) {
+      if (!flipCardState.canFlip) return;
+      if (flipCardState.flipped.has(cardId)) return;
+      if (flipCardState.matched.has(cardId)) return;
+      
+      flipCardState.flipped.add(cardId);
+      cardElement.style.transform = 'rotateY(180deg)';
+      
+      if (!flipCardState.firstCard) {
+        flipCardState.firstCard = cardId;
+      } else if (!flipCardState.secondCard) {
+        flipCardState.secondCard = cardId;
+        flipCardState.canFlip = false;
+        flipCardState.moves++;
+        document.getElementById('moveCount').textContent = flipCardState.moves;
+        
+        checkMatch();
+      }
+    }
+    
+    function checkMatch() {
+      const firstCard = flipCardState.cards.find(c => c.id === flipCardState.firstCard);
+      const secondCard = flipCardState.cards.find(c => c.id === flipCardState.secondCard);
+      
+      const isMatch = firstCard.match === secondCard.id && secondCard.match === firstCard.id;
+      
+      setTimeout(() => {
+        if (isMatch) {
+          flipCardState.matched.add(flipCardState.firstCard);
+          flipCardState.matched.add(flipCardState.secondCard);
+          document.getElementById('matchCount').textContent = Math.floor(flipCardState.matched.size / 2);
+          
+          // Bug Fixed: Mengganti 10 dengan 12 (Karena ada 12 kartu / 6 pasang)
+          if (flipCardState.matched.size === 12) {
+            setTimeout(() => {
+              document.getElementById('matchingResult').classList.remove('hidden');
+            }, 300);
+          }
+        } else {
+          const firstCardEl = document.querySelector(`.flip-card-inner`).parentElement;
+          flipCardState.flipped.delete(flipCardState.firstCard);
+          flipCardState.flipped.delete(flipCardState.secondCard);
+          renderFlipCards();
+        }
+        
+        flipCardState.firstCard = null;
+        flipCardState.secondCard = null;
+        flipCardState.canFlip = true;
+      }, 800);
+    }
+    
+    function resetFlipCards() {
+      initFlipCards();
+    }
+    
+    // Add shake animation
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes shake {
+        0%, 100% { transform: translateX(0); }
+        10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+        20%, 40%, 60%, 80% { transform: translateX(5px); }
+      }
+    `;
+    document.head.appendChild(style);
+    
+    // Initialize
+    lucide.createIcons();
+    updateUI();
+    
+    // Setup matching game when media interaktif section is shown
+    const originalGoToStep = goToStep;
+    goToStep = function(step) {
+      originalGoToStep.call(this, step);
+      if (step === 6) {
+        setTimeout(() => {
+          initFlipCards();
+        }, 100);
+      }
+    };
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9d8b788ac2ecd976',t:'MTc3MjkwNjEyNC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
